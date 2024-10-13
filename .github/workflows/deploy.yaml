@@ -1,0 +1,222 @@
+name: Build and Deploy
+on: [push]
+
+jobs:
+  check_commit:
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.check_message.outputs.should_run }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Check commit message
+        id: check_message
+        run: |
+          commit_message=$(git log -1 --pretty=%B)
+          if [[ $commit_message == *"#ignore"* ]]; then
+            echo "::set-output name=should_run::false"
+          else
+            echo "::set-output name=should_run::true"
+          fi
+
+  build:
+    needs: check_commit
+    if: needs.check_commit.outputs.should_run == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set engineer tg username
+        run: |
+          if [ "${{ github.actor }}" = "IvanGudyushkin" ]; then
+            echo "TG_USERNAME=@Ivanandreevichgud" >> $GITHUB_ENV
+          fi
+          if [ "${{ github.actor }}" = "AlexUner" ]; then
+            echo "TG_USERNAME=@AlexUner" >> $GITHUB_ENV
+          fi
+          if [ "${{ github.actor }}" = "WarningNotError" ]; then
+            echo "TG_USERNAME=@eugenroot1" >> $GITHUB_ENV
+          fi
+
+      - name: Set custom message bad
+        run: echo "CUSTOM_MESSAGE_BAD=💩 ${{ env.TG_USERNAME }}, иди убирай какахи!" >> $GITHUB_ENV
+
+      - name: Set custom message good
+        run: echo "CUSTOM_MESSAGE_GOOD=🏆 ${{ env.TG_USERNAME }}, молодец!" >> $GITHUB_ENV
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build/
+
+      - name: Send Telegram Notification on Failure build
+        if: failure()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+          --header 'Content-Type: application/json' \
+          --data-raw '{
+                "chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}",
+                "text": "🚨 1/2. Сборка провалена!\n${{ env.CUSTOM_MESSAGE_BAD }}\n‼️ Пожалуйста, проверьте логи сборки в репозитории.",
+                "reply_markup": {
+                  "inline_keyboard": [
+                    [
+                      {
+                        "text": "Просмотреть логи 👀",
+                        "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                      }
+                    ],
+                    [
+                      {
+                        "text": "Пайду чинить 🥺",
+                        "callback_data": "DEPLOY_DELETE:${{ env.TG_USERNAME }}"
+                      }
+                    ]
+                  ]
+                }
+              }'
+
+
+      - name: Send Telegram Notification on Success build
+        if: success()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+          --header 'Content-Type: application/json' \
+          --data-raw '{
+                "chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}",
+                "text": "✅ 1/2. Сборка успешно завершена!\n${{ env.CUSTOM_MESSAGE_GOOD }}\n",
+                "reply_markup": {
+                  "inline_keyboard": [
+                    [
+                      {
+                        "text": "Просмотреть логи 👀",
+                        "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                      }
+                    ],
+                    [
+                      {
+                        "text": "Ништяк 👄",
+                        "callback_data": "DEPLOY_DELETE:${{ env.TG_USERNAME }}"
+                      }
+                    ]
+                  ]
+                }
+              }'
+
+  deploy:
+    needs: [check_commit, build]
+    if: needs.check_commit.outputs.should_run == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set engineer tg username
+        run: |
+          if [ "${{ github.actor }}" = "IvanGudyushkin" ]; then
+            echo "TG_USERNAME=@Ivanandreevichgud" >> $GITHUB_ENV
+          fi
+          if [ "${{ github.actor }}" = "AlexUner" ]; then
+            echo "TG_USERNAME=@AlexUner" >> $GITHUB_ENV
+          fi
+          if [ "${{ github.actor }}" = "WarningNotError" ]; then
+            echo "TG_USERNAME=@eugenroot1" >> $GITHUB_ENV
+          fi
+
+      - name: Set custom message bad
+        run: echo "CUSTOM_MESSAGE_BAD=💩 ${{ env.TG_USERNAME }}, иди убирай какахи!" >> $GITHUB_ENV
+
+      - name: Set custom message good
+        run: echo "CUSTOM_MESSAGE_GOOD=🏆 ${{ env.TG_USERNAME }}, молодец!" >> $GITHUB_ENV
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build
+
+      - name: Install lftp for SFTP
+        run: sudo apt-get install lftp
+
+      - name: SFTP Deploy
+        run: |
+          lftp -e "
+          set ssl:verify-certificate no;
+          set sftp:auto-confirm yes;
+          set net:socket-buffer 524288;
+          open ${{ secrets.SFTP_SERVER }};
+              user ${{ secrets.SFTP_USERNAME }} ${{ secrets.SFTP_PASSWORD }};
+          lcd ./build;
+
+          mirror --reverse --continue --verbose --parallel=10 . ${{ secrets.SITE_FOLDER }};
+
+          bye;
+          "
+
+      - name: Clear MODX Cache
+        run: curl ${{ secrets.CACHE_REFRESH_API }}
+
+      - name: Send Telegram Notification on Deploy Failure
+        if: failure()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+          --header 'Content-Type: application/json' \
+          --data-raw '{
+                "chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}",
+                "text": "🚨 2/2. Развёртывание не удалось!\n${{ env.CUSTOM_MESSAGE_BAD }}\n‼️ Пожалуйста, проверьте логи сборки в репозитории.",
+                "reply_markup": {
+                  "inline_keyboard": [
+                    [
+                      {
+                        "text": "Просмотреть логи 👀",
+                        "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                      }
+                    ],
+                    [
+                      {
+                        "text": "Пайду чинить 🥺",
+                        "callback_data": "DEPLOY_DELETE:${{ env.TG_USERNAME }}"
+                      }
+                    ]
+                  ]
+                }
+              }'
+
+      - name: Send Telegram Notification on Deploy Success
+        if: success()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+          --header 'Content-Type: application/json' \
+          --data-raw '{
+                "chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}",
+                "text": "🚀 2/2. Развёртывание успешно завершено!\n${{ env.CUSTOM_MESSAGE_GOOD }}\n",
+                "reply_markup": {
+                  "inline_keyboard": [
+                    [
+                      {
+                        "text": "Перейти на сайт!",
+                        "url": "https://uner.digital"
+                      }
+                    ],
+                    [
+                      {
+                        "text": "Ништяк 👄",
+                        "callback_data": "DEPLOY_DELETE:${{ env.TG_USERNAME }}"
+                      }
+                    ]
+                  ]
+                }
+              }'
