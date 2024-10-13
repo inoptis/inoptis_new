@@ -1,0 +1,111 @@
+.form{
+    width: 524px;
+    height: auto;
+    position: relative;
+    @media (max-width: 1400px) {
+        width: 444px;;
+    }
+    @media (max-width: 560px) {
+        width: 100%;
+    }
+}
+.formContent{
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+    @media (max-width: 1400px) {
+        gap:18px;
+    }
+    @media (max-width: 560px) {
+        margin-top: 41px;
+        gap:12px;
+    }
+}
+.title {
+    font:var(--text-circe-bold-24);
+    color:var(--color-1000);
+    @media (max-width: 1400px) {
+        font:var(--text-circe-bold-20);
+    }
+    @media (max-width: 960px) {
+        font:var(--text-circe-bold-18);
+    }
+    @media (max-width: 560px) {
+        font:var(--text-circe-bold-16);
+    }
+}
+.fields{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    @media (max-width: 960px) {
+        gap:8px;
+    }
+    @media (max-width: 560px) {
+        gap:6px;
+    }
+}
+.hiddenInput{
+    display: none;
+}
+.customFile{
+    font:var(--text-circe-regular-16);
+    cursor: pointer;
+    width: fit-content;
+    span {
+        color: var(--color-1000);
+        text-decoration: underline;
+    }
+    display: flex;
+    gap:6px;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    gap:10px;
+    margin-bottom:32px;
+    @media (max-width: 1400px) {
+        margin-bottom:24px;;
+    }
+    @media (max-width: 560px) {
+        position: absolute;
+        top:-20px;
+        left:-20px;
+        gap:0;
+        width: 100%;
+    }
+}
+.button{
+    background-color: var(--color-900);
+    color: var(--color-200);
+    border: none;
+    height: 48px;
+    width: 100%;
+    border-radius: 10px;
+    font: var(--text-circe-bold-18);
+    transition: 0.3s ease-in-out all;
+    cursor: pointer;
+    &:hover{
+       background-color: var(--color-700);
+    }
+    &.active{
+        background-color: var(--color-600);
+        color: var(--color-1000);
+        cursor: unset;
+    }
+    @media (max-width: 1400px) {
+        font: var(--text-circe-bold-16);
+        height: 40px;
+    }
+    @media (max-width: 960px) {
+        font: var(--text-circe-bold-16);
+        height: 36px;
+    }
+    @media (max-width: 560px) {
+        border-radius: 0;
+        width: 50%;
+        height: 41px;
+        font: var(--text-circe-bold-12);
+    }
+}

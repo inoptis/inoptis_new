@@ -1,0 +1,33 @@
+.block{
+    width: 1400px;
+    background-image:url("../../../Assets/Pictures/CHTI-bg.svg") ;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    img{
+        object-fit: cover;
+        width:50%;
+    }
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px 15px 57px 40px;
+    width: 710px;
+    *{
+        color: var(--color-1000);
+    }
+    h2{
+        font:var(--text-circe-bold-40);
+    }
+    p{
+        font: var(--text-circe-regular-24);
+    }
+
+}

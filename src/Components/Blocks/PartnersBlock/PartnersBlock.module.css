@@ -1,0 +1,15 @@
+.block{
+    display: flex;
+    flex-direction: column;
+    width: 1320px;
+    margin: 0 auto;
+    h2{
+        font: var(--text-circe-bold-40);
+        color: var(--color-1000);
+    }
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    gap:20px;
+}

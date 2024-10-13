@@ -1,0 +1,140 @@
+.block{
+    margin-top: 64px;
+    background-color: var(--color-900);
+    padding: 0 45px 45px 50px;
+    height: 314px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    @media (max-width: 960px) {
+
+    }
+}
+.bg{
+    position: absolute;
+    top:-61px;
+    left: -230px;
+    z-index: 1;
+    object-fit: cover;
+    min-width: 797px;
+    height: 439px;
+
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    width: 1320px;
+    margin: auto auto 0 auto;
+    z-index: 100;
+    @media (max-width: 1400px) {
+        width: 880px;
+    }
+    @media (max-width: 960px) {
+        width: 520px;
+    }
+    @media (max-width: 560px) {
+        width: 100%;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 20px;
+        align-self: start;
+    }
+}
+.col1{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    h3{
+        font: var(--text-circe-bold-32);
+    }
+    span{
+        font: var(--text-circe-regular-24);
+    }
+    @media (max-width: 960px) {
+        gap: 30px;
+        h3{
+            font: var(--text-circe-bold-20);
+        }
+        span{
+            font: var(--text-circe-regular-16);
+        }
+    }
+    @media (max-width: 560px) {
+        width: 100%;
+    }
+}
+.col11{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    a{
+        font: var(--text-circe-bold-18);
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    @media (max-width: 960px) {
+        a{
+            font: var(--text-circe-bold-16);
+        }
+    }
+    @media (max-width: 560px) {
+        gap:13px;
+        a{
+            font: var(--text-circe-bold-14);
+        }
+    }
+}
+.col2 {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    img {
+        transition: 0.3s all ease-in-out;
+        pointer-events: unset;
+        &:hover{
+            opacity:0.8;
+        }
+    }
+    a{
+        font: var(--text-circe-bold-18);
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    @media (max-width: 960px) {
+        a{
+            font: var(--text-circe-bold-16);
+        }
+        img {
+            width: 214px;
+            height: auto;
+            align-self: flex-end;
+        }
+    }
+    @media (max-width: 560px) {
+        align-self: flex-start;
+        flex-direction: column-reverse;
+        gap:36px;
+        a{
+            font: var(--text-circe-bold-14);
+        }
+        img {
+            align-self: flex-start;
+        }
+    }
+}
+.button{
+    align-self: flex-end;
+    @media (max-width: 560px) {
+        align-self: start;
+    }
+}
+

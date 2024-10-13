@@ -1,0 +1,142 @@
+.mainBlock{
+    width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    *{
+        color: var(--color-1000);
+    }
+    h1{
+        font:var(--text-circe-bold-40);
+        margin: 24px 0 16px 0;
+    }
+    .quote{
+        line-height: 1.1;
+        margin-bottom: 24px;
+    }
+    p{
+        font: var(--text-circe-regular-24);
+    }
+}
+.howToWork{
+    display: flex;
+    width: 1320px;
+    margin: 0 auto;
+    flex-direction: column;
+    position: relative;
+    gap:40px;
+    *{
+        color: var(--color-1000);
+    }
+    h2{
+        font:var(--text-circe-bold-40);
+        text-align: center;
+    }
+}
+.arrows {
+    position: absolute;
+    display: flex;
+    gap:165px;
+    left: 284px;
+    top:154px;
+}
+.containerHow{
+    display: flex;
+    justify-content: center;
+    gap:78px;
+    width: 1136px;
+    margin: 0 auto;
+}
+.itemHow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:24px;
+    max-width: 225px;
+    img{
+        width: 140px;
+        height: 140px;
+    }
+    p{
+        font: var(--text-circe-bold-24);
+        text-align: center;
+        line-height: 1.1;
+    }
+}
+.otrasl{
+    display: flex;
+    width: 1320px;
+    margin: 0 auto;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    gap:40px;
+    *{
+        color: var(--color-1000);
+    }
+    h2{
+        font:var(--text-circe-bold-40);
+        text-align: center;
+    }
+}
+.containerOtrasl{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 874px;
+    gap:40px;
+    position: relative;
+}
+.itemOtrasl{
+    width: 339px;
+    display: flex;
+    gap:20px;
+    align-items: center;
+
+    h4{
+        font: var(--text-circe-bold-24);
+        line-height: 1.1;
+    }
+}
+.bg{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+.parthners{
+    display: flex;
+    width: 1320px;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+.parthnersLogos{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 468px;
+    gap: 40px;
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(50% - 20px);
+        height: 50%;
+    }
+}
+.parthnersText{
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    *{
+        color: var(--color-1000);
+    }
+    h2{
+        font:var(--text-circe-bold-40);
+    }
+    p{
+        font: var(--text-circe-regular-24);
+    }
+}

@@ -1,0 +1,26 @@
+.mainBlock {
+    width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    *{
+        color: var(--color-1000);
+    }
+    h1{
+        font:var(--text-circe-bold-40);
+        margin: 24px 0 20px 0;
+    }
+}
+.container {
+    display: flex;
+    gap:20px;
+}
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:8px;
+    span{
+        font:var(--text-circe-regular-24)
+    }
+}

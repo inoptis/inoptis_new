@@ -1,0 +1,32 @@
+.block{
+    width: 1320px;
+    display: flex;
+    gap: 8px;
+}
+.separator,
+.link {
+    text-decoration: unset;
+    color: var(--color-1000);
+    font: var(--text-circe-bold-20);
+}
+.elem {
+    display: flex;
+    gap:8px;
+}
+@media (min-width: 960px) and (max-width: 1399px) {
+    .block {
+        width: 780px;
+    }
+}
+@media (min-width: 560px) and (max-width: 959px) {
+    .block {
+        width: calc(100% - 64px);
+        margin: 24px 32px 0 32px ;
+    }
+}
+@media (min-width: 320px) and (max-width: 559px) {
+    .block {
+        width: calc(100% - 30px);
+        margin: 24px 15px 0 15px ;
+    }
+}

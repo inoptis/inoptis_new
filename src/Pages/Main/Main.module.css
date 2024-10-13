@@ -1,0 +1,72 @@
+.banner{
+    width: 100%;
+    background-color: var(--color-600);
+    height: 564px;
+}
+/*.buttonLeft{*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*}*/
+.products{
+    width: 1320px;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    margin: 0 auto;
+    h2{
+        font: var(--text-circe-bold-40);
+        color: var(--color-1000);
+    }
+    .productsContainer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap:20px;
+        button {
+            width: 426.3px;
+            height: 135px;
+            border-radius: 20px;
+            border: none;
+            color: var(--color-1000);
+            background-color: var(--color-200);
+            position: relative;
+            display: flex;
+            gap:24px;
+            padding: 0;
+            overflow: hidden;
+            align-items: center;
+            font: var(--text-circe-bold-24);
+            text-align: left;
+            line-height: 1.1;
+        }
+    }
+}
+.quote{
+    width: 100%;
+    position: relative;
+    background-color: var(--color-600);
+    span{
+        width: 1400px;
+        margin: 27px auto;
+        font: var(--text-circe-regular-32);
+        color:var(--color-1000);
+        position: relative;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        b{
+            color:var(--color-1000);
+        }
+    }
+}
+.bgquote1, .bgquote2{
+    position: absolute;
+    z-index: 10;
+}
+.bgquote1{
+    left: 0;
+}
+.bgquote2{
+    right: 0;
+}
