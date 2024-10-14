@@ -133,11 +133,16 @@ jobs:
             set ssl:verify-certificate no;
             set sftp:auto-confirm yes;
             set net:socket-buffer 524288;
+            set net:limit-rate 10M:500k;
+            set ftp:sync-mode yes;
+            set net:max-retries 3;
+            set net:reconnect-interval-base 5;
+            set sftp:compression-level 4;
             open ${{ secrets.SFTP_SERVER }};
             user ${{ secrets.SFTP_USERNAME }} ${{ secrets.SFTP_PASSWORD }};
             lcd ./build;
 
-            mirror --reverse --continue --verbose --parallel=10 . ${{ secrets.SITE_FOLDER }};
+            mirror --reverse --continue --verbose --parallel=4 --only-newer . ${{ secrets.SITE_FOLDER }};
 
             bye;
           "
