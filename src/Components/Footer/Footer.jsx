@@ -11,18 +11,18 @@ const Footer = () => {
                 <div className={cl.col1}>
                     <div className={cl.col11}>
                         <Link to={'/'}>Главная</Link>
-                        <a href={'#'}>Каталог</a>
-                        <a href={'#'}>Услуги</a>
+                        <span>Каталог</span>
+                        <span>Услуги</span>
                     </div>
                     <div className={cl.col11}>
                         <Link to={'/about'}>О компании</Link>
                         <Link to={'/partners'}>Партнёры</Link>
-                        <a href={'#'}>Контакты</a>
+                        <span>Контакты</span>
                     </div>
                 </div>
                 <div className={cl.col2}>
                     <img src={footerLogo} alt={'company'}/>
-                    <a href={'#'}>Политика конфиденциальности</a>
+                    <span>Политика конфиденциальности</span>
                 </div>
             </div>
         </footer>

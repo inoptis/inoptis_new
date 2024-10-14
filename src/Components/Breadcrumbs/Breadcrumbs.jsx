@@ -17,7 +17,7 @@ const Breadcrumbs = ({ breadcrumbs }) => {
                                 <React.Fragment key={crumb.path}>
                                     <span className={cl.elem}>
                                         <Link className={cl.link} to={crumb.path}>{crumb.title}</Link>
-                                        <img src={arrow} className={cl.separator}/>
+                                        <img src={arrow} className={cl.separator} alt={'arrow'}/>
                                     </span>
                                 </React.Fragment>
                             ) : (
