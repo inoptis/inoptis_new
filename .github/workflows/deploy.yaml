@@ -124,28 +124,14 @@ jobs:
           name: build
           path: build/
 
-      - name: Install lftp for SFTP
-        run: sudo apt-get install lftp
-
-      - name: SFTP Deploy
-        run: |
-          lftp -e "
-            set ssl:verify-certificate no;
-            set sftp:auto-confirm yes;
-            set net:socket-buffer 524288;
-            set net:limit-rate 10M:500k;
-            set ftp:sync-mode yes;
-            set net:max-retries 3;
-            set net:reconnect-interval-base 5;
-            set ssh:compression yes;
-            open ${{ secrets.SFTP_SERVER }};
-            user ${{ secrets.SFTP_USERNAME }} ${{ secrets.SFTP_PASSWORD }};
-            lcd ./build;
-
-            mirror --reverse --continue --verbose --parallel=4 --only-newer --no-perms . ${{ secrets.SITE_FOLDER }};
-
-            bye;
-          "
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: sftp://${{ secrets.SFTP_SERVER }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          local-dir: build/
+          server-dir: ${{ secrets.SITE_FOLDER }}
 
       - name: Clear MODX Cache
         run: curl ${{ secrets.CACHE_REFRESH_API }}
