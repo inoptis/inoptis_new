@@ -137,12 +137,12 @@ jobs:
             set ftp:sync-mode yes;
             set net:max-retries 3;
             set net:reconnect-interval-base 5;
-            set sftp:compression-level 4;
+            set ssh:compression yes;
             open ${{ secrets.SFTP_SERVER }};
             user ${{ secrets.SFTP_USERNAME }} ${{ secrets.SFTP_PASSWORD }};
             lcd ./build;
 
-            mirror --reverse --continue --verbose --parallel=4 --only-newer . ${{ secrets.SITE_FOLDER }};
+            mirror --reverse --continue --verbose --parallel=4 --only-newer --no-perms . ${{ secrets.SITE_FOLDER }};
 
             bye;
           "
