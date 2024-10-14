@@ -6,7 +6,6 @@ import icon3 from '../../../Assets/Pictures/ContactBlock/icon3.svg'
 import icon4 from '../../../Assets/Pictures/ContactBlock/icon4.svg'
 import arrow from '../../../Assets/Pictures/arrow-right-contact.svg'
 import bg from '../../../Assets/Pictures/Epattern_left.svg'
-import YandexMap from "../../MapTest";
 const ContactBlock = () => {
     return (
         <div className={cl.block}>
