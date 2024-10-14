@@ -136,7 +136,9 @@ jobs:
             open ${{ secrets.SFTP_SERVER }};
             user ${{ secrets.SFTP_USERNAME }} ${{ secrets.SFTP_PASSWORD }};
             lcd ./build;
+
             mirror --reverse --continue --verbose --parallel=10 . ${{ secrets.SITE_FOLDER }};
+
             bye;
           "
 
