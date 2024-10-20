@@ -134,6 +134,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 64px;
+    @media (max-width: 960px) {
+        gap: 36px;
+        margin-top: 121px;
+    }
 }
 
 .fade-enter {

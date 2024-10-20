@@ -21,8 +21,8 @@ const ContactBlock = () => {
                 </div>
                 <div className={cl.mapContainer}>
                     {/*<YandexMap/>*/}
-                    <script type="text/javascript" charSet="utf-8" async
-                            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aeaafbe59055abd83788bdb42a08855ea593553afbd6ff95aa1c294941456292f&amp;width=100%25&amp;height=304&amp;lang=ru_RU&amp;scroll=true"></script>
+                {/*    <script type="text/javascript" charSet="utf-8" async*/}
+                {/*            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aeaafbe59055abd83788bdb42a08855ea593553afbd6ff95aa1c294941456292f&amp;width=100%25&amp;height=304&amp;lang=ru_RU&amp;scroll=true"></script>*/}
                 </div>
             </div>
         </div>

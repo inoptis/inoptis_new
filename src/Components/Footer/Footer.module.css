@@ -9,7 +9,7 @@
     align-items: flex-end;
     width: 100%;
     @media (max-width: 960px) {
-
+        margin-top: 32px;
     }
 }
 .bg{

@@ -4,6 +4,14 @@
     margin: 0 auto;
     background-repeat: no-repeat;
     background-size: contain;
+    @media (max-width: 1400px) {
+        width: 960px;
+    }
+    @media (max-width:960px) {
+        width: 560px;
+        background-size: cover;
+        background-position: center;
+    }
 }
 .content{
     display: flex;
@@ -29,5 +37,24 @@
     p{
         font: var(--text-circe-regular-24);
     }
-
+    @media (max-width: 1400px) {
+        width: 499px;
+        padding: 30px 27px 34px 40px;
+        h2{
+            font:var(--text-circe-bold-36);
+        }
+        p{
+            font: var(--text-circe-regular-18);
+        }
+    }
+    @media (max-width:960px) {
+        width: 255px;
+        padding: 20px;
+        h2{
+            font:var(--text-circe-bold-20);
+        }
+        p{
+            font: var(--text-circe-regular-16);
+        }
+    }
 }

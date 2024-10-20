@@ -5,6 +5,8 @@ import icon2 from '../../../Assets/Pictures/DifficultesItems/icon2.svg'
 import icon3 from '../../../Assets/Pictures/DifficultesItems/icon3.svg'
 import icon4 from '../../../Assets/Pictures/DifficultesItems/icon4.svg'
 import icon5 from '../../../Assets/Pictures/DifficultesItems/icon5.svg'
+import bg1 from '../../../Assets/Pictures/block_1.svg'
+import bg2 from '../../../Assets/Pictures/block_2.svg'
 const DifficultiesBlock = () => {
 
     const difficulties = [
@@ -47,6 +49,7 @@ const DifficultiesBlock = () => {
             <div className={cl.container}>
                 {difficulties.map((difficult, index) => (
                     <div className={index % 2 === 0 ? cl.white : cl.dark} key={index}>
+                        <img src={index % 2 === 0 ? bg2 : bg1} className={cl.bg} alt="background"/>
                         <div className={cl.row1}>
                             <img src={difficult.img} alt={difficult.title}/>
                             <h4>{difficult.title}</h4>

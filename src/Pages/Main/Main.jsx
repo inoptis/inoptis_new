@@ -9,6 +9,7 @@ import bgquote1 from '../../Assets/Pictures/pattern-quote1.svg'
 import bgquote2 from '../../Assets/Pictures/pattern-quote2.svg'
 import ContactBlock from "../../Components/Blocks/ContactBlock/ContactBlock";
 import PartnersBlock from "../../Components/Blocks/PartnersBlock/PartnersBlock";
+import {useWindowSize} from "../../Hooks/useWindowSize";
 const Main = () => {
     const products = [
         'Давление',

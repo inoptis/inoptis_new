@@ -41,6 +41,40 @@
             line-height: 1.1;
         }
     }
+    @media (max-width: 1400px) {
+        width: 880px;
+        gap: 24px;
+        h2{
+            font:var(--text-circe-bold-36)
+        }
+        .productsContainer{
+            gap:24px;
+            button {
+                width: 277px;
+                height: 88px;
+                font: var(--text-circe-bold-18);
+                padding-right:20px ;
+            }
+        }
+    }
+    @media (max-width: 960px) {
+        width: 520px;
+        gap: 16px;
+        h2{
+            font:var(--text-circe-bold-20)
+        }
+        .productsContainer{
+            gap:10px;
+            flex-direction: column;
+            height: 450px;
+            button {
+                width: 255px;
+                height: 82px;
+                font: var(--text-circe-bold-18);
+                padding-right:20px ;
+            }
+        }
+    }
 }
 .quote{
     width: 100%;
@@ -55,10 +89,23 @@
         z-index: 100;
         display: flex;
         flex-direction: column;
+        @media (max-width: 1400px) {
+            width: 789px;
+            font: var(--text-circe-regular-24);
+        }
+        b{
+            color:var(--color-1000);
+        }
+        @media (max-width: 960px) {
+            width: 468px;
+            font: var(--text-circe-regular-16);
+            display: block;
+        }
         b{
             color:var(--color-1000);
         }
     }
+
 }
 .bgquote1, .bgquote2{
     position: absolute;

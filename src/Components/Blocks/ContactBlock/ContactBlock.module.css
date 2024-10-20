@@ -7,12 +7,26 @@
     position: absolute;
     left: -1039px;
     top:0;
+    @media (max-width: 1400px) {
+        left: -800px;
+        min-width: 1150px;
+    }
+    @media (max-width: 960px) {
+        left: -800px;
+        min-width: 1150px;
+    }
 }
 .content{
     width: 1320px;
     margin: 80px auto;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 1400px) {
+        width: 880px;
+    }
+    @media (max-width: 1400px) {
+        width: 520px;
+    }
 }
 .text{
     display: flex;
@@ -20,6 +34,18 @@
     h2{
         font:var(--text-circe-bold-40);
         margin-bottom:40px;
+    }
+    @media (max-width: 1400px) {
+        h2{
+            font: var(--text-circe-bold-36);
+            margin-bottom: 28px;
+        }
+    }
+    @media (max-width: 960px) {
+        h2{
+            font: var(--text-circe-bold-20);
+            margin-bottom: 24px;
+        }
     }
 }
 .item{
@@ -34,6 +60,27 @@
     &:last-child{
         margin-top: 40px;
         margin-bottom: 0;
+    }
+    @media (max-width: 1400px) {
+        width: 358px;
+        font: var(--text-circe-bold-18);
+        img{
+            width: 28px;
+            height: 28px;
+        }
+        &:last-child{
+            margin-top: 20px;
+            font:var(--text-circe-bold-16)
+        }
+    }
+    @media (max-width: 960px) {
+        width: 270px;
+        font: var(--text-circe-bold-16);
+        margin-bottom: 8px;
+        &:last-child{
+            margin-top: 16px;
+            font:var(--text-circe-bold-16)
+        }
     }
 }
 .mapContainer{
