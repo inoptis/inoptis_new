@@ -6,7 +6,7 @@ import logomobile from "../../Assets/Pictures/logomobile.svg";
 import {Link, useNavigate} from "react-router-dom";
 
 const HeaderMobile = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
     const [catalogOpen, setCatalogOpen] = useState(false);
 
