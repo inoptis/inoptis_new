@@ -3,7 +3,7 @@ import cl from "./Header.module.css";
 import IButton from "../UI/IButton/IButton";
 import humburger from "../../Assets/Pictures/Humburger.svg";
 import logomobile from "../../Assets/Pictures/logomobile.svg";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const HeaderMobile = () => {
     // const navigate = useNavigate();
