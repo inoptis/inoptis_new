@@ -65,7 +65,7 @@ jobs:
           --header 'Content-Type: application/json' \
           --data-raw '{
             "chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}",
-            "text": "Проект: **${{ github.repository }}**\n🚨 1/2. Сборка провалена!\n${{ env.CUSTOM_MESSAGE_BAD }}\n‼️ Пожалуйста, проверьте логи сборки в репозитории.",
+            "text": "Проект: <b>${{ github.repository }}</b>\n🚨 1/2. Сборка провалена!\n${{ env.CUSTOM_MESSAGE_BAD }}\n‼️ Пожалуйста, проверьте логи сборки в репозитории.",
             "reply_markup": {
               "inline_keyboard": [
                 [
@@ -85,7 +85,7 @@ jobs:
           --header 'Content-Type: application/json' \
           --data-raw '{
             "chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}",
-            "text": "Проект: **${{ github.repository }}**\n✅ 1/2. Сборка успешно завершена!\n${{ env.CUSTOM_MESSAGE_GOOD }}\n",
+            "text": "Проект: <b>${{ github.repository }}</b>\n✅ 1/2. Сборка успешно завершена!\n${{ env.CUSTOM_MESSAGE_GOOD }}\n",
             "reply_markup": {
               "inline_keyboard": [
                 [
@@ -127,7 +127,7 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: sftp://${{ secrets.SFTP_SERVER }}
+          server: ${{ secrets.SFTP_SERVER }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: build/
@@ -143,7 +143,7 @@ jobs:
           --header 'Content-Type: application/json' \
           --data-raw '{
             "chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}",
-            "text": "Проект: **${{ github.repository }}**\n🚨 2/2. Развёртывание не удалось!\n${{ env.CUSTOM_MESSAGE_BAD }}\n‼️ Пожалуйста, проверьте логи сборки в репозитории.",
+            "text": "Проект: <b>${{ github.repository }}</b>\n🚨 2/2. Развёртывание не удалось!\n${{ env.CUSTOM_MESSAGE_BAD }}\n‼️ Пожалуйста, проверьте логи сборки в репозитории.",
             "reply_markup": {
               "inline_keyboard": [
                 [
@@ -163,7 +163,7 @@ jobs:
           --header 'Content-Type: application/json' \
           --data-raw '{
             "chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}",
-            "text": "Проект: **${{ github.repository }}**\n🚀 2/2. Развёртывание успешно завершено!\n${{ env.CUSTOM_MESSAGE_GOOD }}\n",
+            "text": "Проект: <b>${{ github.repository }}</b>\n🚀 2/2. Развёртывание успешно завершено!\n${{ env.CUSTOM_MESSAGE_GOOD }}\n",
             "reply_markup": {
               "inline_keyboard": [
                 [
