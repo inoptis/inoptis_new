@@ -17,6 +17,15 @@
     p{
         font: var(--text-circe-regular-24);
     }
+    @media (max-width: 1400px) {
+        width: 880px;
+        h1{
+            font:var(--text-circe-bold-36)
+        }
+        p{
+            font: var(--text-circe-regular-18);
+        }
+    }
 }
 .howToWork{
     display: flex;
@@ -32,6 +41,12 @@
         font:var(--text-circe-bold-40);
         text-align: center;
     }
+    @media (max-width: 1400px) {
+        width: 880px;
+        h2{
+            font: var(--text-circe-bold-36);
+        }
+    }
 }
 .arrows {
     position: absolute;
@@ -39,13 +54,22 @@
     gap:165px;
     left: 284px;
     top:154px;
+    @media (max-width: 1400px) {
+        gap:119px;
+        left:150px;
+        top:123px;
+        width: 113px;
+    }
 }
 .containerHow{
     display: flex;
     justify-content: center;
-    gap:78px;
+    gap:40px;
     width: 1136px;
     margin: 0 auto;
+    @media (max-width: 1400px) {
+        width: 880px;
+    }
 }
 .itemHow{
     display: flex;
@@ -61,6 +85,16 @@
         font: var(--text-circe-bold-24);
         text-align: center;
         line-height: 1.1;
+    }
+    @media (max-width: 1400px) {
+        img{
+            width: 104px;
+            height: 104px;
+        }
+        p{
+            font: var(--text-circe-bold-20)
+        }
+        width: 220px;
     }
 }
 .otrasl{
@@ -78,6 +112,13 @@
         font:var(--text-circe-bold-40);
         text-align: center;
     }
+    @media (max-width: 1400px) {
+        width: 880px;
+        h2{
+            font:var(--text-circe-bold-36)
+        }
+        gap: 36px;
+    }
 }
 .containerOtrasl{
     display: flex;
@@ -86,6 +127,10 @@
     width: 874px;
     gap:40px;
     position: relative;
+    @media (max-width: 1400px) {
+        width: 656px;
+        gap:24px;
+    }
 }
 .itemOtrasl{
     width: 339px;
@@ -97,12 +142,26 @@
         font: var(--text-circe-bold-24);
         line-height: 1.1;
     }
+    @media (max-width: 1400px) {
+        width: 256px;
+        h4{
+            font: var(--text-circe-bold-20);
+        }
+        img{
+            width: 80px;
+            height: 80px;
+        }
+    }
 }
 .bg{
     position: absolute;
     left: 50%;
     top:50%;
     transform: translate(-50%, -50%);
+    @media (max-width: 1400px) {
+        width: 483px;
+        height: auto;
+    }
 }
 .parthners{
     display: flex;
@@ -110,6 +169,9 @@
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 1400px) {
+        width: 880px;
+    }
 }
 .parthnersLogos{
     display: flex;
@@ -123,6 +185,9 @@
         align-items: center;
         width: calc(50% - 20px);
         height: 50%;
+    }
+    @media (max-width: 1400px) {
+        width: 351px;
     }
 }
 .parthnersText{
@@ -138,5 +203,15 @@
     }
     p{
         font: var(--text-circe-regular-24);
+    }
+    @media (max-width: 1400px) {
+        width: 501px;
+        gap: 24px;
+        h2{
+            font: var(--text-circe-bold-36);
+        }
+        p{
+            font: var(--text-circe-regular-18);
+        }
     }
 }

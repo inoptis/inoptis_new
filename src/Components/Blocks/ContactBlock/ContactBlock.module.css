@@ -24,8 +24,13 @@
     @media (max-width: 1400px) {
         width: 880px;
     }
-    @media (max-width: 1400px) {
+    @media (max-width: 960px) {
         width: 520px;
+    }
+    @media (max-width: 560px) {
+        width: calc(100% - 40px);
+        flex-direction: column;
+        margin: 20px auto;
     }
 }
 .text{
@@ -45,6 +50,12 @@
         h2{
             font: var(--text-circe-bold-20);
             margin-bottom: 24px;
+        }
+    }
+    @media (max-width: 560px) {
+        h2{
+            font: var(--text-circe-bold-20);
+            margin-bottom: 8px;
         }
     }
 }
@@ -79,6 +90,15 @@
         margin-bottom: 8px;
         &:last-child{
             margin-top: 16px;
+            font:var(--text-circe-bold-16)
+        }
+    }
+    @media (max-width: 560px) {
+        width: 270px;
+        font: var(--text-circe-bold-16);
+        margin-bottom: 8px;
+        &:last-child{
+            margin-top: 8px;
             font:var(--text-circe-bold-16)
         }
     }
