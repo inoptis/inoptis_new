@@ -10,6 +10,19 @@
         text-align: center;
         margin-bottom: 20px;
     }
+    @media (max-width: 1400px) {
+        width: 880px;
+        h2{
+            font:var(--text-circe-bold-36)
+        }
+    }
+    @media (max-width: 960px) {
+        width: 520px;
+        h2{
+            font:var(--text-circe-bold-20);
+            margin-bottom: 16px;
+        }
+    }
 }
 .container{
     display: flex;
@@ -17,12 +30,39 @@
     justify-content: center;
     gap:40px 20px;
     flex-wrap: wrap;
+    @media (max-width: 1400px) {
+        gap: 24px;
+    }
+    @media (max-width: 960px) {
+        gap: 10px;
+    }
 }
 .white{
-    background-image: url("../../../Assets/Pictures/block_1.svg");
+    background-color: var(--color-200);
+    background-size: cover;
+    .row1{
+        border-bottom: solid var(--color-600);
+    }
 }
 .dark{
-    background-image: url("../../../Assets/Pictures/block_2.svg");
+    background-color: var(--color-600);
+    background-size: cover;
+    .row1{
+        border-bottom: solid var(--color-200);
+    }
+}
+.bg{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    @media (max-width: 1400px) {
+        width: 170px;
+        height: 170px;
+    }
+    @media (max-width: 960px) {
+        width: 150px;
+        height: 150px;
+    }
 }
 .white, .dark{
     width: 426.3px;
@@ -30,17 +70,52 @@
     padding: 20px 16px 40px 16px ;
     display: flex;
     flex-direction: column;
+    border-radius: 20px;
     justify-content: space-between;
-
+    position: relative;
+    @media (max-width: 1400px) {
+        width: 276.5px;
+        height: 264px;
+        padding: 16px;
+    }
+    @media (max-width: 960px) {
+        width: 255px;
+        height: 215px;
+        padding: 16px;
+    }
 }
 .row1 {
     display: flex;
     gap: 16px;
     align-items: center;
+    padding-bottom: 8px;
     h4{
         font:var(--text-circe-bold-24)
     }
+    @media (max-width: 1400px) {
+        gap: 11px;
+        h4{
+            font: var(--text-circe-bold-18);
+        }
+        img{
+            width: 45px;
+            height: 45px;
+        }
+    }
+    @media (max-width: 960px) {
+        gap: 16px;
+        h4{
+            font: var(--text-circe-bold-16);
+        }
+        img{
+            width: 40px;
+            height: 40px;
+        }
+    }
 }
 .row2{
-    font:var(--text-circe-regular-24)
+    font:var(--text-circe-regular-24);
+    @media (max-width: 1400px) {
+        font:var(--text-circe-regular-16)
+    }
 }

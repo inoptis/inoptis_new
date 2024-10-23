@@ -6,10 +6,38 @@
     h2{
         font: var(--text-circe-bold-40);
         color: var(--color-1000);
+        margin-bottom: 20px;
+    }
+    @media (max-width: 1400px) {
+        width: 868px;
+        h2{
+            font: var(--text-circe-bold-36);
+            margin-bottom: 24px;
+        }
+    }
+    @media (max-width: 960px) {
+        width: 520px;
+        h2{
+            font: var(--text-circe-bold-20);
+            margin-bottom: 16px;
+        }
     }
 }
 .container{
     display: flex;
     flex-wrap: wrap;
     gap:20px;
+    @media (max-width: 1400px) {
+        img{
+            width: 202px;
+            height: 148px;
+        }
+    }
+    @media (max-width: 1400px) {
+        gap:10px;
+        img{
+            width: 122.5px;
+            height: 90px;
+        }
+    }
 }
