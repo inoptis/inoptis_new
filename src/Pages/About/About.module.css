@@ -26,6 +26,19 @@
             font: var(--text-circe-regular-18);
         }
     }
+    @media (max-width: 960px) {
+        width: 520px;
+        h1{
+            font:var(--text-circe-bold-20);
+            margin: 16px 0 8px 0;
+        }
+        .quote{
+            margin-bottom: 16px;
+        }
+        p{
+            font: var(--text-circe-regular-16);
+        }
+    }
 }
 .howToWork{
     display: flex;
@@ -47,28 +60,45 @@
             font: var(--text-circe-bold-36);
         }
     }
+    @media (max-width: 960px) {
+        width: 520px;
+        h2{
+            font: var(--text-circe-bold-20);
+        }
+        gap: 16px;
+    }
 }
 .arrows {
     position: absolute;
     display: flex;
     gap:165px;
     left: 284px;
-    top:154px;
+    top:146px;
+    width: 141px;
     @media (max-width: 1400px) {
         gap:119px;
         left:150px;
         top:123px;
         width: 113px;
     }
+    @media (max-width: 960px) {
+        gap:105px;
+        left:100px;
+        top:75px;
+        width: 37px;
+    }
 }
 .containerHow{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap:40px;
     width: 1136px;
     margin: 0 auto;
     @media (max-width: 1400px) {
         width: 880px;
+    }
+    @media (max-width: 960px) {
+        width: 520px;
     }
 }
 .itemHow{
@@ -96,6 +126,17 @@
         }
         width: 220px;
     }
+    @media (max-width: 960px) {
+        gap:8px;
+        img{
+            width: 85px;
+            height: 85px;
+        }
+        p{
+            font: var(--text-circe-bold-14)
+        }
+        width: 140px;
+    }
 }
 .otrasl{
     display: flex;
@@ -119,6 +160,13 @@
         }
         gap: 36px;
     }
+    @media (max-width: 960px) {
+        width: 520px;
+        h2{
+            font:var(--text-circe-bold-20)
+        }
+        gap: 16px;
+    }
 }
 .containerOtrasl{
     display: flex;
@@ -130,6 +178,10 @@
     @media (max-width: 1400px) {
         width: 656px;
         gap:24px;
+    }
+    @media (max-width: 960px) {
+        width: 520px;
+        gap:16px;
     }
 }
 .itemOtrasl{
@@ -152,6 +204,16 @@
             height: 80px;
         }
     }
+    @media (max-width: 960px) {
+        width: 244px;
+        h4{
+            font: var(--text-circe-bold-14);
+        }
+        img{
+            width: 73px;
+            height: 73px;
+        }
+    }
 }
 .bg{
     position: absolute;
@@ -160,6 +222,10 @@
     transform: translate(-50%, -50%);
     @media (max-width: 1400px) {
         width: 483px;
+        height: auto;
+    }
+    @media (max-width: 960px) {
+        width: 379px;
         height: auto;
     }
 }
@@ -171,6 +237,11 @@
     align-items: center;
     @media (max-width: 1400px) {
         width: 880px;
+    }
+    @media (max-width: 960px) {
+        width: 520px;
+        flex-direction: column-reverse;
+        gap: 16px;
     }
 }
 .parthnersLogos{
@@ -188,6 +259,16 @@
     }
     @media (max-width: 1400px) {
         width: 351px;
+    }
+    @media (max-width: 960px) {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        align-items: center;
+        div{
+            width: auto;
+            height: auto;
+        }
     }
 }
 .parthnersText{
@@ -212,6 +293,23 @@
         }
         p{
             font: var(--text-circe-regular-18);
+        }
+    }
+    @media (max-width: 960px) {
+        width: 100%;
+        gap: 8px;
+        h2{
+            font: var(--text-circe-bold-20);
+        }
+        p{
+            font: var(--text-circe-regular-16);
+        }
+    }
+}
+.helperMobile{
+    @media (max-width: 960px) {
+        div{
+            width: 520px;
         }
     }
 }

@@ -19,12 +19,15 @@ import otrasl4 from '../../Assets/Pictures/pictureHow/otrasl4.svg'
 import otrasl5 from '../../Assets/Pictures/pictureHow/otrasl5.svg'
 import otrasl6 from '../../Assets/Pictures/pictureHow/otrasl6.svg'
 import arrow from '../../Assets/Pictures/pictureHow/arrow.svg'
+import arrowMobile from '../../Assets/Pictures/pictureHow/arrowMobile.svg'
 import otraslbg from '../../Assets/Pictures/pictureHow/pattern.svg'
+import {useWindowSize} from "../../Hooks/useWindowSize";
 const About = () => {
     const breadcrumbs = [
         { title: 'Главная', path: '/' },
         { title: 'О компании', path: '/about' },
     ];
+    const [width] = useWindowSize()
 
     const How = [
         {
@@ -78,7 +81,9 @@ const About = () => {
                 <h1>О компании</h1>
                 <p className={cl.quote}>Стабильно улучшаем работу предприятий, пока наши заказчики говорят: <br/>
                     <b>«Мы думали, что это невозможно измерить!»</b></p>
-                <AboutBlock/>
+                <div className={cl.helperMobile}>
+                    <AboutBlock/>
+                </div>
             </div>
             <DifficultiesBlock/>
             <CallToAction/>
@@ -86,9 +91,9 @@ const About = () => {
                 <h2>Как мы работаем?</h2>
                 <div>
                     <div className={cl.arrows}>
-                        <img src={arrow} alt={'arrow'}/>
-                        <img src={arrow} alt={'arrow'}/>
-                        <img src={arrow} alt={'arrow'}/>
+                        <img src={width > 960 ? arrow : arrowMobile} alt={'arrow'}/>
+                        <img src={width > 960 ? arrow : arrowMobile} alt={'arrow'}/>
+                        <img src={width > 960 ? arrow : arrowMobile} alt={'arrow'}/>
                     </div>
                     <div className={cl.containerHow}>
                         {How.map((howitem, index) => (

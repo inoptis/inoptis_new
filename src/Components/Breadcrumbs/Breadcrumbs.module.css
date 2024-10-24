@@ -21,7 +21,7 @@
 @media (min-width: 560px) and (max-width: 959px) {
     .block {
         width: calc(100% - 64px);
-        margin: 24px 32px 0 32px ;
+        margin: 24px 32px 0 0 ;
     }
 }
 @media (min-width: 320px) and (max-width: 559px) {
