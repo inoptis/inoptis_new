@@ -306,10 +306,13 @@
         }
     }
 }
-.helperMobile{
-    @media (max-width: 960px) {
-        div{
-            width: 520px;
-        }
+.helperMobile > div{
+    width: 1320px;
+    @media (max-width: 1400px) {
+            width: 880px;
     }
+    @media (max-width: 960px) {
+            width: 520px;
+    }
+
 }
