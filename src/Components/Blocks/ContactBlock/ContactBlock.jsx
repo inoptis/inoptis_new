@@ -5,7 +5,6 @@ import icon2 from '../../../Assets/Pictures/ContactBlock/icon2.svg'
 import icon3 from '../../../Assets/Pictures/ContactBlock/icon3.svg'
 import icon4 from '../../../Assets/Pictures/ContactBlock/icon4.svg'
 import arrow from '../../../Assets/Pictures/arrow-right-contact.svg'
-import shrek from '../../../Assets/shrek-shrek-rizz.mp4'
 import bg from '../../../Assets/Pictures/Epattern_left.svg'
 const ContactBlock = () => {
     return (
@@ -21,9 +20,7 @@ const ContactBlock = () => {
                     <div className={cl.item}>Перейти к реквизитам <img src={arrow} alt={'arrow'}/></div>
                 </div>
                 <div className={cl.mapContainer}>
-                    {/*<video width="600" autoPlay={true} loop={true} muted={true}>*/}
-                    {/*    <source src={shrek} type="video/mp4"/>*/}
-                    {/*</video>*/}
+                    <></>
                 </div>
             </div>
         </div>
