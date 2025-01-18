@@ -21,10 +21,15 @@ const Breadcrumbs = ({ breadcrumbs }) => {
                                     </span>
                                 </React.Fragment>
                             ) : (
-                                <span className={cl.link} key={crumb.path}>{crumb.title}</span>
-                            )}
-                        </span>
-                );
+
+                                <span className={cl.elem}>
+                                    <span className={cl.link} key={crumb.path}>{crumb.title}</span>
+                                </span>
+                            )
+                            }
+            </span>
+            )
+                ;
             })}
         </nav>
     );

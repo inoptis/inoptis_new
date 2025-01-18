@@ -21,12 +21,20 @@
 @media (min-width: 560px) and (max-width: 959px) {
     .block {
         width: calc(100% - 64px);
-        margin: 24px 32px 0 0 ;
+        margin: 0 ;
+    }
+    .separator,
+    .link{
+        font: var(--text-circe-bold-16);
     }
 }
 @media (min-width: 320px) and (max-width: 559px) {
     .block {
         width: calc(100% - 30px);
-        margin: 24px 15px 0 15px ;
+        margin: 0 ;
+    }
+    .separator,
+    .link{
+        font: var(--text-circe-bold-14);
     }
 }

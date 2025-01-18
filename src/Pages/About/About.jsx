@@ -79,7 +79,7 @@ const About = () => {
             <div className={cl.mainBlock}>
                 <Breadcrumbs breadcrumbs={breadcrumbs}/>
                 <h1>О компании</h1>
-                <p className={cl.quote}>Стабильно улучшаем работу предприятий, пока наши заказчики говорят: <br/>
+                <p className={cl.quote}>Стабильно улучшаем работу предприятий, пока наши заказчики говорят:
                     <b>«Мы думали, что это невозможно измерить!»</b></p>
                 <div className={cl.helperMobile}>
                     <AboutBlock/>

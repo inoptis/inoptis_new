@@ -5,6 +5,7 @@ import icon2 from '../../../Assets/Pictures/ContactBlock/icon2.svg'
 import icon3 from '../../../Assets/Pictures/ContactBlock/icon3.svg'
 import icon4 from '../../../Assets/Pictures/ContactBlock/icon4.svg'
 import arrow from '../../../Assets/Pictures/arrow-right-contact.svg'
+import shrek from '../../../Assets/shrek-shrek-rizz.mp4'
 import bg from '../../../Assets/Pictures/Epattern_left.svg'
 const ContactBlock = () => {
     return (
@@ -20,9 +21,9 @@ const ContactBlock = () => {
                     <div className={cl.item}>Перейти к реквизитам <img src={arrow} alt={'arrow'}/></div>
                 </div>
                 <div className={cl.mapContainer}>
-                    {/*<YandexMap/>*/}
-                {/*    <script type="text/javascript" charSet="utf-8" async*/}
-                {/*            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aeaafbe59055abd83788bdb42a08855ea593553afbd6ff95aa1c294941456292f&amp;width=100%25&amp;height=304&amp;lang=ru_RU&amp;scroll=true"></script>*/}
+                    {/*<video width="600" autoPlay={true} loop={true} muted={true}>*/}
+                    {/*    <source src={shrek} type="video/mp4"/>*/}
+                    {/*</video>*/}
                 </div>
             </div>
         </div>

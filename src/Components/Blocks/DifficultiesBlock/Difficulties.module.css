@@ -43,6 +43,9 @@
     @media (max-width: 960px) {
         gap: 10px;
     }
+    @media (max-width: 560px) {
+        width: 100%;
+    }
 }
 .white{
     background-color: var(--color-200);
@@ -130,4 +133,7 @@
     @media (max-width: 1400px) {
         font:var(--text-circe-regular-16)
     }
+}
+.item{
+    width: 300px;
 }

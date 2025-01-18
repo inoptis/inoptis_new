@@ -20,6 +20,9 @@ const Header = () => {
     const goToMain = () => {
         navigate('/')
     }
+    const goToContact = () => {
+        navigate('/contacts')
+    }
 
     return (
         <>
@@ -52,7 +55,7 @@ const Header = () => {
                                     <Menu/>
                                 }
                             </div>
-                            <button>
+                            <button onClick={goToContact}>
                                 Контакты
                             </button>
                         </div>

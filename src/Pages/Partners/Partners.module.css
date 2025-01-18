@@ -10,10 +10,37 @@
         font:var(--text-circe-bold-40);
         margin: 24px 0 20px 0;
     }
+    @media (max-width: 1400px) {
+        width: 880px;
+        h1{
+            font: var(--text-circe-bold-36)
+        }
+    }
+    @media (max-width: 960px) {
+        width: 520px;
+        h1{
+            font: var(--text-circe-bold-20);
+            margin: 16px 0 8px 0;
+        }
+    }
+    @media (max-width: 560px) {
+        width: calc(100% - 30px);
+        h1{
+            font: var(--text-circe-bold-20);
+            margin: 16px 0 16px 0;
+        }
+    }
 }
 .container {
     display: flex;
     gap:20px;
+    @media (max-width: 960px) {
+        gap: 10px;
+    }
+    @media (max-width: 560px) {
+        gap: 20px 10px;
+        flex-wrap: wrap;
+    }
 }
 .item {
     display: flex;
@@ -22,5 +49,23 @@
     gap:8px;
     span{
         font:var(--text-circe-regular-24)
+    }
+    @media (max-width: 1400px) {
+        span{
+            font:var(--text-circe-regular-16)
+        }
+    }
+    @media (max-width: 960px) {
+        width: 122px;
+        gap: 6px;
+        span{
+            font:var(--text-circe-regular-14)
+        }
+    }@media (max-width: 560px) {
+        width: 130px;
+        gap: 6px;
+        span{
+            font:var(--text-circe-regular-10)
+        }
     }
 }

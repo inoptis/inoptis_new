@@ -4,6 +4,8 @@
     margin: 0 auto;
     background-repeat: no-repeat;
     background-size: contain;
+    border-radius: 20px;
+    overflow: hidden;
     @media (max-width: 1400px) {
         width: 960px;
     }
@@ -17,7 +19,6 @@
         background-size: 500px 300px;
         background-position: top center;
         background-color: var(--color-600);
-
     }
 }
 .content{
@@ -28,7 +29,7 @@
         object-fit: cover;
         width:50%;
     }
-    @media (max-width:560px) {
+    @media (max-width:960px) {
         flex-direction: column;
         img{
             width: 100%;
@@ -61,7 +62,7 @@
         }
     }
     @media (max-width:960px) {
-        width: 255px;
+        width: 100%;
         padding: 20px;
         h2{
             font:var(--text-circe-bold-20);
@@ -70,7 +71,7 @@
             font: var(--text-circe-regular-16);
         }
     }
-    @media (max-width:960px) {
+    @media (max-width:560px) {
         width: 100%;
         padding: 20px;
         h2{

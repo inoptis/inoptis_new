@@ -138,6 +138,10 @@ body {
         gap: 36px;
         margin-top: 121px;
     }
+    @media (max-width: 560px) {
+        gap: 36px;
+        margin-top: 97px;
+    }
 }
 
 .fade-enter {

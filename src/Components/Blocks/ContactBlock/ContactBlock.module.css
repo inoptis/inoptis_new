@@ -68,6 +68,7 @@
     line-height: 1.1;
     width: 370px;
     margin-bottom: 20px;
+    color: var(--color-300);
     &:last-child{
         margin-top: 40px;
         margin-bottom: 0;
@@ -107,11 +108,127 @@
     width: 650px;
     height: auto;
     border-radius: 20px;
+    overflow: hidden;
     *{
         color: black;
+    }
+    video{
+        width: 650px;
+        height: 329px;
+        object-fit: cover;
     }
 }
 .map{
     width: 100%;
     height: auto;
+}
+
+.blockv2{
+    width: 100%;
+    position: relative;
+
+}
+.contentv2{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 1400px) {
+        width: 880px;
+    }
+    @media (max-width: 960px) {
+        width: 520px;
+    }
+    @media (max-width: 560px) {
+        width: 100%;
+        flex-direction: column;
+        margin: 0 auto;
+        gap: 8px;
+    }
+}
+.backgroundv2{
+    position: absolute;
+    left: -500px;
+    scale: 1.3;
+    top:30px;
+    @media (max-width: 1400px) {
+        left: -500px;
+        min-width: 800px;
+        top: 0;
+        scale: 1;
+    }
+    @media (max-width: 960px) {
+        top:30px;
+        left: -550px;
+        min-width: 800px;
+    }
+    @media (max-width: 560px) {
+        top:0;
+        left: -600px;
+        min-width: 800px;
+    }
+}
+.textv2{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-900);
+    position: relative;
+    width: 650px;
+    border-radius: 20px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 40px;
+    height: 322px;
+    .item:last-child{
+        margin: 0;
+    }
+    @media (max-width: 1400px) {
+        width: 430px;
+        height: 258px;
+        padding: 36px;
+    }
+    @media (max-width: 960px) {
+        width: 299px;
+        height: auto;
+        padding: 24px;
+        .item{
+            width: auto;
+            align-items: flex-start;
+        }
+    }
+    @media (max-width: 560px) {
+        width: 100%;
+        height: auto;
+        padding: 24px 12px;
+        .item{
+            width: auto;
+            align-items: flex-start;
+        }
+    }
+}
+.mapContainerv2{
+    width: 650px;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 322px;
+    *{
+        color: black;
+    }
+    video{
+        width: 650px;
+        height: 322px;
+        object-fit: cover;
+    }
+    @media (max-width: 1400px) {
+        width: 430px;
+        height: 258px;
+    }
+    @media (max-width: 960px) {
+        width: 211px;
+        height: 305px;
+    }
+    @media (max-width: 560px) {
+        width: 100%;
+        height: 200px;
+    }
 }

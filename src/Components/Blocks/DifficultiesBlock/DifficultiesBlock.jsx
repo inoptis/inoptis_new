@@ -7,7 +7,13 @@ import icon4 from '../../../Assets/Pictures/DifficultesItems/icon4.svg'
 import icon5 from '../../../Assets/Pictures/DifficultesItems/icon5.svg'
 import bg1 from '../../../Assets/Pictures/block_1.svg'
 import bg2 from '../../../Assets/Pictures/block_2.svg'
+import {useWindowSize} from "../../../Hooks/useWindowSize";
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const DifficultiesBlock = () => {
+
+    const [width, ] = useWindowSize()
 
     const difficulties = [
         {
@@ -41,23 +47,50 @@ const DifficultiesBlock = () => {
     ]
 
 
-
+    const settings = {
+        dots: true, // Показывать точки-индикаторы слайдов
+        infinite: true, // Бесконечное зацикливание слайдов
+        speed: 500, // Скорость смены слайдов
+        slidesToShow: 1, // Показывать по одному слайду
+        slidesToScroll: 1, // Прокручивать по одному слайду
+        arrows: false, // Отключить стрелки навигации
+        swipeToSlide: true, // Позволить свайпинг для навигации
+        adaptiveHeight: true // Автоматически подстраивать высоту слайдера под элемент слайда
+    };
 
     return (
         <div className={cl.block}>
             <h2>Почему мы не боимся трудностей?</h2>
-            <div className={cl.container}>
-                {difficulties.map((difficult, index) => (
-                    <div className={index % 2 === 0 ? cl.white : cl.dark} key={index}>
-                        <img src={index % 2 === 0 ? bg2 : bg1} className={cl.bg} alt="background"/>
-                        <div className={cl.row1}>
-                            <img src={difficult.img} alt={difficult.title}/>
-                            <h4>{difficult.title}</h4>
+            {width > 560 &&
+                <div className={cl.container}>
+                    {difficulties.map((difficult, index) => (
+                        <div className={index % 2 === 0 ? cl.white : cl.dark} key={index}>
+                            <img src={index % 2 === 0 ? bg2 : bg1} className={cl.bg} alt="background"/>
+                            <div className={cl.row1}>
+                                <img src={difficult.img} alt={difficult.title}/>
+                                <h4>{difficult.title}</h4>
+                            </div>
+                            <p className={cl.row2}>{difficult.description}</p>
                         </div>
-                        <p className={cl.row2}>{difficult.description}</p>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            }
+            {width <= 560 &&
+                    <Slider {...settings}>
+                        {difficulties.map((difficult, index) => (
+                            <div className={cl.item}>
+                                <div className={index % 2 === 0 ? cl.white : cl.dark} key={index}>
+                                    <img src={index % 2 === 0 ? bg2 : bg1} className={cl.bg} alt="background"/>
+                                    <div className={cl.row1}>
+                                        <img src={difficult.img} alt={difficult.title}/>
+                                        <h4>{difficult.title}</h4>
+                                    </div>
+                                    <p className={cl.row2}>{difficult.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </Slider>
+            }
         </div>
     );
 };

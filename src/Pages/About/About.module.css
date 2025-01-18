@@ -13,6 +13,8 @@
     .quote{
         line-height: 1.1;
         margin-bottom: 24px;
+        display: flex;
+        flex-direction: column;
     }
     p{
         font: var(--text-circe-regular-24);
@@ -34,6 +36,20 @@
         }
         .quote{
             margin-bottom: 16px;
+        }
+        p{
+            font: var(--text-circe-regular-16);
+        }
+    }
+    @media (max-width: 560px) {
+        width: calc(100% - 40px);
+        h1{
+            font:var(--text-circe-bold-20);
+            margin: 16px 0 8px 0;
+        }
+        .quote{
+            margin-bottom: 16px;
+            display: block;
         }
         p{
             font: var(--text-circe-regular-16);
@@ -67,6 +83,13 @@
         }
         gap: 16px;
     }
+    @media (max-width:560px) {
+        width: calc(100% - 40px);
+        h2{
+            font: var(--text-circe-bold-20);
+        }
+        gap: 16px;
+    }
 }
 .arrows {
     position: absolute;
@@ -87,6 +110,19 @@
         top:75px;
         width: 37px;
     }
+    @media (max-width: 560px) {
+        gap:87px;
+        left:calc(50% - 10px);
+        top:110px;
+        width: 40px;
+        flex-direction: column;
+        img{
+            rotate: 90deg;
+            height: 26px;
+            width: auto;
+        }
+    }
+
 }
 .containerHow{
     display: flex;
@@ -99,6 +135,12 @@
     }
     @media (max-width: 960px) {
         width: 520px;
+    }
+    @media (max-width: 560px) {
+        width: calc(100% - 40px);
+        gap:26px;
+        flex-direction: column;
+        align-items: center;
     }
 }
 .itemHow{
@@ -137,6 +179,20 @@
         }
         width: 140px;
     }
+    @media (max-width: 560px) {
+        gap:16px;
+        img{
+            width: 80px;
+            height: 80px;
+        }
+        p{
+            font: var(--text-circe-bold-14);
+            text-align: left;
+        }
+        width: 100%;
+        flex-direction: row;
+        height: 80px;
+    }
 }
 .otrasl{
     display: flex;
@@ -167,6 +223,13 @@
         }
         gap: 16px;
     }
+    @media (max-width: 560px) {
+        width: calc(100% - 40px);
+        h2{
+            font:var(--text-circe-bold-20)
+        }
+        gap: 16px;
+    }
 }
 .containerOtrasl{
     display: flex;
@@ -182,6 +245,12 @@
     @media (max-width: 960px) {
         width: 520px;
         gap:16px;
+    }
+    @media (max-width: 560px) {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap:8px;
     }
 }
 .itemOtrasl{
@@ -214,6 +283,17 @@
             height: 73px;
         }
     }
+    @media (max-width: 560px) {
+        width: 100%;
+        h4{
+            font: var(--text-circe-bold-16);
+            line-height: 1.1;
+        }
+        img{
+            width: 63px;
+            height: 63px;
+        }
+    }
 }
 .bg{
     position: absolute;
@@ -243,6 +323,10 @@
         flex-direction: column-reverse;
         gap: 16px;
     }
+    @media (max-width: 560px) {
+        width: calc(100% - 40px);
+        gap: 8px;
+    }
 }
 .parthnersLogos{
     display: flex;
@@ -268,6 +352,22 @@
         div{
             width: auto;
             height: auto;
+        }
+    }
+    @media (max-width: 560px) {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px 9px;
+        div{
+            width: 128px;
+            height: 90px;
+            img{
+                width: auto;
+                height: 45px;
+            }
+
         }
     }
 }
@@ -314,5 +414,7 @@
     @media (max-width: 960px) {
             width: 520px;
     }
-
+    @media (max-width: 560px) {
+            width: 100%;
+    }
 }
