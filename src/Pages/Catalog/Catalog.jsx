@@ -1,46 +1,53 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import CallToAction from "../../Components/Blocks/CallToAction/CallToAction";
 import ContactBlock from "../../Components/Blocks/ContactBlock/ContactBlock";
-import axios from "axios";
-
+import cl from './Catalog.module.css'
+import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
+import {testCategories} from "../../utils/TestCategories";
+import {useWindowSize} from "../../Hooks/useWindowSize";
+import {useNavigate} from "react-router-dom";
 const Catalog = () => {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        // URL API ресурса
-        const apiURL = 'http://alexaksa.beget.tech/api.html';
-
-        // Запрос через Axios
-        axios.get(apiURL)
-            .then(response => {
-                setData(response.data); // Устанавливаем данные из API в состояние
-                setLoading(false); // Завершаем загрузку
-            })
-            .catch(error => {
-                setError(error.message); // Устанавливаем сообщение об ошибке
-                setLoading(false); // Завершаем загрузку
-            });
-    }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
-
-    if (loading) {
-        return <p>Загрузка...</p>; // Показываем сообщение о загрузке, пока данные не пришли
-    }
-
-    if (error) {
-        return <p>Ошибка: {error}</p>; // Показываем сообщение об ошибке, если что-то пошло не так
-    }
-
+    const [width] = useWindowSize()
+    const navigate = useNavigate()
+    const breadcrumbs = [
+        { title: 'Главная', path: '/' },
+        { title: 'Каталог', path: '/catalog' },
+    ];
+    const categories = testCategories
     return (
         <div className={'page'}>
-            <ul>
-                {data.map(item => (
-                    <li key={item.id}>
-                        {item.name}: {item.description}
-                    </li>
-                ))}
-            </ul>
+            <div className={cl.mainBlock}>
+                <Breadcrumbs breadcrumbs={breadcrumbs}/>
+                <h1>Каталог</h1>
+                {width > 560 &&
+                    <div className={cl.container}>
+                        {categories.map((category, index) => (
+                            <div className={cl.item} key={index}>
+                                <h4 onClick={()=>navigate('/catalog/subcatalog')}>{category.name}</h4>
+                                <div className={cl.containerChildren}>
+                                    {category.children.map((name, index) => (
+                                        <span className={cl.children} key={index}>{name}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                }
+                {width <= 560 &&
+                    <div className={cl.container}>
+                        {categories.map((category, index) => (
+                            <div className={cl.item} key={index}>
+                                <h4>{category.name}</h4>
+                                <div className={cl.containerChildren}>
+                                    {category.children.map((name, index) => (
+                                        <span className={cl.children} key={index}>{name}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                }
+            </div>
             <CallToAction/>
             <ContactBlock/>
         </div>

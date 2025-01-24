@@ -17,7 +17,7 @@ const Footer = () => {
                     <div className={cl.col11}>
                         <Link to={'/about'}>О компании</Link>
                         <Link to={'/partners'}>Партнёры</Link>
-                        <span>Контакты</span>
+                        <Link to={'/contacts'}>Контакты</Link>
                     </div>
                 </div>
                 <div className={cl.col2}>

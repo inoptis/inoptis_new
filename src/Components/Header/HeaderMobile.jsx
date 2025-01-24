@@ -4,6 +4,7 @@ import IButton from "../UI/IButton/IButton";
 import humburger from "../../Assets/Pictures/Humburger.svg";
 import logomobile from "../../Assets/Pictures/logomobile.svg";
 import {Link} from "react-router-dom";
+import {testCategories} from "../../utils/TestCategories";
 
 const HeaderMobile = () => {
     // const navigate = useNavigate();
@@ -43,33 +44,11 @@ const HeaderMobile = () => {
                     <span>Каталог <img src="" alt=""/></span>
                 </div>
                 <div className={`${cl.subMenu} ${catalogOpen ? cl.open : ''}`}>
-                    <div className={cl.subMenuItem}>
-                        Расход
-                    </div>
-                    <div className={cl.subMenuItem}>
-                        Уровень
-                    </div>
-                    <div className={cl.subMenuItem}>
-                        Давление
-                    </div>
-                    <div className={cl.subMenuItem}>
-                        Температура
-                    </div>
-                    <div className={cl.subMenuItem}>
-                        Индикаторы процессов и полевые устройства
-                    </div>
-                    <div className={cl.subMenuItem}>
-                        Инструментальная арматура
-                    </div>
-                    <div className={cl.subMenuItem}>
-                        Шкафы автоматизации
-                    </div>
-                    <div className={cl.subMenuItem}>
-                        Вспомогательное оборудование
-                    </div>
-                    <div className={cl.subMenuItem}>
-                        Поверочные установки
-                    </div>
+                    {testCategories.map((category, index) => (
+                        <div key={index} className={cl.subMenuItem}>
+                            {category.name}
+                        </div>
+                    ))}
                 </div>
                 <div className={cl.menuItem}>
                     <Link onClick={toggleMenu} className={cl.link} to={'/contacts'}>Контакты</Link>
