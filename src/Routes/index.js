@@ -4,7 +4,6 @@ import Partners from "../Pages/Partners/Partners";
 import Catalog from "../Pages/Catalog/Catalog";
 import Contacts from "../Pages/Contacts/Contacts";
 import SubCatalog from "../Pages/SubCatalog/SubCatalog";
-import ProductCard from "../Components/ProductCard/ProductCard";
 import ProductPage from "../Pages/ProductPage/ProductPage";
 
 
