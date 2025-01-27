@@ -180,6 +180,9 @@
         width: 140px;
     }
     @media (max-width: 560px) {
+        width: 100%;
+        flex-direction: row !important;
+        height: 80px;
         gap:16px;
         img{
             width: 80px;
@@ -189,9 +192,6 @@
             font: var(--text-circe-bold-14);
             text-align: left;
         }
-        width: 100%;
-        flex-direction: row;
-        height: 80px;
     }
 }
 .otrasl{
