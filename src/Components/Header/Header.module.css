@@ -98,6 +98,7 @@
         padding: 17px 32px;
         border:none;
         background-color: var(--color-900);
+        cursor: pointer;
         transition: 0.3s ease-in-out background-color, color;
         @media (max-width: 960px) {
             padding: 10px 20px;
@@ -153,6 +154,7 @@
         flex-direction: row;
         gap: 10px;
         align-items: center;
+        cursor: unset;
         /*height: 100%;*/
     }
     @media (max-width: 960px) {
@@ -187,13 +189,14 @@
 }
 .buttons
 {
+
     display: flex;
     flex-direction: column;
     button{
         width: 309px;
         text-align: left;
         padding: 12px 16px;
-
+        cursor: pointer;
     }
 }
 @media (max-width: 960px) {
@@ -280,7 +283,6 @@
             color: var(--color-900);
         }
     }
-
     .subMenuItem {
 
     }

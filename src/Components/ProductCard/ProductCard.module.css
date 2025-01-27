@@ -8,6 +8,7 @@
     padding: 20px;
     gap: 20px;
     align-items: center;
+    cursor: pointer;
     @media (max-width: 960px) {
         width: 167px;
         height: auto;
