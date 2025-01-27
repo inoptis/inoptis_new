@@ -63,29 +63,30 @@
 .images{
     display: flex;
     gap: 20px;
-    img{
-        width: 335px;
-        height: 428px;
-        padding: 71px 40px;
-        background-color: var(--color-200);
-        border-radius: 20px;
-    }
+}
+.mainImage{
+    width: 335px;
+    height: 428px;
+    padding: 71px 40px;
+    background-color: var(--color-200);
+    border-radius: 20px;
 }
 .imagesContainer{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    img{
-        width: 91px;
-        height: 99px;
-        padding: 22px;
-        border-radius: 5px;
-    }
+}
+.microImage{
+    width: 91px;
+    height: 99px;
+    padding: 22px;
+    border-radius: 5px;
+    background-color: var(--color-200);
 }
 .info{
     display: flex;
     flex-direction: column;
-    gap: 36px; 
+    gap: 36px;
     width: 765px;
 }
 .description{

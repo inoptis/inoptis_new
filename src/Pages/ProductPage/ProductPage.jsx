@@ -70,10 +70,10 @@ const ProductPage = () => {
                     </div>
                     <div className={cl.productContainer}>
                         <div className={cl.images}>
-                            <img src={img} alt="product"/>
+                            <img className={cl.mainImage} src={img} alt="product"/>
                             <div className={cl.imagesContainer}>
                                 {testimages.map((img, index) => (
-                                    <img src={img} key={index} alt={'product'}/>
+                                    <img className={cl.microImage} src={img} key={index} alt={'product'}/>
                                 ))}
                             </div>
                         </div>
