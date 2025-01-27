@@ -26,7 +26,7 @@ const Catalog = () => {
                                 <h4 onClick={()=>navigate('/catalog/subcatalog')}>{category.name}</h4>
                                 <div className={cl.containerChildren}>
                                     {category.children.map((name, index) => (
-                                        <span className={cl.children} key={index}>{name}</span>
+                                        <span onClick={()=>navigate('/catalog/subcatalog')} className={cl.children} key={index}>{name}</span>
                                     ))}
                                 </div>
                             </div>
@@ -36,11 +36,11 @@ const Catalog = () => {
                 {width <= 560 &&
                     <div className={cl.container}>
                         {categories.map((category, index) => (
-                            <div className={cl.item} key={index}>
-                                <h4>{category.name}</h4>
+                            <div  className={cl.item} key={index}>
+                                <h4 onClick={()=>navigate('/catalog/subcatalog')}>{category.name}</h4>
                                 <div className={cl.containerChildren}>
                                     {category.children.map((name, index) => (
-                                        <span className={cl.children} key={index}>{name}</span>
+                                        <span onClick={()=>navigate('/catalog/subcatalog')} className={cl.children} key={index}>{name}</span>
                                     ))}
                                 </div>
                             </div>

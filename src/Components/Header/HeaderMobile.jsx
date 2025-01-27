@@ -3,11 +3,11 @@ import cl from "./Header.module.css";
 import IButton from "../UI/IButton/IButton";
 import humburger from "../../Assets/Pictures/Humburger.svg";
 import logomobile from "../../Assets/Pictures/logomobile.svg";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {testCategories} from "../../utils/TestCategories";
 
 const HeaderMobile = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
     const [catalogOpen, setCatalogOpen] = useState(false);
 
@@ -17,6 +17,10 @@ const HeaderMobile = () => {
     const toggleCatalog = () => {
         setCatalogOpen(!catalogOpen);
     };
+
+    const clickButton = () => {
+        navigate('/catalog/subcatalog')
+    }
 
     return (
         <>
@@ -45,7 +49,7 @@ const HeaderMobile = () => {
                 </div>
                 <div className={`${cl.subMenu} ${catalogOpen ? cl.open : ''}`}>
                     {testCategories.map((category, index) => (
-                        <div key={index} className={cl.subMenuItem}>
+                        <div onClick={clickButton} key={index} className={cl.subMenuItem}>
                             {category.name}
                         </div>
                     ))}
