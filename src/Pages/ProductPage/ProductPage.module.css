@@ -85,7 +85,7 @@
 .info{
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 36px; 
     width: 765px;
 }
 .description{
