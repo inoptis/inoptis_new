@@ -1,36 +1,194 @@
 .breadcrumbs{
     width: 1320px;
     margin: 0 auto -16px auto;
+    @media (max-width: 1400px) {
+        margin: 0 auto;
+    }
+    @media (max-width: 960px) {
+        margin: 0 auto;
+        width: 520px;
+    }
+    @media (max-width: 560px) {
+        margin: 0 auto;
+        width: 100%;
+    }
 }
 .mainBlock{
     display: flex;
     flex-direction: column;
     gap:48px;
-    width: 1320px;
-    margin: 0 auto;
+    width: 1228px;
+    margin: -64px auto 0 auto;
     position: relative;
+    @media (max-width: 1400px) {
+        width: 825px;
+        gap:24px;
+        margin: -64px auto 0 auto;
+        left: 20px;
+    }
+    @media (max-width: 960px) {
+        width: 520px;
+        gap:24px;
+        margin: 0 auto 0 auto;
+        left: 0;
+    }
+    @media (max-width: 560px) {
+        width: calc(100% - 40px);
+        gap:16px;
+    }
 }
 .filter{
-    background-color: var(--color-600);
-    max-width: 56px;
-    height: 534px;
-    border-radius: 20px;
-    flex-direction: column;
+    min-height: 534px;
+    max-height: 534px;
+    flex-direction: row;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     position: absolute;
-    padding: 20px 0 60px 0;
     left: -98px;
     top:80px;
-    img{
-        width: 12px;
+    z-index: 101;
+    cursor: pointer;
+    max-width: 56px;
+    overflow: hidden;
+    transition: all 0.3s linear;
+    border-radius: 20px;
+    &.open{
+        max-width: 600px;
+        max-height: 736px;
+        .buttonFilter{
+            max-height: 736px;
+        }
     }
-    span{
-        color: var(--color-900);
-        font: var(--text-circe-bold-20);
-        transform: rotate(-90deg);
+    .buttonFilter{
+        background-color: var(--color-600);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 56px;
+        padding: 20px 0 60px 0;
+        min-height: 534px;
+        max-height: 534px;
+        transition: all 0.3s linear;
+        img{
+            width: 12px;
+        }
+        span{
+            color: var(--color-900);
+            font: var(--text-circe-bold-20);
+            transform: rotate(-90deg);
+        }
     }
+    .filterMainContainer{
+        width: 408px;
+        display: flex;
+        max-height: 736px;
+        flex-direction: column;
+        overflow: hidden;
+        @media (max-width: 1400px) {
+            width: 362px;
+        }
+        @media (max-width: 960px) {
+            width: 167px;
+        }
+        @media (max-width: 560px) {
+            width: 100%;
+        }
+    }
+    .filterItem{
+        display: flex;
+        flex-direction: column;
+    }
+    .mainItem{
+        padding: 15px 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: var(--color-500);
+        cursor: pointer;
+        transition: all 0.2s linear;
+        span{
+            color: var(--color-1000);
+            font: var(--text-circe-bold-18);
+            line-height: 1.3;
+        }
+        img{
+            transition: rotate 0.1s linear;
+        }
+        .rotate{
+            rotate: -90deg;
+        }
+        @media (max-width: 1400px) {
+            padding: 12px 32px 12px 15px;
+        } @media (max-width: 960px) {
+            padding: 12px;
+            span{
+                font:var(--text-circe-bold-14);
+            }
+        }
+        @media (max-width: 560px) {
+            padding: 12px 20px;
+        }
+    }
+    .mainItem.active{
+        background-color: var(--color-900);
+        span{
+            color: var(--color-200);
+        }
+    }
+
+    .filterContainer{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: max-height 0.3s linear;
+    }
+
+    .filterContainer.open {
+        max-height: 400px;
+        @media (max-width: 1400px) {
+            max-height: 500px;
+        }
+    }
+    .filterContainer.close{
+        max-height: 0;
+    }
+
+    .item{
+        font: var(--text-circe-regular-18);
+        color: var(--color-1000);
+        background-color: var(--color-200);
+        padding: 15px 20px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+        &:hover{
+            background-color: var(--color-400) ;
+        }
+        @media (max-width: 1400px) {
+            font: var(--text-circe-regular-16);
+            padding: 12px 32px 12px 15px;
+        }
+        @media (max-width: 960px) {
+            padding: 12px;
+            font: var(--text-circe-regular-14);
+        }
+        @media (max-width: 560px) {
+            padding: 12px 20px;
+        }
+    }
+    .item.active{
+        background-color: var(--color-400);
+        cursor: unset;
+    }
+}
+.background{
+    background-color: #4747478F;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    z-index: 100;
+
 }
 .productInfo{
     display: flex;
@@ -54,6 +212,9 @@
         line-height: 1;
         height: 45px;
         background-color: var(--color-200);
+        &:hover{
+            background-color: var(--color-button);
+        }
     }
 }
 .productContainer{
@@ -158,6 +319,264 @@
             background-color: var(--color-600);
             color: var(--color-1000);
             cursor: unset;
+        }
+    }
+}
+
+
+@media (max-width: 1400px) {
+    .filter{
+        left: -55px;
+        top:90px;
+        max-width: 35px;
+        min-height: 372px;
+        max-height: 372px;
+        &.open{
+            max-width: 398px;
+            max-height: 488px;
+            .buttonFilter{
+                max-height: 488px;
+                width: 41px;
+            }
+        }
+        .buttonFilter{
+            padding: 16px 0 40px 0;
+            width: 35px;
+            min-height: 372px;
+            max-height: 372px;
+            span{
+                font: var(--text-circe-bold-16);
+            }
+        }
+    }
+    .title{
+        gap: 12px;
+        h1{
+            font:var(--text-circe-bold-24);
+            width: 593px;
+        }
+        .button{
+            font:var(--text-circe-bold-18);
+            width: 220px;
+            height: 45px;
+        }
+    }
+    .mainImage{
+        width: 225px;
+        height: 270px;
+        padding: 25px 14px;
+    }
+    .microImage{
+        width: 55px;
+        height: 60px;
+        padding: 3px;
+        border-radius: 5px;
+        background-color: var(--color-200);
+    }
+    .info{
+        gap: 14px;
+        width: 505px;
+    }
+    .description{
+        p{
+            font: var(--text-circe-regular-16);
+        }
+    }
+    .more{
+
+        span{
+            font: var(--text-circe-bold-16);
+        }
+    }
+    .featureTitle{
+        h3{
+            font: var(--text-circe-bold-18);
+        }
+    }
+    .featureContainer{
+        display: flex;
+        gap: 12px;
+        flex-direction: column;
+    }
+    .feature{
+        div{
+            font:var(--text-circe-regular-16);
+            color:var(--color-900)
+        }
+    }
+    .full{
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+    }
+    .buttons{
+        button{
+            padding: 12px;
+            font: var(--text-circe-bold-18);
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    .title{
+        gap: 12px;
+        h1{
+            font:var(--text-circe-bold-18);
+            width:299px;
+        }
+        .button{
+            font:var(--text-circe-bold-16);
+            width: 166px;
+            height: 35px;
+        }
+    }
+    .images{
+        gap: 10px;
+    }
+    .mainImage{
+        width: 211px;
+        height: 232px;
+        padding: 45px 42px;
+    }
+    .imagesContainer{
+        gap: 8px;
+    }
+    .microImage{
+        width: 52px;
+        height: 52px;
+        padding: 12px 13px;
+        border-radius: 5px;
+    }
+    .productContainer{
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+    .productInfo{
+        gap:16px;
+    }
+    .info{
+        gap: 14px;
+        width: 231px;
+    }
+    .description{
+        p{
+            font: var(--text-circe-regular-14);
+            gap:12px;
+        }
+    }
+    .more{
+        span{
+            font: var(--text-circe-bold-14);
+        }
+    }
+    .featureBlock{
+        width: 100%;
+    }
+    .featureTitle{
+        h3{
+            font: var(--text-circe-bold-16);
+        }
+    }
+    .featureContainer{
+        display: flex;
+        gap: 12px;
+        flex-direction: column;
+    }
+    .feature{
+        div{
+            font:var(--text-circe-regular-14);
+        }
+    }
+    .full{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .buttons{
+        button{
+            padding: 4px;
+            font: var(--text-circe-bold-14);
+        }
+    }
+}
+@media (max-width: 560px) {
+    .title{
+        gap: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        h1{
+            font:var(--text-circe-bold-18);
+            width:100%;
+        }
+        .button{
+            font:var(--text-circe-bold-16);
+            width: 166px;
+            height: 32px;
+        }
+    }
+    .images{
+        width: 100%;
+        display: block;
+        margin-bottom: 16px;
+        margin-top: -8px;
+    }
+    .sliderItem{
+        margin: 0 auto;
+        width: 100%;
+    }
+    .mainImage{
+        width: 280px;
+        height: 280px;
+        padding: 30px;
+        margin: 0 auto;
+    }
+    .imagesContainer{
+        gap: 8px;
+    }
+    .productContainer{
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+    .productInfo{
+        gap:24px;
+    }
+    .info{
+        gap: 12px;
+        width: 100%;
+    }
+    .featureTitle{
+        flex-direction: column;
+        gap: 8px;
+        h3{
+            font: var(--text-circe-bold-16);
+        }
+    }
+    .featureContainer{
+        display: flex;
+        gap: 12px;
+        flex-direction: column;
+    }
+    .feature{
+        div{
+            font:var(--text-circe-regular-14);
+        }
+        flex-direction: column;
+        gap: 8px;
+        .name{
+            font:var(--text-circe-bold-14)
+        }
+    }
+    .full{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .buttons{
+        flex-direction: column;
+        gap:8px;
+        button{
+            padding: 8px;
+            font: var(--text-circe-bold-14);
         }
     }
 }

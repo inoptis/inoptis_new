@@ -5,8 +5,6 @@ import file from '../../../Assets/Pictures/file-icon.svg'
 import fileUrl from '../../../Assets/file-example.pdf'
 const MoreDocumentation = () => {
 
-
-
     return (
         <div className={cl.documentationBlock}>
             <div className={cl.titleDocumentation}>Файлы</div>

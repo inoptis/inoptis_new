@@ -76,20 +76,20 @@ const DifficultiesBlock = () => {
                 </div>
             }
             {width <= 560 &&
-                    <Slider {...settings}>
-                        {difficulties.map((difficult, index) => (
-                            <div className={cl.item}>
-                                <div className={index % 2 === 0 ? cl.white : cl.dark} key={index}>
-                                    <img src={index % 2 === 0 ? bg2 : bg1} className={cl.bg} alt="background"/>
-                                    <div className={cl.row1}>
-                                        <img src={difficult.img} alt={difficult.title}/>
-                                        <h4>{difficult.title}</h4>
-                                    </div>
-                                    <p className={cl.row2}>{difficult.description}</p>
+                <Slider {...settings}>
+                    {difficulties.map((difficult, index) => (
+                        <div className={cl.item}>
+                            <div className={index % 2 === 0 ? cl.white : cl.dark} key={index}>
+                                <img src={index % 2 === 0 ? bg2 : bg1} className={cl.bg} alt="background"/>
+                                <div className={cl.row1}>
+                                    <img src={difficult.img} alt={difficult.title}/>
+                                    <h4>{difficult.title}</h4>
                                 </div>
+                                <p className={cl.row2}>{difficult.description}</p>
                             </div>
-                        ))}
-                    </Slider>
+                        </div>
+                    ))}
+                </Slider>
             }
         </div>
     );

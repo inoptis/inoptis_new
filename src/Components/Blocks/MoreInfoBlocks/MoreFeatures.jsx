@@ -1,6 +1,9 @@
 import React from 'react';
 import cl from './MoreInfoBlocks.module.css'
+import {useWindowSize} from "../../../Hooks/useWindowSize";
 const MoreFeatures = () => {
+
+    const [width] = useWindowSize()
 
     const features = [
         ['Диапазон значений Ду трубопровода', 'DN4...DN2000'],
@@ -28,14 +31,30 @@ const MoreFeatures = () => {
 
 
     return (
-        <div className={cl.features}>
-            {result.map((feature, index) => (
-                <div key={index} className={cl.featureItem}>
-                    <span>{feature[0]}</span>
-                    <span>{feature[1]}</span>
+        <>
+            {
+                width > 560 &&
+                <div className={cl.features}>
+                    {result.map((feature, index) => (
+                        <div key={index} className={cl.featureItem}>
+                            <span>{feature[0]}</span>
+                            <span>{feature[1]}</span>
+                        </div>
+                    ))}
                 </div>
-            ))}
-        </div>
+            }
+            {width <= 560 &&
+            <div className={cl.features}>
+                {features.map((detail, index) => (
+                    detail[0] !== '' && detail[1] !== '' &&
+                    <div key={index} className={cl.detailsItemMobile}>
+                        <span>{detail[0]}</span>
+                        <span>{detail[1]}</span>
+                    </div>
+                ))}
+            </div>
+            }
+        </>
     );
 };
 
