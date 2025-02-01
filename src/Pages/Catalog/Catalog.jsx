@@ -16,8 +16,6 @@ const Catalog = () => {
     ];
 
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     useEffect(() => {
         // URL API ресурса
         const apiURL = 'http://alexaksa.beget.tech/api.html';
@@ -25,12 +23,7 @@ const Catalog = () => {
         axios.get(apiURL)
             .then(response => {
                 setData(response.data); // Устанавливаем данные из API в состояние
-                setLoading(false);// Завершаем загрузку
             })
-            .catch(error => {
-                setError(error.message); // Устанавливаем сообщение об ошибке
-                setLoading(false); // Завершаем загрузку
-            });
     }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
 
     useEffect(() => {
