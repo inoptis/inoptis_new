@@ -21,7 +21,7 @@ const Catalog = () => {
     useEffect(() => {
         // URL API ресурса
         const apiURL = 'http://alexaksa.beget.tech/api.html';
-        // Запрос через Axios
+        // Запрос через Axios 
         axios.get(apiURL)
             .then(response => {
                 setData(response.data); // Устанавливаем данные из API в состояние
