@@ -24,6 +24,8 @@ const Catalog = () => {
             .then(response => {
                 setData(response.data); // Устанавливаем данные из API в состояние
             })
+
+        console.log('test')
     }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
 
     useEffect(() => {
