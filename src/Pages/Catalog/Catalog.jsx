@@ -29,7 +29,7 @@ const Catalog = () => {
     useEffect(() => {
         console.log(data)
     }, [data, setData]);
-
+ 
     const categories = testCategories
     return (
         <div className={'page'}>
