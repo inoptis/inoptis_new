@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import CallToAction from "../../Components/Blocks/CallToAction/CallToAction";
 import ContactBlock from "../../Components/Blocks/ContactBlock/ContactBlock";
 import cl from './Catalog.module.css'
@@ -6,6 +6,7 @@ import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
 import {testCategories} from "../../utils/TestCategories";
 import {useWindowSize} from "../../Hooks/useWindowSize";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 const Catalog = () => {
     const [width] = useWindowSize()
     const navigate = useNavigate()
@@ -13,6 +14,29 @@ const Catalog = () => {
         { title: 'Главная', path: '/' },
         { title: 'Каталог', path: '/catalog' },
     ];
+
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        // URL API ресурса
+        const apiURL = 'http://alexaksa.beget.tech/api.html';
+        // Запрос через Axios
+        axios.get(apiURL)
+            .then(response => {
+                setData(response.data); // Устанавливаем данные из API в состояние
+                setLoading(false);// Завершаем загрузку
+            })
+            .catch(error => {
+                setError(error.message); // Устанавливаем сообщение об ошибке
+                setLoading(false); // Завершаем загрузку
+            });
+    }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
+
+    useEffect(() => {
+        console.log(data)
+    }, [data, setData]);
+
     const categories = testCategories
     return (
         <div className={'page'}>

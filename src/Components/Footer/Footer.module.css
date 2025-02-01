@@ -72,7 +72,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    a{
+    a,span{
         font: var(--text-circe-bold-18);
         text-decoration: none;
         &:hover{
@@ -80,13 +80,13 @@
         }
     }
     @media (max-width: 960px) {
-        a{
+        a,span{
             font: var(--text-circe-bold-16);
         }
     }
     @media (max-width: 560px) {
         gap:13px;
-        a{
+        a,span{
             font: var(--text-circe-bold-14);
         }
     }
@@ -102,7 +102,7 @@
             opacity:0.8;
         }
     }
-    a{
+    a, span{
         font: var(--text-circe-bold-18);
         text-decoration: none;
         &:hover{
@@ -110,7 +110,7 @@
         }
     }
     @media (max-width: 960px) {
-        a{
+        a,span{
             font: var(--text-circe-bold-16);
         }
         img {
@@ -123,7 +123,7 @@
         align-self: flex-start;
         flex-direction: column-reverse;
         gap:36px;
-        a{
+        a,span{
             font: var(--text-circe-bold-14);
         }
         img {

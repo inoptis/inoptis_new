@@ -37,6 +37,12 @@
         gap:16px;
     }
 }
+.buttonFilter{
+    display: flex;
+}
+.mainItem{
+    display: flex;
+}
 .filter{
     min-height: 534px;
     max-height: 534px;
