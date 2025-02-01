@@ -53,7 +53,7 @@ jobs:
         run: npm run build
 
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build
           path: build/
@@ -119,7 +119,7 @@ jobs:
           echo "CUSTOM_MESSAGE_GOOD=🏆 ${{ env.TG_USERNAME }}, молодец!" >> $GITHUB_ENV
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build
           path: build/
