@@ -76,6 +76,7 @@
     }
     @media (max-width: 560px) {
         width: 100%;
+        border-radius: 10px;
     }
 }
 .filterItem{
@@ -108,7 +109,7 @@
         }
     }
     @media (max-width: 560px) {
-        padding: 12px 20px;
+        padding:8px;
     }
 }
 .mainItem.active{
@@ -149,7 +150,7 @@
         font: var(--text-circe-regular-16);
     }
     @media (max-width: 960px) {
-        padding: 12px;
+        padding: 8px;
         font: var(--text-circe-regular-14);
     }
     @media (max-width: 560px) {
@@ -175,6 +176,6 @@
     }
     @media (max-width: 560px) {
         width: 100%;
-        gap:20px;
+        gap:10px;
     }
 }

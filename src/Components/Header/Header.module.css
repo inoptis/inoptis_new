@@ -19,7 +19,7 @@
     @media (max-width: 960px) {
         width: calc(100% - 32px);
         height: 31px;
-        margin: 16px auto 9px auto;
+        margin: 16px auto 14px auto;
     }
     @media (max-width: 560px) {
         width: calc(100% - 32px);
@@ -64,7 +64,7 @@
     background-color: var(--color-900);
     height: 56px;
     @media (max-width: 960px) {
-        height: 42px;
+        height: 36px;
     }
     @media (max-width: 560px) {
         height: 40px;
@@ -91,7 +91,11 @@
     flex-direction: row;
     height: 56px;
     @media (max-width: 960px) {
-        height: 42px;
+        height: 36px;
+        .helper > button{
+            height: 36px;
+            padding: 12px 20px 8px 20px;
+        }
     }
     button{
         font: var(--text-circe-bold-20);
@@ -112,6 +116,17 @@
             background-color: var(--color-600);
             color: var(--color-1000)
         }
+    }
+}
+.logo{
+    cursor: pointer;
+    z-index: 501;
+}
+.call{
+    @media (max-width: 960px) {
+        height: 31px;
+        padding: 0 24px;
+        line-height: 1;
     }
 }
 .search{
@@ -203,6 +218,12 @@
     .logo{
         width: 230px;
         height: 30px;
+    }
+    .buttons
+    {
+        button{
+            font:var(--text-circe-bold-14)
+        }
     }
 }
 @media (max-width: 560px) {

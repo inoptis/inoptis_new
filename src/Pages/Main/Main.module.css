@@ -88,6 +88,10 @@
                 height: 70px;
                 font: var(--text-circe-bold-18);
                 padding-right:20px;
+                border-radius: 7px;
+            }
+            .buttonLeft{
+                width: 20px;
             }
         }
     }

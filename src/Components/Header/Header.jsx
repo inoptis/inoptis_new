@@ -29,14 +29,16 @@ const Header = () => {
             {width > 560 &&
             <header className={cl.header}>
                 <div className={cl.top}>
-                    <img className={cl.logo} src={logo} alt={'Inpotis'}/>
+                    <div onClick={goToMain} style={{cursor:"pointer"}}>
+                        <img className={cl.logo} onClick={goToMain} src={logo} alt={'Inpotis'}/>
+                    </div>
                     <div className={cl.contact}>
-                        <img src={phone} alt={'phone'}/>
+                    <img src={phone} alt={'phone'}/>
                         <div className={cl.phone}>
                             <span className={cl.number}>+7 (495) 646-05-06</span>
                             <span className={cl.schedule}>пн–пт с 9:00 до 18:00</span>
                         </div>
-                        <IButton>
+                        <IButton className={cl.call}>
                             Заказать звонок
                         </IButton>
                     </div>
@@ -48,7 +50,7 @@ const Header = () => {
                                 Главная
                             </button>
                             <div className={cl.helper} ref={catalog}>
-                                <button className={isCatalog ? cl.active : ''}>
+                                <button onClick={() => navigate('/catalog')} className={isCatalog ? cl.active : ''}>
                                     Каталог <img src={isCatalog ? arrow_black : arrow_light} alt={'arrow'}/>
                                 </button>
                                 {(isCatalog) &&

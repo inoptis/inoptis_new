@@ -94,3 +94,11 @@
         background-color: var(--color-400);
     }
 }
+
+.alert{
+    font:var(--text-circe-bold-24);
+    background-color: var(--color-700);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+}

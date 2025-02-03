@@ -1,35 +1,35 @@
-import React, {useRef, useState} from 'react';
-import cl from './ProductPage.module.css'
+import React, { useRef, useState } from 'react';
+import cl from './ProductPage.module.css';
 import IButton from "../../Components/UI/IButton/IButton";
 import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
-import img from '../../Assets/Pictures/TestProduct/picture.png'
-import arrow from '../../Assets/Pictures/arrow-breadcrumbs.svg'
-import arrowfilter from '../../Assets/Pictures/arrow-filter.svg'
-import doubleArrow from '../../Assets/Pictures/double-arrow.svg'
+import img from '../../Assets/Pictures/TestProduct/picture.png';
+import arrow from '../../Assets/Pictures/arrow-breadcrumbs.svg';
+import arrowfilter from '../../Assets/Pictures/arrow-filter.svg';
+import doubleArrow from '../../Assets/Pictures/double-arrow.svg';
 import MoreDescription from "../../Components/Blocks/MoreInfoBlocks/MoreDescription";
 import MoreFeatures from "../../Components/Blocks/MoreInfoBlocks/MoreFeatures";
 import MoreDocumentation from "../../Components/Blocks/MoreInfoBlocks/MoreDocumentation";
-import {CSSTransition, TransitionGroup} from "react-transition-group";
-import {testCategories} from "../../utils/TestCategories";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { testCategories } from "../../utils/TestCategories";
 import arrowdark from "../../Assets/Pictures/arrow-filter-dark.svg";
-import {useScrollbar} from "../../Hooks/useScrollbar";
-import {useWindowSize} from "../../Hooks/useWindowSize";
+import { useScrollbar } from "../../Hooks/useScrollbar";
+import { useWindowSize } from "../../Hooks/useWindowSize";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-const ProductPage = () => {
 
+const ProductPage = () => {
     const targetRef = useRef();
-    const [filterOpen, setFilterOpen] = useState(false)
+    const [filterOpen, setFilterOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(testCategories.map(() => true));
     const filtercontainer = useRef();
-    const [width, ] = useWindowSize()
-    useScrollbar(filtercontainer)
+    const [width] = useWindowSize();
+    useScrollbar(filtercontainer);
 
     const breadcrumbs = [
         { title: 'Главная', path: '/' },
         { title: 'Каталог', path: '/catalog' },
-        { title: 'Ультразвуковые расходомеры жидкости (врезные)', path:'/catalog/subcatalog'},
+        { title: 'Ультразвуковые расходомеры жидкости (врезные)', path: '/catalog/subcatalog' },
     ];
 
     const toggleSection = (index) => {
@@ -38,51 +38,53 @@ const ProductPage = () => {
         );
     };
 
-    const [active, setActive] = useState(1)
+    const [active, setActive] = useState(1);
 
-    const testimages = [img,img,img,img]
+    const testimages = [img, img, img, img];
 
     const testFeatures = [
         {
-            name:'Диапазон значений Ду трубопровода',
-            value:'DN4...DN2000'
+            name: 'Диапазон значений Ду трубопровода',
+            value: 'DN4...DN2000'
         },
         {
-            name:'Направление потока',
-            value:'прямое, реверсивное'
+            name: 'Направление потока',
+            value: 'прямое, реверсивное'
         },
         {
-            name:'t° контролируемой жидкости',
-            value:'450 кг/м³ '
+            name: 't° контролируемой жидкости',
+            value: '450 кг/м³'
         },
         {
-            name:'Давление в трубопроводе',
-            value:'от 1 до 4 МПа (до 32 МПа)'
+            name: 'Давление в трубопроводе',
+            value: 'от 1 до 4 МПа (до 32 МПа)'
         },
         {
-            name:'t° окружающей среды',
-            value:'от -40 до 60 °С (до -70 °С)'
+            name: 't° окружающей среды',
+            value: 'от -40 до 60 °С (до -70 °С)'
         },
-    ]
+    ];
 
     const moreFeatures = () => {
-        setActive(2); // Ваш метод
+        setActive(2); // Устанавливаем активную вкладку
+        targetRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Прокручиваем к .buttons
     };
+
     const moreDescription = () => {
-        setActive(1); // Ваш метод
+        setActive(1); // Устанавливаем активную вкладку
+        targetRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Прокручиваем к .buttons
     };
 
     const settings = {
-        dots: true, // Показывать точки-индикаторы слайдов
-        infinite: true, // Бесконечное зацикливание слайдов
-        speed: 500, // Скорость смены слайдов
-        slidesToShow: 1, // Показывать по одному слайду
-        slidesToScroll: 1, // Прокручивать по одному слайду
-        arrows: false, // Отключить стрелки навигации
-        swipeToSlide: true, // Позволить свайпинг для навигации
-        adaptiveHeight: true // Автоматически подстраивать высоту слайдера под элемент слайда
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        swipeToSlide: true,
+        adaptiveHeight: true
     };
-
 
     return (
         <div className={'page'}>
@@ -102,13 +104,13 @@ const ProductPage = () => {
             }
             <div className={cl.mainBlock}>
                 <div className={cl.breadcrumbs}>
-                    <Breadcrumbs breadcrumbs={breadcrumbs}/>
+                    <Breadcrumbs breadcrumbs={breadcrumbs} />
                 </div>
                 {
                     width > 960 &&
                     <div className={`${cl.filter} ${filterOpen ? cl.open : ''}`}>
                         <div className={cl.buttonFilter} onClick={() => setFilterOpen(!filterOpen)}>
-                            <img src={doubleArrow} alt="arrow"/>
+                            <img src={doubleArrow} alt="arrow" />
                             <span>Категории</span>
                         </div>
                         <div ref={filtercontainer} className={cl.filterMainContainer}>
@@ -118,7 +120,7 @@ const ProductPage = () => {
                                          onClick={() => toggleSection(index)}>
                                         <span>{category.name}</span>
                                         <img className={isOpen[index] ? '' : cl.rotate}
-                                             src={active[0] === category.name ? arrowfilter : arrowdark} alt='arrow'/>
+                                             src={active[0] === category.name ? arrowfilter : arrowdark} alt='arrow' />
                                     </div>
                                     <div className={`${cl.filterContainer} ${isOpen[index] ? cl.open : cl.close}`}>
                                         {category.children.map((item, index) => (
@@ -142,10 +144,10 @@ const ProductPage = () => {
                     {width > 960 ?
                         <div className={cl.productContainer}>
                             <div className={cl.images}>
-                                <img className={cl.mainImage} src={img} alt="product"/>
+                                <img className={cl.mainImage} src={img} alt="product" />
                                 <div className={cl.imagesContainer}>
                                     {testimages.map((img, index) => (
-                                        <img className={cl.microImage} src={img} key={index} alt={'product'}/>
+                                        <img className={cl.microImage} src={img} key={index} alt={'product'} />
                                     ))}
                                 </div>
                             </div>
@@ -155,7 +157,7 @@ const ProductPage = () => {
                                         кислоты, щелочи и т.д.).</p>
                                     <div className={cl.more} onClick={moreDescription}>
                                         <span>Подробнее</span>
-                                        <img src={arrow} alt="arrow"/>
+                                        <img src={arrow} alt="arrow" />
                                     </div>
                                 </div>
                                 <div className={cl.featureBlock}>
@@ -163,13 +165,13 @@ const ProductPage = () => {
                                         <h3>Характеристики</h3>
                                         <div className={cl.more} onClick={moreFeatures}>
                                             <span>Все характеристики</span>
-                                            <img src={arrow} alt="arrow"/>
+                                            <img src={arrow} alt="arrow" />
                                         </div>
                                     </div>
                                     <div className={cl.featureContainer}>
                                         {testFeatures.map((feature, index) => (
                                             <div className={cl.feature} key={index}>
-                                                <div >{feature.name}</div>
+                                                <div>{feature.name}</div>
                                                 <div>{feature.value}</div>
                                             </div>
                                         ))}
@@ -181,10 +183,10 @@ const ProductPage = () => {
                         <div className={cl.productContainer}>
                             {width > 560
                                 ? <div className={cl.images}>
-                                    <img className={cl.mainImage} src={img} alt="product"/>
+                                    <img className={cl.mainImage} src={img} alt="product" />
                                     <div className={cl.imagesContainer}>
                                         {testimages.map((img, index) => (
-                                            <img className={cl.microImage} src={img} key={index} alt={'product'}/>
+                                            <img className={cl.microImage} src={img} key={index} alt={'product'} />
                                         ))}
                                     </div>
                                 </div> :
@@ -192,7 +194,7 @@ const ProductPage = () => {
                                     <Slider {...settings}>
                                         {testimages.map((img, index) => (
                                             <div className={cl.sliderItem} key={index}>
-                                                <img className={cl.mainImage} src={img} alt={'product'}/>
+                                                <img className={cl.mainImage} src={img} alt={'product'} />
                                             </div>
                                         ))}
                                     </Slider>
@@ -204,7 +206,7 @@ const ProductPage = () => {
                                         кислоты, щелочи и т.д.).</p>
                                     <div className={cl.more} onClick={moreDescription}>
                                         <span>Подробнее</span>
-                                        <img src={arrow} alt="arrow"/>
+                                        <img src={arrow} alt="arrow" />
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +215,7 @@ const ProductPage = () => {
                                     <h3>Характеристики</h3>
                                     <div className={cl.more} onClick={moreFeatures}>
                                         <span>Все характеристики</span>
-                                        <img src={arrow} alt="arrow"/>
+                                        <img src={arrow} alt="arrow" />
                                     </div>
                                 </div>
                                 <div className={cl.featureContainer}>
@@ -228,8 +230,9 @@ const ProductPage = () => {
                         </div>
                     }
 
-                    <div className={cl.full} ref={targetRef}>
-                        <div className={cl.buttons}>
+                    <div className={cl.full}>
+                        <div className={cl.scrollHelper} ref={targetRef}/>
+                        <div className={cl.buttons}> {/* Привязываем ref к .buttons */}
                             <button onClick={() => setActive(1)} className={active === 1 ? cl.active : ''}>Отличительные
                                 особенности
                             </button>
@@ -241,13 +244,13 @@ const ProductPage = () => {
                             </button>
                         </div>
                         {
-                            active === 1 && <MoreDescription/>
+                            active === 1 && <MoreDescription />
                         }
                         {
-                            active === 2 && <MoreFeatures/>
+                            active === 2 && <MoreFeatures />
                         }
                         {
-                            active === 3 && <MoreDocumentation/>
+                            active === 3 && <MoreDocumentation />
                         }
                     </div>
                 </div>

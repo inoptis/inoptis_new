@@ -19,6 +19,7 @@ const HeaderMobile = () => {
     };
 
     const clickButton = () => {
+        setCatalogOpen(false)
         navigate('/catalog/subcatalog')
     }
 
