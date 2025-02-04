@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import cl from './MoreInfoBlocks.module.css'
 import {useWindowSize} from "../../../Hooks/useWindowSize";
 const MoreFeatures = ({content}) => {
 
     const [width] = useWindowSize()
 
-    const [features, setFeatures] = useState(content)
-
-    const result =  features.reduce((acc, pair, index, arr) => {
+    const result = content.reduce((acc, pair, index, arr) => {
         if (index % 2 === 0) {
             // Каждая пара "заголовок - описание"
             const descriptions = arr[index + 1]; // Следующий элемент — описание
@@ -18,8 +16,8 @@ const MoreFeatures = ({content}) => {
         return acc;
     }, []);
 
-    if (features.length % 2 !== 0) {
-        setFeatures(features.push(['', ''])); // Добавляем пустой элемент
+    if (content.length % 2 !== 0) {
+        content.push(['', '']); // Добавляем пустой элемент
     }
 
 
@@ -37,15 +35,15 @@ const MoreFeatures = ({content}) => {
                 </div>
             }
             {width <= 560 &&
-            <div className={cl.features}>
-                {features.map((detail, index) => (
-                    detail[0] !== '' && detail[1] !== '' &&
-                    <div key={index} className={cl.detailsItemMobile}>
-                        <span>{detail[0]}</span>
-                        <span>{detail[1]}</span>
-                    </div>
-                ))}
-            </div>
+                <div className={cl.features}>
+                    {content.map((detail, index) => (
+                        detail[0] !== '' && detail[1] !== '' &&
+                        <div key={index} className={cl.detailsItemMobile}>
+                            <span>{detail[0]}</span>
+                            <span>{detail[1]}</span>
+                        </div>
+                    ))}
+                </div>
             }
         </>
     );

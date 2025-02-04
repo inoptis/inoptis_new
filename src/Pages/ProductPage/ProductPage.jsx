@@ -56,7 +56,7 @@ const ProductPage = () => {
 
 
     useEffect(() => {
-        console.log(data)
+        console.log(data.product_features)
     }, [data, setData]);
 
     const baseUrl = "http://alexaksa.beget.tech/";
@@ -276,7 +276,7 @@ const ProductPage = () => {
                                 </button>
                             </div>
                             {
-                                active === 1 && <MoreDescription content={data.product_descriprion} />
+                                active === 1 && <MoreDescription content={data.product_description} />
                             }
                             {
                                 active === 2 && <MoreFeatures content={data.product_features} />
