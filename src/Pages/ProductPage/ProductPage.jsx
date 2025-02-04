@@ -59,6 +59,8 @@ const ProductPage = () => {
         console.log(data)
     }, [data, setData]);
 
+    const baseUrl = "http://alexaksa.beget.tech/";
+
     const toggleSection = (index) => {
         setIsOpen(prevState =>
             prevState.map((state, idx) => idx === index ? !state : state)
@@ -175,7 +177,7 @@ const ProductPage = () => {
                         {width > 960 ?
                             <div className={cl.productContainer}>
                                 <div className={cl.images}>
-                                    <img className={cl.mainImage} src={data.product_image} alt="product" />
+                                    <img className={cl.mainImage} src={baseUrl + data.product_image} alt="product" />
                                     <div className={cl.imagesContainer}>
                                         {testimages.map((img, index) => (
                                             <img className={cl.microImage} src={img} key={index} alt={'product'} />
