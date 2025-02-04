@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import cl from './ProductPage.module.css';
 import IButton from "../../Components/UI/IButton/IButton";
 import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
@@ -17,10 +17,15 @@ import { useWindowSize } from "../../Hooks/useWindowSize";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import axios from "axios";
 
 const ProductPage = () => {
     const targetRef = useRef();
     const [filterOpen, setFilterOpen] = useState(false);
+    const [error, setError] = useState(false)
+    const [errorMore, setErrorMore] = useState(false)
+    const [loading, setLoading] = useState(true)
+    const [data, setData] = useState([]);
     const [isOpen, setIsOpen] = useState(testCategories.map(() => true));
     const filtercontainer = useRef();
     const [width] = useWindowSize();
@@ -31,6 +36,23 @@ const ProductPage = () => {
         { title: 'Каталог', path: '/catalog' },
         { title: 'Ультразвуковые расходомеры жидкости (врезные)', path: '/catalog/subcatalog' },
     ];
+
+    useEffect(() => {
+        // URL API ресурса
+        const apiURL = 'http://alexaksa.beget.tech/productapi.html?id=39';
+        // Запрос через Axios
+        axios.get(apiURL)
+            .then(response => {
+                setData(response.data); // Устанавливаем данные из API в состояние
+                setLoading(false)
+            })
+            .catch(error => {
+                console.log(error);
+                setErrorMore(error.message); // или error.toString()
+                setLoading(false)
+                setError(true);
+            })
+    }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
 
     const toggleSection = (index) => {
         setIsOpen(prevState =>
@@ -135,29 +157,79 @@ const ProductPage = () => {
                         </div>
                     </div>
                 }
-                <div className={cl.productInfo}>
-                    <div className={cl.title}>
-                        <h1>ТЭК-МПУ-Н-…-304Т — магнитный указатель уровня надставной с футеровкой для агрессивных
-                            сред</h1>
-                        <IButton color={'border'} className={cl.button}>Узнать стоимость</IButton>
-                    </div>
-                    {width > 960 ?
-                        <div className={cl.productContainer}>
-                            <div className={cl.images}>
-                                <img className={cl.mainImage} src={img} alt="product" />
-                                <div className={cl.imagesContainer}>
-                                    {testimages.map((img, index) => (
-                                        <img className={cl.microImage} src={img} key={index} alt={'product'} />
-                                    ))}
+                {loading && <div className={'alert'}>Загрузка...</div>}
+                {loading === false && error === false && <>
+                    <div className={cl.productInfo}>
+                        <div className={cl.title}>
+                            <h1>{data.pagetitle}</h1>
+                            <IButton color={'border'} className={cl.button}>Узнать стоимость</IButton>
+                        </div>
+                        {width > 960 ?
+                            <div className={cl.productContainer}>
+                                <div className={cl.images}>
+                                    <img className={cl.mainImage} src={data.product_image} alt="product" />
+                                    <div className={cl.imagesContainer}>
+                                        {testimages.map((img, index) => (
+                                            <img className={cl.microImage} src={img} key={index} alt={'product'} />
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className={cl.info}>
+                                    <div className={cl.description}>
+                                        <p>{data.product_content}</p>
+                                        <div className={cl.more} onClick={moreDescription}>
+                                            <span>Подробнее</span>
+                                            <img src={arrow} alt="arrow" />
+                                        </div>
+                                    </div>
+                                    <div className={cl.featureBlock}>
+                                        <div className={cl.featureTitle}>
+                                            <h3>Характеристики</h3>
+                                            <div className={cl.more} onClick={moreFeatures}>
+                                                <span>Все характеристики</span>
+                                                <img src={arrow} alt="arrow" />
+                                            </div>
+                                        </div>
+                                        <div className={cl.featureContainer}>
+                                            {testFeatures.map((feature, index) => (
+                                                <div className={cl.feature} key={index}>
+                                                    <div>{feature.name}</div>
+                                                    <div>{feature.value}</div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className={cl.info}>
-                                <div className={cl.description}>
-                                    <p>Универсальное решение для промышленных измерений различных видов жидкостей (вода,
-                                        кислоты, щелочи и т.д.).</p>
-                                    <div className={cl.more} onClick={moreDescription}>
-                                        <span>Подробнее</span>
-                                        <img src={arrow} alt="arrow" />
+                            :
+                            <div className={cl.productContainer}>
+                                {width > 560
+                                    ? <div className={cl.images}>
+                                        <img className={cl.mainImage} src={img} alt="product" />
+                                        <div className={cl.imagesContainer}>
+                                            {testimages.map((img, index) => (
+                                                <img className={cl.microImage} src={img} key={index} alt={'product'} />
+                                            ))}
+                                        </div>
+                                    </div> :
+                                    <div className={cl.images}>
+                                        <Slider {...settings}>
+                                            {testimages.map((img, index) => (
+                                                <div className={cl.sliderItem} key={index}>
+                                                    <img className={cl.mainImage} src={img} alt={'product'} />
+                                                </div>
+                                            ))}
+                                        </Slider>
+                                    </div>
+                                }
+                                <div className={cl.info}>
+                                    <div className={cl.description}>
+                                        <p>Универсальное решение для промышленных измерений различных видов жидкостей (вода,
+                                            кислоты, щелочи и т.д.).</p>
+                                        <div className={cl.more} onClick={moreDescription}>
+                                            <span>Подробнее</span>
+                                            <img src={arrow} alt="arrow" />
+                                        </div>
                                     </div>
                                 </div>
                                 <div className={cl.featureBlock}>
@@ -171,89 +243,45 @@ const ProductPage = () => {
                                     <div className={cl.featureContainer}>
                                         {testFeatures.map((feature, index) => (
                                             <div className={cl.feature} key={index}>
-                                                <div>{feature.name}</div>
+                                                <div className={cl.name}>{feature.name}</div>
                                                 <div>{feature.value}</div>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        :
-                        <div className={cl.productContainer}>
-                            {width > 560
-                                ? <div className={cl.images}>
-                                    <img className={cl.mainImage} src={img} alt="product" />
-                                    <div className={cl.imagesContainer}>
-                                        {testimages.map((img, index) => (
-                                            <img className={cl.microImage} src={img} key={index} alt={'product'} />
-                                        ))}
-                                    </div>
-                                </div> :
-                                <div className={cl.images}>
-                                    <Slider {...settings}>
-                                        {testimages.map((img, index) => (
-                                            <div className={cl.sliderItem} key={index}>
-                                                <img className={cl.mainImage} src={img} alt={'product'} />
-                                            </div>
-                                        ))}
-                                    </Slider>
-                                </div>
-                            }
-                            <div className={cl.info}>
-                                <div className={cl.description}>
-                                    <p>Универсальное решение для промышленных измерений различных видов жидкостей (вода,
-                                        кислоты, щелочи и т.д.).</p>
-                                    <div className={cl.more} onClick={moreDescription}>
-                                        <span>Подробнее</span>
-                                        <img src={arrow} alt="arrow" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={cl.featureBlock}>
-                                <div className={cl.featureTitle}>
-                                    <h3>Характеристики</h3>
-                                    <div className={cl.more} onClick={moreFeatures}>
-                                        <span>Все характеристики</span>
-                                        <img src={arrow} alt="arrow" />
-                                    </div>
-                                </div>
-                                <div className={cl.featureContainer}>
-                                    {testFeatures.map((feature, index) => (
-                                        <div className={cl.feature} key={index}>
-                                            <div className={cl.name}>{feature.name}</div>
-                                            <div>{feature.value}</div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    }
+                        }
 
-                    <div className={cl.full}>
-                        <div className={cl.scrollHelper} ref={targetRef}/>
-                        <div className={cl.buttons}> {/* Привязываем ref к .buttons */}
-                            <button onClick={() => setActive(1)} className={active === 1 ? cl.active : ''}>Отличительные
-                                особенности
-                            </button>
-                            <button onClick={() => setActive(2)}
-                                    className={active === 2 ? cl.active : ''}>Характеристики
-                            </button>
-                            <button onClick={() => setActive(3)}
-                                    className={active === 3 ? cl.active : ''}>Документация
-                            </button>
+                        <div className={cl.full}>
+                            <div className={cl.scrollHelper} ref={targetRef}/>
+                            <div className={cl.buttons}> {/* Привязываем ref к .buttons */}
+                                <button onClick={() => setActive(1)} className={active === 1 ? cl.active : ''}>Отличительные
+                                    особенности
+                                </button>
+                                <button onClick={() => setActive(2)}
+                                        className={active === 2 ? cl.active : ''}>Характеристики
+                                </button>
+                                <button onClick={() => setActive(3)}
+                                        className={active === 3 ? cl.active : ''}>Документация
+                                </button>
+                            </div>
+                            {
+                                active === 1 && <MoreDescription content={data.product_descriprion} />
+                            }
+                            {
+                                active === 2 && <MoreFeatures content={data.product_features} />
+                            }
+                            {
+                                active === 3 && <MoreDocumentation />
+                            }
                         </div>
-                        {
-                            active === 1 && <MoreDescription />
-                        }
-                        {
-                            active === 2 && <MoreFeatures />
-                        }
-                        {
-                            active === 3 && <MoreDocumentation />
-                        }
                     </div>
-                </div>
+                </>}
+                {error && <>
+                    <div className={'alert'}>Ошибка: {errorMore}</div>
+                    <div className={cl.nutipa}/>
+                </>
+                }
             </div>
         </div>
     );

@@ -33,20 +33,14 @@ const Catalog = () => {
                 setLoading(false)
                 setError(true);
             })
-
-        console.log('test')
     }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
-
-    useEffect(() => {
-        console.log(data)
-    }, [data, setData]);
 
     return (
         <div className={'page'}>
             <div className={cl.mainBlock}>
                 <Breadcrumbs breadcrumbs={breadcrumbs}/>
                 <h1>Каталог</h1>
-                {loading ? <div className={cl.alert}>Загрузка...</div> : <>
+                {loading ? <div className={'alert'}>Загрузка...</div> : <>
                     {width > 560 &&
                         <div className={cl.container}>
                             {data.map((category, index) => (
@@ -76,8 +70,7 @@ const Catalog = () => {
                         </div>
                     }
                 </>}
-                {error && <div className={cl.alert}>Ошибка: {errorMore}</div>}
-
+                {error && <div className={'alert'}>Ошибка: {errorMore}</div>}
             </div>
             <CallToAction/>
             <ContactBlock/>

@@ -182,3 +182,11 @@ body {
     opacity: 0;
     transition: opacity 300ms ease-in-out;
 }
+
+.alert{
+    font:var(--text-circe-bold-24);
+    background-color: var(--color-700);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+}
