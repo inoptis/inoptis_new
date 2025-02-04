@@ -71,29 +71,6 @@ const ProductPage = () => {
 
     const testimages = [img, img, img, img];
 
-    const testFeatures = [
-        {
-            name: 'Диапазон значений Ду трубопровода',
-            value: 'DN4...DN2000'
-        },
-        {
-            name: 'Направление потока',
-            value: 'прямое, реверсивное'
-        },
-        {
-            name: 't° контролируемой жидкости',
-            value: '450 кг/м³'
-        },
-        {
-            name: 'Давление в трубопроводе',
-            value: 'от 1 до 4 МПа (до 32 МПа)'
-        },
-        {
-            name: 't° окружающей среды',
-            value: 'от -40 до 60 °С (до -70 °С)'
-        },
-    ];
-
     const moreFeatures = () => {
         setActive(2); // Устанавливаем активную вкладку
         targetRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Прокручиваем к .buttons
@@ -201,7 +178,7 @@ const ProductPage = () => {
                                             </div>
                                         </div>
                                         <div className={cl.featureContainer}>
-                                            {testFeatures.map((feature, index) => (
+                                            {data.product_features.slice(0, 5).map((feature, index) => (
                                                 <div className={cl.feature} key={index}>
                                                     <div>{feature.name}</div>
                                                     <div>{feature.value}</div>
@@ -251,7 +228,7 @@ const ProductPage = () => {
                                         </div>
                                     </div>
                                     <div className={cl.featureContainer}>
-                                        {testFeatures.map((feature, index) => (
+                                        {data.product_features.slice(0, 5).map((feature, index) => (
                                             <div className={cl.feature} key={index}>
                                                 <div className={cl.name}>{feature.name}</div>
                                                 <div>{feature.value}</div>
