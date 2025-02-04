@@ -54,6 +54,11 @@ const ProductPage = () => {
             })
     }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
 
+
+    useEffect(() => {
+        console.log(data)
+    }, [data, setData]);
+
     const toggleSection = (index) => {
         setIsOpen(prevState =>
             prevState.map((state, idx) => idx === index ? !state : state)
@@ -157,7 +162,10 @@ const ProductPage = () => {
                         </div>
                     </div>
                 }
-                {loading && <div className={'alert'}>Загрузка...</div>}
+                {loading && <>
+                    <div className={'alert'}>Загрузка...</div>
+                    <div className={cl.nutipa}/>
+                </>}
                 {loading === false && error === false && <>
                     <div className={cl.productInfo}>
                         <div className={cl.title}>
