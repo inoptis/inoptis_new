@@ -55,7 +55,7 @@ const FormCall = () => {
 
         if (valid) {
             try {
-                const response = await axios.post('http://alexaksa.beget.tech/send-form-call', formData, {
+                const response = await axios.post('http://alexaksa.beget.tech/send-form-call.html', formData, {
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 });
 
