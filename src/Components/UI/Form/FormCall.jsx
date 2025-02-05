@@ -18,6 +18,7 @@ const FormCall = () => {
     });
 
     const [message, setMessage] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false); // State to manage submission status
 
     const validatePhone = (phone) => {
         const re = /^[0-9]{10,15}$/;
@@ -54,6 +55,7 @@ const FormCall = () => {
         }
 
         if (valid) {
+            setIsSubmitting(true); // Set submitting state to true
             try {
                 const response = await axios.post('http://alexaksa.beget.tech/send-form-call.html', formData, {
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -67,10 +69,11 @@ const FormCall = () => {
                 }
             } catch (error) {
                 setMessage({ type: "error", text: "Ошибка при отправке формы" });
+            } finally {
+                setIsSubmitting(false); // Reset submitting state
             }
         }
     };
-
 
     return (
         <form noValidate className={cl.formContent} onSubmit={handleSubmit}>
@@ -104,14 +107,14 @@ const FormCall = () => {
                     required
                 />
             </div>
+            <IButton type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Отправка..." : "Отправить заявку"}
+            </IButton>
             {message && (
-                <div className={message.type === "success" ? cl.successMessage : cl.errorMessage}>
+                <div className={cl.message}>
                     {message.text}
                 </div>
             )}
-            <IButton type="submit">
-                Отправить заявку
-            </IButton>
         </form>
     );
 };
