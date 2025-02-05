@@ -4,7 +4,6 @@ import IButton from "../UI/IButton/IButton";
 import humburger from "../../Assets/Pictures/Humburger.svg";
 import logomobile from "../../Assets/Pictures/logomobile.svg";
 import {Link, useNavigate} from "react-router-dom";
-import {testCategories} from "../../utils/TestCategories";
 import axios from "axios";
 import Modal from "../UI/Modal/Modal";
 import Form from "../UI/Form/Form";

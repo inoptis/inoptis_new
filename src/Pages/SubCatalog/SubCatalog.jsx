@@ -3,7 +3,6 @@ import cl from './SubCatalog.module.css'
 import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
 import CallToAction from "../../Components/Blocks/CallToAction/CallToAction";
 import ProductCard from "../../Components/ProductCard/ProductCard";
-import {testCategories} from "../../utils/TestCategories";
 import arrow from '../../Assets/Pictures/arrow-filter.svg'
 import arrowdark from '../../Assets/Pictures/arrow-filter-dark.svg'
 import axios from "axios";
@@ -13,7 +12,7 @@ const SubCatalog = () => {
     const [searchParams] = useSearchParams();
     const param = searchParams.get('id');
     const [active, setActive] = useState(null)
-    const [isOpen, setIsOpen] = useState(testCategories.map(() => false));
+    const [isOpen, setIsOpen] = useState();
     const toggleSection = (index) => {
         setIsOpen(prevState =>
             prevState.map((state, idx) => idx === index ? !state : state)
@@ -44,6 +43,7 @@ const SubCatalog = () => {
             .then(response => {
                 setDataFilter(response.data);
                 setLoading(false);
+                setIsOpen(response.data.map(() => false))
 
                 if (param === null) {
                     setActive([response.data[0], response.data[0].children[0]]);
