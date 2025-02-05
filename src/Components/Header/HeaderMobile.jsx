@@ -34,6 +34,7 @@ const HeaderMobile = () => {
 
     const clickButton = (id) => {
         setCatalogOpen(false)
+        setMenuOpen(false)
         navigate(`/catalog/subcatalog?id=${id}`)
     }
 
