@@ -76,7 +76,7 @@ const SubCatalog = () => {
                     <div className={'alert'}>Загрузка...</div>
                     <div className={cl.nutipa}/>
                 </>}
-                {!loading && !errorFilter &&
+                {!loading && !errorFilter && active !== null &&
                     <>
                         <Breadcrumbs breadcrumbs={breadcrumbs}/>
                         <h1>Ультразвуковые расходомеры жидкости (врезные)</h1>
