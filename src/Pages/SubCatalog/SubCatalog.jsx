@@ -79,8 +79,8 @@ const SubCatalog = () => {
                 {!loading && !errorFilter && active !== null &&
                     <>
                         <Breadcrumbs breadcrumbs={breadcrumbs}/>
-                        <h1>Ультразвуковые расходомеры жидкости (врезные)</h1>
-                        <p>Магнитные указатели уровня жидкости основаны на принципе перемещения магнитного индикатора внутри трубки и обеспечивают надежное и ясное отображение уровня жидкости в резервуарах.</p>
+                        <h1>{active[1].pagetitle}</h1>
+                        <p>{active[1].content}</p>
                         <div className={cl.catalogContainer}>
                             <div className={cl.filter}>
                                 {dataFilter.map((category, index) => (

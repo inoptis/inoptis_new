@@ -10,7 +10,6 @@ import MoreDescription from "../../Components/Blocks/MoreInfoBlocks/MoreDescript
 import MoreFeatures from "../../Components/Blocks/MoreInfoBlocks/MoreFeatures";
 import MoreDocumentation from "../../Components/Blocks/MoreInfoBlocks/MoreDocumentation";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { testCategories } from "../../utils/TestCategories";
 import arrowdark from "../../Assets/Pictures/arrow-filter-dark.svg";
 import { useScrollbar } from "../../Hooks/useScrollbar";
 import { useWindowSize } from "../../Hooks/useWindowSize";
@@ -18,30 +17,36 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
+import {useParams} from "react-router-dom";
 
 const ProductPage = () => {
     const targetRef = useRef();
+    const params = useParams();
     const [filterOpen, setFilterOpen] = useState(false);
     const [error, setError] = useState(false)
     const [errorMore, setErrorMore] = useState(false)
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState([]);
-    const [isOpen, setIsOpen] = useState(testCategories.map(() => true));
+    const [isOpen, setIsOpen] = useState(null);
     const filtercontainer = useRef();
     const [width] = useWindowSize();
+
+    const [dataFilter, setDataFilter] = useState()
+    const [errorFilter, setErrorFilter] = useState()
+
     useScrollbar(filtercontainer);
 
     const breadcrumbs = [
         { title: 'Главная', path: '/' },
         { title: 'Каталог', path: '/catalog' },
-        { title: 'Ультразвуковые расходомеры жидкости (врезные)', path: '/catalog/subcatalog' },
+        { title: `${data.parent_title}`, path: '/catalog/subcatalog' },
     ];
 
     const baseUrl = "http://alexaksa.beget.tech/";
 
     useEffect(() => {
         // URL API ресурса
-        const apiURL = 'http://alexaksa.beget.tech/productapi.html?id=39';
+        const apiURL = `http://alexaksa.beget.tech/productapi.html?id=${params.id}`;
         // Запрос через Axios
         axios.get(apiURL)
             .then(response => {
@@ -53,6 +58,23 @@ const ProductPage = () => {
                 setErrorMore(error.message); // или error.toString()
                 setLoading(false)
                 setError(true);
+            })
+    }, []);
+
+    useEffect(() => {
+        // URL API ресурса
+        const apiURL = 'http://alexaksa.beget.tech/api.html';
+        // Запрос через Axios
+        axios.get(apiURL)
+            .then(response => {
+                setDataFilter(response.data); // Устанавливаем данные из API в состояние
+                setIsOpen(response.data.map(() => true))
+                setLoading(false)
+            })
+            .catch(error => {
+                console.log(error);
+                setLoading(false)
+                setErrorFilter(true);
             })
     }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
 
@@ -113,34 +135,40 @@ const ProductPage = () => {
                     <Breadcrumbs breadcrumbs={breadcrumbs} />
                 </div>
                 {
-                    width > 960 &&
-                    <div className={`${cl.filter} ${filterOpen ? cl.open : ''}`}>
-                        <div className={cl.buttonFilter} onClick={() => setFilterOpen(!filterOpen)}>
-                            <img src={doubleArrow} alt="arrow" />
-                            <span>Категории</span>
-                        </div>
-                        <div ref={filtercontainer} className={cl.filterMainContainer}>
-                            {testCategories.map((category, index) => (
-                                <div className={cl.filterItem} key={index}>
-                                    <div className={`${cl.mainItem} ${active[0] === category.name ? cl.active : ''}`}
-                                         onClick={() => toggleSection(index)}>
-                                        <span>{category.pagetitle}</span>
-                                        <img className={isOpen[index] ? '' : cl.rotate}
-                                             src={active[0] === category.name ? arrowfilter : arrowdark} alt='arrow' />
-                                    </div>
-                                    <div className={`${cl.filterContainer} ${isOpen[index] ? cl.open : cl.close}`}>
-                                        {category.children.map((item, index) => (
-                                            <div className={`${cl.item} ${active[1] === item ? cl.active : ''}`}
-                                                 key={index}>
-                                                {item}
-                                            </div>
-                                        ))}
-                                    </div>
+                    !errorFilter && !loading &&
+                    <>
+                        {
+                            width > 960 &&
+                            <div className={`${cl.filter} ${filterOpen ? cl.open : ''}`}>
+                                <div className={cl.buttonFilter} onClick={() => setFilterOpen(!filterOpen)}>
+                                    <img src={doubleArrow} alt="arrow" />
+                                    <span>Категории</span>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
+                                <div ref={filtercontainer} className={cl.filterMainContainer}>
+                                    {dataFilter.map((category, index) => (
+                                        <div className={cl.filterItem} key={index}>
+                                            <div className={`${cl.mainItem} ${active[0] === category.name ? cl.active : ''}`}
+                                                 onClick={() => toggleSection(index)}>
+                                                <span>{category.pagetitle}</span>
+                                                <img className={isOpen[index] ? '' : cl.rotate}
+                                                     src={arrowdark} alt='arrow' />
+                                            </div>
+                                            <div className={`${cl.filterContainer} ${isOpen[index] ? cl.open : cl.close}`}>
+                                                {category.children.map((item, index) => (
+                                                    <div className={`${cl.item} ${active[1] === item ? cl.active : ''}`}
+                                                         key={index}>
+                                                        {item.pagetitle}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        }
+                    </>
                 }
+
                 {loading && <>
                     <div className={'alert'}>Загрузка...</div>
                     <div className={cl.nutipa}/>
@@ -180,8 +208,8 @@ const ProductPage = () => {
                                         <div className={cl.featureContainer}>
                                             {data.product_features.slice(0, 5).map((feature, index) => (
                                                 <div className={cl.feature} key={index}>
-                                                    <div>{feature.name}</div>
-                                                    <div>{feature.value}</div>
+                                                    <div>{feature[0]}</div>
+                                                    <div>{feature[1]}</div>
                                                 </div>
                                             ))}
                                         </div>

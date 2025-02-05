@@ -14,5 +14,5 @@ export const InfoRoutes = [
     { path: '/contacts', element: <Contacts />},
     { path: '/catalog', element: <Catalog />},
     { path: '/catalog/subcatalog', element: <SubCatalog />},
-    { path: '/catalog/subcatalog/product', element: <ProductPage />},
+    { path: '/catalog/subcatalog/:id', element: <ProductPage />},
 ]
