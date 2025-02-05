@@ -189,4 +189,9 @@ body {
     border-radius: 20px;
     padding: 40px;
     display: flex;
+    margin-bottom: 20px;
+}
+
+.nutipa{
+    height: 40vh;
 }

@@ -37,6 +37,8 @@ const ProductPage = () => {
         { title: 'Ультразвуковые расходомеры жидкости (врезные)', path: '/catalog/subcatalog' },
     ];
 
+    const baseUrl = "http://alexaksa.beget.tech/";
+
     useEffect(() => {
         // URL API ресурса
         const apiURL = 'http://alexaksa.beget.tech/productapi.html?id=39';
@@ -58,8 +60,6 @@ const ProductPage = () => {
     useEffect(() => {
         console.log(data.product_features)
     }, [data, setData]);
-
-    const baseUrl = "http://alexaksa.beget.tech/";
 
     const toggleSection = (index) => {
         setIsOpen(prevState =>
@@ -103,7 +103,7 @@ const ProductPage = () => {
                             timeout={300}
                             unmountOnExit
                         >
-                            <div className={`${cl.background}`} />
+                            <div className={`${cl.background}`} onClick={!setFilterOpen} />
                         </CSSTransition>
                     )}
                 </TransitionGroup>
@@ -124,7 +124,7 @@ const ProductPage = () => {
                                 <div className={cl.filterItem} key={index}>
                                     <div className={`${cl.mainItem} ${active[0] === category.name ? cl.active : ''}`}
                                          onClick={() => toggleSection(index)}>
-                                        <span>{category.name}</span>
+                                        <span>{category.pagetitle}</span>
                                         <img className={isOpen[index] ? '' : cl.rotate}
                                              src={active[0] === category.name ? arrowfilter : arrowdark} alt='arrow' />
                                     </div>
@@ -264,9 +264,10 @@ const ProductPage = () => {
                         </div>
                     </div>
                 </>}
-                {error && <>
+                {
+                    error && <>
                     <div className={'alert'}>Ошибка: {errorMore}</div>
-                    <div className={cl.nutipa}/>
+                    <div className={'nutipa'}/>
                 </>
                 }
             </div>
