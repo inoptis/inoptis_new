@@ -8,7 +8,6 @@ import arrow from '../../Assets/Pictures/arrow-filter.svg'
 import arrowdark from '../../Assets/Pictures/arrow-filter-dark.svg'
 import axios from "axios";
 import {useSearchParams} from "react-router-dom";
-import catalog from "../Catalog/Catalog";
 const SubCatalog = () => {
 
     const [searchParams] = useSearchParams();
@@ -65,7 +64,7 @@ const SubCatalog = () => {
                 setLoading(false)
                 setErrorFilter(true);
             })
-    }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
+    }, [searchParams]); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
 
     useEffect(() => {
         if (active !== null) {
