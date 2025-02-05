@@ -11,6 +11,7 @@ import {useSearchParams} from "react-router-dom";
 const SubCatalog = () => {
 
     const [searchParams] = useSearchParams();
+    const param = searchParams.get('id');
     const [active, setActive] = useState(null)
     const [isOpen, setIsOpen] = useState(testCategories.map(() => false));
     const toggleSection = (index) => {
@@ -44,13 +45,13 @@ const SubCatalog = () => {
             .then(response => {
                 setDataFilter(response.data); // Устанавливаем данные из API в состояние
                 setLoading(false)
-                if (!searchParams.get("id")) {
+                if (param === undefined) {
                     setActive([response.data[0], response.data[0].children[0]]);
                 }
                 else {
                     response.data.forEach((category) => {
                         category.children.forEach((subcategory) => {
-                            if (subcategory.id === Number(searchParams.get("id"))) {
+                            if (subcategory.id === (param)) {
                                 setActive([category, subcategory]);
                             }
                         });
