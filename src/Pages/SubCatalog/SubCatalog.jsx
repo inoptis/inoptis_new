@@ -41,7 +41,7 @@ const SubCatalog = () => {
             .then(response => {
                 setDataFilter(response.data); // Устанавливаем данные из API в состояние
                 setLoading(false)
-                setActive(response.data[0], response.data[0].children[0])
+                setActive([response.data[0], response.data[0].children[0]])
             })
             .catch(error => {
                 console.log(error);
