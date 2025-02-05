@@ -23,11 +23,15 @@
     }
 }
 .img{
-    width: 200px;
-    height: 200px;
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 200px;
+    max-height: 200px;
     @media (max-width: 960px) {
-        width: 111px;
-        height: 111px;
+        min-width: 111px;
+        min-height: 111px;
+        max-width: 111px;
+        max-height: 111px;
     }
 
 }
