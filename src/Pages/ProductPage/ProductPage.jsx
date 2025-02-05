@@ -30,7 +30,7 @@ const ProductPage = () => {
     const filtercontainer = useRef();
     const [width] = useWindowSize();
 
-    const [dataFilter, setDataFilter] = useState()
+    const [dataFilter, setDataFilter] = useState(null)
     const [errorFilter, setErrorFilter] = useState()
 
     useScrollbar(filtercontainer);
@@ -134,7 +134,7 @@ const ProductPage = () => {
                     <Breadcrumbs breadcrumbs={breadcrumbs} />
                 </div>
                 {
-                    !errorFilter && !loading &&
+                    !errorFilter && !loading && dataFilter !== null &&
                     <>
                         {
                             width > 960 &&
