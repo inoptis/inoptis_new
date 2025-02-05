@@ -281,7 +281,7 @@ const ProductPage = () => {
                                 active === 2 && <MoreFeatures content={data.product_features} />
                             }
                             {
-                                active === 3 && <MoreDocumentation />
+                                active === 3 && <MoreDocumentation content={data.product_file} />
                             }
                         </div>
                     </div>

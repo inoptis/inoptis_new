@@ -7,7 +7,11 @@ import {testCategories} from "../../utils/TestCategories";
 import arrow from '../../Assets/Pictures/arrow-filter.svg'
 import arrowdark from '../../Assets/Pictures/arrow-filter-dark.svg'
 import axios from "axios";
+import {useSearchParams} from "react-router-dom";
+import catalog from "../Catalog/Catalog";
 const SubCatalog = () => {
+
+    const [searchParams] = useSearchParams();
     const [active, setActive] = useState(null)
     const [isOpen, setIsOpen] = useState(testCategories.map(() => false));
     const toggleSection = (index) => {
@@ -41,7 +45,19 @@ const SubCatalog = () => {
             .then(response => {
                 setDataFilter(response.data); // Устанавливаем данные из API в состояние
                 setLoading(false)
-                setActive([response.data[0], response.data[0].children[0]])
+                if (!searchParams.get("id")) {
+                    setActive([response.data[0], response.data[0].children[0]]);
+                }
+                else {
+                    response.data.forEach((category) => {
+                        category.children.forEach((subcategory) => {
+                            if (subcategory.id === Number(searchParams.get("id"))) {
+                                setActive([category, subcategory]);
+                            }
+                        });
+                    });
+                }
+
             })
             .catch(error => {
                 console.log(error);

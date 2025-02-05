@@ -45,10 +45,10 @@ const Catalog = () => {
                         <div className={cl.container}>
                             {data.map((category, index) => (
                                 <div className={cl.item} key={index}>
-                                    <h4 onClick={()=>navigate('/catalog/subcatalog')}>{category.pagetitle}</h4>
+                                    <h4 onClick={()=>navigate(`/catalog/subcatalog?id=${category[0].id}`)}>{category.pagetitle}</h4>
                                     <div className={cl.containerChildren}>
                                         {category.children.map((name, index) => (
-                                            <span onClick={()=>navigate('/catalog/subcatalog')} className={cl.children} key={index}>{name.pagetitle}</span>
+                                            <span onClick={()=>navigate(`/catalog/subcatalog?id=${name.id}`)} className={cl.children} key={index}>{name.pagetitle}</span>
                                         ))}
                                     </div>
                                 </div>
@@ -59,10 +59,10 @@ const Catalog = () => {
                         <div className={cl.container}>
                             {data.map((category, index) => (
                                 <div  className={cl.item} key={index}>
-                                    <h4 onClick={()=>navigate('/catalog/subcatalog')}>{category.pagetitle}</h4>
+                                    <h4 onClick={()=>navigate(`/catalog/subcatalog?id=${category[0].id}`)}>{category.pagetitle}</h4>
                                     <div className={cl.containerChildren}>
                                         {category.children.map((name, index) => (
-                                            <span onClick={()=>navigate('/catalog/subcatalog')} className={cl.children} key={index}>{name.pagetitle}</span>
+                                            <span onClick={()=>navigate(`/catalog/subcatalog?id=${name.id}`)} className={cl.children} key={index}>{name.pagetitle}</span>
                                         ))}
                                     </div>
                                 </div>
