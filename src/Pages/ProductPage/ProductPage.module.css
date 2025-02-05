@@ -135,13 +135,6 @@
             padding: 12px 20px;
         }
     }
-    .mainItem.active{
-        background-color: var(--color-900);
-        span{
-            color: var(--color-200);
-        }
-    }
-
     .filterContainer{
         display: flex;
         flex-direction: column;

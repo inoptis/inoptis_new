@@ -83,7 +83,7 @@ const FormRequest = () => {
 
         try {
             const response = await axios.post(
-                "http://http://alexaksa.beget.tech/send-form-request.html",
+                "http://alexaksa.beget.tech/send-form-request.html",
                 formDataToSend,
                 { headers: { "Content-Type": "multipart/form-data" } }
             );

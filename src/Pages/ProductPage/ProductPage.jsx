@@ -159,13 +159,12 @@ const ProductPage = () => {
                                     <div ref={filtercontainer} className={cl.filterMainContainer}>
                                         {dataFilter.map((category, index) => (
                                             <div className={cl.filterItem} key={index}>
-                                                <div className={`${cl.mainItem} ${active[0] === category.name ? cl.active : ''}`}
+                                                <div className={`${cl.mainItem}`}
                                                      onClick={() => toggleSection(index)}>
                                                     <span>{category.pagetitle}</span>
                                                     <img className={isOpen[index] ? '' : cl.rotate}
                                                          src={arrowdark} alt='arrow' />
                                                 </div>
-
                                                 <div className={`${cl.filterContainer} ${isOpen[index] ? cl.open : cl.close}`}>
                                                     {category.children.map((item, index) => (
                                                         <div className={`${cl.item}`} key={index} onClick={() => navigate(`/catalog/subcatalog?id=${item.id}`)}>

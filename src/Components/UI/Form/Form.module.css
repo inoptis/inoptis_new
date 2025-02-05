@@ -34,6 +34,10 @@
         font:var(--text-circe-bold-16);
     }
 }
+.message{
+    color: var(--color-1000);
+    font:var(--text-circe-regular-16);
+}
 .fields{
     display: flex;
     flex-direction: column;
