@@ -16,9 +16,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 const ProductPage = () => {
+    const navigate = useNavigate()
     const targetRef = useRef();
     const params = useParams();
     const [filterOpen, setFilterOpen] = useState(false);
@@ -119,7 +120,7 @@ const ProductPage = () => {
                             timeout={300}
                             unmountOnExit
                         >
-                            <div className={`${cl.background}`} onClick={setFilterOpen(false)} />
+                            <div className={`${cl.background}`} onClick={() => setFilterOpen(false)} />
                         </CSSTransition>
                     )}
                 </TransitionGroup>
@@ -149,8 +150,7 @@ const ProductPage = () => {
                                             </div>
                                             <div className={`${cl.filterContainer} ${isOpen[index] ? cl.open : cl.close}`}>
                                                 {category.children.map((item, index) => (
-                                                    <div className={`${cl.item} ${active[1] === item ? cl.active : ''}`}
-                                                         key={index}>
+                                                    <div className={`${cl.item}`} key={index} onClick={() => navigate(`/catalog/subcatalog?id=${item.id}`)}>
                                                         {item.pagetitle}
                                                     </div>
                                                 ))}
