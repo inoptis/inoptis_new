@@ -8,7 +8,7 @@ import arrow from '../../Assets/Pictures/arrow-filter.svg'
 import arrowdark from '../../Assets/Pictures/arrow-filter-dark.svg'
 import axios from "axios";
 const SubCatalog = () => {
-    const [active, setActive] = useState(['', ''])
+    const [active, setActive] = useState(null)
     const [isOpen, setIsOpen] = useState(testCategories.map(() => false));
     const toggleSection = (index) => {
         setIsOpen(prevState =>
@@ -52,21 +52,22 @@ const SubCatalog = () => {
     }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
 
     useEffect(() => {
-        // URL API ресурса
-        const apiURL = `http://alexaksa.beget.tech/categoryproductsapi.html?category_id=${active[1].id}`;
-        // Запрос через Axios
-        axios.get(apiURL)
-            .then(response => {
-                setDataProducts(response.data); // Устанавливаем данные из API в состояние
-                setLoading(false)
-            })
-            .catch(error => {
-                console.log(error);
-                setErrorMoreProducts(error.message); // или error.toString()
-                setLoading(false)
-                setErrorProducts(true);
-            })
-    }, [active, setActive]);
+        if (active !== null) {
+            const apiURL = `http://alexaksa.beget.tech/categoryproductsapi.html?category_id=${active[1].id}`;
+            // Запрос через Axios
+            axios.get(apiURL)
+                .then(response => {
+                    setDataProducts(response.data); // Устанавливаем данные из API в состояние
+                    setLoading(false)
+                })
+                .catch(error => {
+                    console.log(error);
+                    setErrorMoreProducts(error.message); // или error.toString()
+                    setLoading(false)
+                    setErrorProducts(true);
+                })
+        }
+    }, [active]);
 
     return (
         <div className='page'>
