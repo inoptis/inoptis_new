@@ -17,6 +17,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom";
+import Modal from "../../Components/UI/Modal/Modal";
+import Form from "../../Components/UI/Form/Form";
 
 const ProductPage = () => {
     const navigate = useNavigate()
@@ -30,7 +32,6 @@ const ProductPage = () => {
     const [isOpen, setIsOpen] = useState(null);
     const filtercontainer = useRef();
     const [width] = useWindowSize();
-
     const [dataFilter, setDataFilter] = useState(null)
     const [errorFilter, setErrorFilter] = useState()
 
@@ -43,6 +44,16 @@ const ProductPage = () => {
     ];
 
     const baseUrl = "http://alexaksa.beget.tech/";
+
+    const [modal, setModal] = useState(false)
+
+    const closeModal = () => {
+        setModal(false)
+    }
+
+    const openModal = () => {
+        setModal(true)
+    }
 
     useEffect(() => {
         // URL API ресурса
@@ -110,85 +121,142 @@ const ProductPage = () => {
     };
 
     return (
-        <div className={'page'}>
-            {width > 960 &&
-                <TransitionGroup>
-                    {filterOpen && (
-                        <CSSTransition
-                            key="background"
-                            classNames="fadePages"
-                            timeout={300}
-                            unmountOnExit
-                        >
-                            <div className={`${cl.background}`} onClick={() => setFilterOpen(false)} />
-                        </CSSTransition>
-                    )}
-                </TransitionGroup>
+        <>
+            {modal &&
+                <Modal close={closeModal}>
+                    <Form/>
+                </Modal>
             }
-            <div className={cl.mainBlock}>
-                <div className={cl.breadcrumbs}>
-                    <Breadcrumbs breadcrumbs={breadcrumbs} />
-                </div>
-                {
-                    !errorFilter && !loading && dataFilter !== null &&
-                    <>
-                        {
-                            width > 960 &&
-                            <div className={`${cl.filter} ${filterOpen ? cl.open : ''}`}>
-                                <div className={cl.buttonFilter} onClick={() => setFilterOpen(!filterOpen)}>
-                                    <img src={doubleArrow} alt="arrow" />
-                                    <span>Категории</span>
-                                </div>
-                                <div ref={filtercontainer} className={cl.filterMainContainer}>
-                                    {dataFilter.map((category, index) => (
-                                        <div className={cl.filterItem} key={index}>
-                                            <div className={`${cl.mainItem} ${active[0] === category.name ? cl.active : ''}`}
-                                                 onClick={() => toggleSection(index)}>
-                                                <span>{category.pagetitle}</span>
-                                                <img className={isOpen[index] ? '' : cl.rotate}
-                                                     src={arrowdark} alt='arrow' />
+            <div className={'page'}>
+                {width > 960 &&
+                    <TransitionGroup>
+                        {filterOpen && (
+                            <CSSTransition
+                                key="background"
+                                classNames="fadePages"
+                                timeout={300}
+                                unmountOnExit
+                            >
+                                <div className={`${cl.background}`} onClick={() => setFilterOpen(false)} />
+                            </CSSTransition>
+                        )}
+                    </TransitionGroup>
+                }
+                <div className={cl.mainBlock}>
+                    <div className={cl.breadcrumbs}>
+                        <Breadcrumbs breadcrumbs={breadcrumbs} />
+                    </div>
+                    {
+                        !errorFilter && !loading && dataFilter !== null &&
+                        <>
+                            {
+                                width > 960 &&
+                                <div className={`${cl.filter} ${filterOpen ? cl.open : ''}`}>
+                                    <div className={cl.buttonFilter} onClick={() => setFilterOpen(!filterOpen)}>
+                                        <img src={doubleArrow} alt="arrow" />
+                                        <span>Категории</span>
+                                    </div>
+                                    <div ref={filtercontainer} className={cl.filterMainContainer}>
+                                        {dataFilter.map((category, index) => (
+                                            <div className={cl.filterItem} key={index}>
+                                                <div className={`${cl.mainItem} ${active[0] === category.name ? cl.active : ''}`}
+                                                     onClick={() => toggleSection(index)}>
+                                                    <span>{category.pagetitle}</span>
+                                                    <img className={isOpen[index] ? '' : cl.rotate}
+                                                         src={arrowdark} alt='arrow' />
+                                                </div>
+
+                                                <div className={`${cl.filterContainer} ${isOpen[index] ? cl.open : cl.close}`}>
+                                                    {category.children.map((item, index) => (
+                                                        <div className={`${cl.item}`} key={index} onClick={() => navigate(`/catalog/subcatalog?id=${item.id}`)}>
+                                                            {item.pagetitle}
+                                                        </div>
+                                                    ))}
+                                                </div>
                                             </div>
-                                            <div className={`${cl.filterContainer} ${isOpen[index] ? cl.open : cl.close}`}>
-                                                {category.children.map((item, index) => (
-                                                    <div className={`${cl.item}`} key={index} onClick={() => navigate(`/catalog/subcatalog?id=${item.id}`)}>
-                                                        {item.pagetitle}
+                                        ))}
+                                    </div>
+                                </div>
+                            }
+                        </>
+                    }
+
+                    {loading && <>
+                        <div className={'alert'}>Загрузка...</div>
+                        <div className={cl.nutipa}/>
+                    </>}
+                    {loading === false && error === false && <>
+                        <div className={cl.productInfo}>
+                            <div className={cl.title}>
+                                <h1>{data.pagetitle}</h1>
+                                <IButton onClick={openModal} color={'border'} className={cl.button}>Узнать стоимость</IButton>
+                            </div>
+                            {width > 960 ?
+                                <div className={cl.productContainer}>
+                                    <div className={cl.images}>
+                                        <img className={cl.mainImage} src={baseUrl + data.product_image} alt="product" />
+                                        <div className={cl.imagesContainer}>
+                                            {testimages.map((img, index) => (
+                                                <img className={cl.microImage} src={img} key={index} alt={'product'} />
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className={cl.info}>
+                                        <div className={cl.description}>
+                                            <p>{data.product_content}</p>
+                                            <div className={cl.more} onClick={moreDescription}>
+                                                <span>Подробнее</span>
+                                                <img src={arrow} alt="arrow" />
+                                            </div>
+                                        </div>
+                                        <div className={cl.featureBlock}>
+                                            <div className={cl.featureTitle}>
+                                                <h3>Характеристики</h3>
+                                                <div className={cl.more} onClick={moreFeatures}>
+                                                    <span>Все характеристики</span>
+                                                    <img src={arrow} alt="arrow" />
+                                                </div>
+                                            </div>
+                                            <div className={cl.featureContainer}>
+                                                {data.product_features?.slice(0, 5).map((feature, index) => (
+                                                    <div className={cl.feature} key={index}>
+                                                        <div>{feature[0]}</div>
+                                                        <div>{feature[1]}</div>
                                                     </div>
                                                 ))}
                                             </div>
                                         </div>
-                                    ))}
-                                </div>
-                            </div>
-                        }
-                    </>
-                }
-
-                {loading && <>
-                    <div className={'alert'}>Загрузка...</div>
-                    <div className={cl.nutipa}/>
-                </>}
-                {loading === false && error === false && <>
-                    <div className={cl.productInfo}>
-                        <div className={cl.title}>
-                            <h1>{data.pagetitle}</h1>
-                            <IButton color={'border'} className={cl.button}>Узнать стоимость</IButton>
-                        </div>
-                        {width > 960 ?
-                            <div className={cl.productContainer}>
-                                <div className={cl.images}>
-                                    <img className={cl.mainImage} src={baseUrl + data.product_image} alt="product" />
-                                    <div className={cl.imagesContainer}>
-                                        {testimages.map((img, index) => (
-                                            <img className={cl.microImage} src={img} key={index} alt={'product'} />
-                                        ))}
                                     </div>
                                 </div>
-                                <div className={cl.info}>
-                                    <div className={cl.description}>
-                                        <p>{data.product_content}</p>
-                                        <div className={cl.more} onClick={moreDescription}>
-                                            <span>Подробнее</span>
-                                            <img src={arrow} alt="arrow" />
+                                :
+                                <div className={cl.productContainer}>
+                                    {width > 560
+                                        ? <div className={cl.images}>
+                                            <img className={cl.mainImage} src={img} alt="product" />
+                                            <div className={cl.imagesContainer}>
+                                                {testimages.map((img, index) => (
+                                                    <img className={cl.microImage} src={img} key={index} alt={'product'} />
+                                                ))}
+                                            </div>
+                                        </div> :
+                                        <div className={cl.images}>
+                                            <Slider {...settings}>
+                                                {testimages.map((img, index) => (
+                                                    <div className={cl.sliderItem} key={index}>
+                                                        <img className={cl.mainImage} src={img} alt={'product'} />
+                                                    </div>
+                                                ))}
+                                            </Slider>
+                                        </div>
+                                    }
+                                    <div className={cl.info}>
+                                        <div className={cl.description}>
+                                            <p>Универсальное решение для промышленных измерений различных видов жидкостей (вода,
+                                                кислоты, щелочи и т.д.).</p>
+                                            <div className={cl.more} onClick={moreDescription}>
+                                                <span>Подробнее</span>
+                                                <img src={arrow} alt="arrow" />
+                                            </div>
                                         </div>
                                     </div>
                                     <div className={cl.featureBlock}>
@@ -200,100 +268,51 @@ const ProductPage = () => {
                                             </div>
                                         </div>
                                         <div className={cl.featureContainer}>
-                                            {data.product_features?.slice(0, 5).map((feature, index) => (
+                                            {data.product_features.slice(0, 5).map((feature, index) => (
                                                 <div className={cl.feature} key={index}>
-                                                    <div>{feature[0]}</div>
-                                                    <div>{feature[1]}</div>
+                                                    <div className={cl.name}>{feature.name}</div>
+                                                    <div>{feature.value}</div>
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            :
-                            <div className={cl.productContainer}>
-                                {width > 560
-                                    ? <div className={cl.images}>
-                                        <img className={cl.mainImage} src={img} alt="product" />
-                                        <div className={cl.imagesContainer}>
-                                            {testimages.map((img, index) => (
-                                                <img className={cl.microImage} src={img} key={index} alt={'product'} />
-                                            ))}
-                                        </div>
-                                    </div> :
-                                    <div className={cl.images}>
-                                        <Slider {...settings}>
-                                            {testimages.map((img, index) => (
-                                                <div className={cl.sliderItem} key={index}>
-                                                    <img className={cl.mainImage} src={img} alt={'product'} />
-                                                </div>
-                                            ))}
-                                        </Slider>
-                                    </div>
-                                }
-                                <div className={cl.info}>
-                                    <div className={cl.description}>
-                                        <p>Универсальное решение для промышленных измерений различных видов жидкостей (вода,
-                                            кислоты, щелочи и т.д.).</p>
-                                        <div className={cl.more} onClick={moreDescription}>
-                                            <span>Подробнее</span>
-                                            <img src={arrow} alt="arrow" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={cl.featureBlock}>
-                                    <div className={cl.featureTitle}>
-                                        <h3>Характеристики</h3>
-                                        <div className={cl.more} onClick={moreFeatures}>
-                                            <span>Все характеристики</span>
-                                            <img src={arrow} alt="arrow" />
-                                        </div>
-                                    </div>
-                                    <div className={cl.featureContainer}>
-                                        {data.product_features.slice(0, 5).map((feature, index) => (
-                                            <div className={cl.feature} key={index}>
-                                                <div className={cl.name}>{feature.name}</div>
-                                                <div>{feature.value}</div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        }
+                            }
 
-                        <div className={cl.full}>
-                            <div className={cl.scrollHelper} ref={targetRef}/>
-                            <div className={cl.buttons}> {/* Привязываем ref к .buttons */}
-                                <button onClick={() => setActive(1)} className={active === 1 ? cl.active : ''}>Отличительные
-                                    особенности
-                                </button>
-                                <button onClick={() => setActive(2)}
-                                        className={active === 2 ? cl.active : ''}>Характеристики
-                                </button>
-                                <button onClick={() => setActive(3)}
-                                        className={active === 3 ? cl.active : ''}>Документация
-                                </button>
+                            <div className={cl.full}>
+                                <div className={cl.scrollHelper} ref={targetRef}/>
+                                <div className={cl.buttons}> {/* Привязываем ref к .buttons */}
+                                    <button onClick={() => setActive(1)} className={active === 1 ? cl.active : ''}>Отличительные
+                                        особенности
+                                    </button>
+                                    <button onClick={() => setActive(2)}
+                                            className={active === 2 ? cl.active : ''}>Характеристики
+                                    </button>
+                                    <button onClick={() => setActive(3)}
+                                            className={active === 3 ? cl.active : ''}>Документация
+                                    </button>
+                                </div>
+                                {
+                                    active === 1 && <MoreDescription content={data.product_description} />
+                                }
+                                {
+                                    active === 2 && <MoreFeatures content={data.product_features} />
+                                }
+                                {
+                                    active === 3 && <MoreDocumentation content={data.product_file} />
+                                }
                             </div>
-                            {
-                                active === 1 && <MoreDescription content={data.product_description} />
-                            }
-                            {
-                                active === 2 && <MoreFeatures content={data.product_features} />
-                            }
-                            {
-                                active === 3 && <MoreDocumentation content={data.product_file} />
-                            }
                         </div>
-                    </div>
-                </>}
-                {
-                    error && <>
-                    <div className={'alert'}>Ошибка: {errorMore}</div>
-                    <div className={'nutipa'}/>
-                </>
-                }
+                    </>}
+                    {
+                        error && <>
+                        <div className={'alert'}>Ошибка: {errorMore}</div>
+                        <div className={'nutipa'}/>
+                    </>
+                    }
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

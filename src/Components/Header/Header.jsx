@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import IButton from "../UI/IButton/IButton";
 import cl from './Header.module.css'
 import logo from '../../Assets/Pictures/logo_description.svg'
@@ -11,11 +11,22 @@ import Menu from "./Menu";
 import {useNavigate} from "react-router-dom";
 import {useWindowSize} from "../../Hooks/useWindowSize";
 import HeaderMobile from "./HeaderMobile";
+import Modal from "../UI/Modal/Modal";
+import Form from "../UI/Form/Form";
 const Header = () => {
     const catalog = useRef();
     const isCatalog = useHover(catalog);
     const navigate = useNavigate();
     const [width] = useWindowSize();
+    const [modal, setModal] = useState(false)
+
+    const closeModal = () => {
+        setModal(false)
+    }
+
+    const openModal = () => {
+        setModal(true)
+    }
 
     const goToMain = () => {
         navigate('/')
@@ -26,6 +37,11 @@ const Header = () => {
 
     return (
         <>
+            {modal &&
+                <Modal close={closeModal}>
+                    <Form/>
+                </Modal>
+            }
             {width > 560 &&
             <header className={cl.header}>
                 <div className={cl.top}>
@@ -38,7 +54,7 @@ const Header = () => {
                             <span className={cl.number}>+7 (495) 646-05-06</span>
                             <span className={cl.schedule}>пн–пт с 9:00 до 18:00</span>
                         </div>
-                        <IButton className={cl.call}>
+                        <IButton onClick={openModal} className={cl.call}>
                             Заказать звонок
                         </IButton>
                     </div>

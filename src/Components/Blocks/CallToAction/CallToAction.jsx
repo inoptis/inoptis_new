@@ -13,7 +13,6 @@ const CallToAction = () => {
 
     const openModal = () => {
         setModal(true)
-        console.log(modal)
     }
     return (
         <>
