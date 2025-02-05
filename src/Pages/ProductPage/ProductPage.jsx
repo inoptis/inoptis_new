@@ -242,7 +242,7 @@ const ProductPage = () => {
                                             <Slider {...settings}>
                                                 {testimages.map((img, index) => (
                                                     <div className={cl.sliderItem} key={index}>
-                                                        <img className={cl.mainImage} src={img} alt={'product'} />
+                                                        <img className={cl.mainImage} src={baseUrl + data.product_image} alt={'product'} />
                                                     </div>
                                                 ))}
                                             </Slider>
