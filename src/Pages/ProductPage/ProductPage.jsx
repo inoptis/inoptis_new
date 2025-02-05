@@ -4,7 +4,6 @@ import IButton from "../../Components/UI/IButton/IButton";
 import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
 import img from '../../Assets/Pictures/TestProduct/picture.png';
 import arrow from '../../Assets/Pictures/arrow-breadcrumbs.svg';
-import arrowfilter from '../../Assets/Pictures/arrow-filter.svg';
 import doubleArrow from '../../Assets/Pictures/double-arrow.svg';
 import MoreDescription from "../../Components/Blocks/MoreInfoBlocks/MoreDescription";
 import MoreFeatures from "../../Components/Blocks/MoreInfoBlocks/MoreFeatures";
@@ -59,7 +58,7 @@ const ProductPage = () => {
                 setLoading(false)
                 setError(true);
             })
-    }, []);
+    }, [params]);
 
     useEffect(() => {
         // URL API ресурса
