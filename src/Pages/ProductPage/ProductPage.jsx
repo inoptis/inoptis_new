@@ -77,11 +77,6 @@ const ProductPage = () => {
             })
     }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
 
-
-    useEffect(() => {
-        console.log(data.product_features)
-    }, [data, setData]);
-
     const toggleSection = (index) => {
         setIsOpen(prevState =>
             prevState.map((state, idx) => idx === index ? !state : state)
@@ -205,7 +200,7 @@ const ProductPage = () => {
                                             </div>
                                         </div>
                                         <div className={cl.featureContainer}>
-                                            {data.product_features.slice(0, 5).map((feature, index) => (
+                                            {data.product_features?.slice(0, 5).map((feature, index) => (
                                                 <div className={cl.feature} key={index}>
                                                     <div>{feature[0]}</div>
                                                     <div>{feature[1]}</div>
