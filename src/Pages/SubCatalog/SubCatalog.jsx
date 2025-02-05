@@ -38,34 +38,35 @@ const SubCatalog = () => {
     const [dataProducts, setDataProducts] = useState([]);
 
     useEffect(() => {
-        // URL API ресурса
         const apiURL = 'http://alexaksa.beget.tech/api.html';
-        // Запрос через Axios
+
         axios.get(apiURL)
             .then(response => {
-                setDataFilter(response.data); // Устанавливаем данные из API в состояние
-                setLoading(false)
-                if (param === undefined) {
-                    setActive([response.data[0], response.data[0].children[0]]);
-                }
-                else {
-                    response.data.forEach((category) => {
-                        category.children.forEach((subcategory) => {
-                            if (subcategory.id === (param)) {
-                                setActive([category, subcategory]);
-                            }
-                        });
-                    });
-                }
+                setDataFilter(response.data);
+                setLoading(false);
 
+                if (param === null) {
+                    setActive([response.data[0], response.data[0].children[0]]);
+                } else {
+                    // Ищем нужную категорию и подкатегорию
+                    const foundCategory = response.data.find(category =>
+                        category.children.some(subcategory => subcategory.id === param)
+                    );
+
+                    if (foundCategory) {
+                        const foundSubcategory = foundCategory.children.find(subcategory => subcategory.id === param);
+                        setActive([foundCategory, foundSubcategory]);
+                    }
+                }
             })
             .catch(error => {
                 console.log(error);
-                setErrorMoreFilter(error.message); // или error.toString()
-                setLoading(false)
+                setErrorMoreFilter(error.message);
+                setLoading(false);
                 setErrorFilter(true);
-            })
-    }, [searchParams]); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
+            });
+    }, [param]);
+
 
     useEffect(() => {
         if (active !== null) {
