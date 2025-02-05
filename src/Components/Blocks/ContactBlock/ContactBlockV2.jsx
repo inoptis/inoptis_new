@@ -5,6 +5,7 @@ import icon1 from "../../../Assets/Pictures/ContactBlock/icon1.svg";
 import icon2 from "../../../Assets/Pictures/ContactBlock/icon2.svg";
 import icon3 from "../../../Assets/Pictures/ContactBlock/icon3.svg";
 import icon4 from "../../../Assets/Pictures/ContactBlock/icon4.svg";
+import map from '../../../Assets/Pictures/map_test.webp'
 
 const ContactBlockV2 = () => {
     return (
@@ -20,9 +21,7 @@ const ContactBlockV2 = () => {
                     </div>
                 </div>
                 <div className={cl.mapContainerv2}>
-                    {/*<video width="650" autoPlay={true} loop={true} muted={true}>*/}
-                    {/*        <source src={shrek} type="video/mp4"/>*/}
-                    {/*</video>*/}
+                    <img src={map} alt="map"/>
                 </div>
             </div>
         </div>

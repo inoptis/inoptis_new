@@ -119,7 +119,7 @@ const ProductPage = () => {
                             timeout={300}
                             unmountOnExit
                         >
-                            <div className={`${cl.background}`} onClick={!setFilterOpen} />
+                            <div className={`${cl.background}`} onClick={setFilterOpen(false)} />
                         </CSSTransition>
                     )}
                 </TransitionGroup>

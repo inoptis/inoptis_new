@@ -6,6 +6,7 @@ import icon3 from '../../../Assets/Pictures/ContactBlock/icon3.svg'
 import icon4 from '../../../Assets/Pictures/ContactBlock/icon4.svg'
 import arrow from '../../../Assets/Pictures/arrow-right-contact.svg'
 import bg from '../../../Assets/Pictures/Epattern_left.svg'
+import map from '../../../Assets/Pictures/map_test.webp'
 const ContactBlock = () => {
     return (
         <div className={cl.block}>
@@ -20,7 +21,7 @@ const ContactBlock = () => {
                     <div className={cl.item}>Перейти к реквизитам <img src={arrow} alt={'arrow'}/></div>
                 </div>
                 <div className={cl.mapContainer}>
-                    <></>
+                    <img src={map} alt={'map'}/>
                 </div>
             </div>
         </div>
