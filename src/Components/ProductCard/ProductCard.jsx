@@ -7,7 +7,7 @@ const ProductCard = ({product, category}) => {
     const baseUrl = "http://alexaksa.beget.tech/";
 
     return (
-        <div className={cl.card} onClick={() => navigate(`/catalog/subcatalog/${product.id}`)}>
+        <div className={cl.card} onClick={() => navigate(`/catalog/subcatalog/${product.alias}`)}>
             <img className={cl.img} alt={product.pagetitle} src={baseUrl + product.product_image}/>
             <div className={cl.content}>
                 <div className={cl.text}>

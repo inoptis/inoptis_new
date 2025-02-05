@@ -45,7 +45,7 @@ const ProductPage = () => {
 
     useEffect(() => {
         // URL API ресурса
-        const apiURL = `http://alexaksa.beget.tech/productapi.html?id=${params.id}`;
+        const apiURL = `http://alexaksa.beget.tech/productapi.html?alias=${params.id}`;
         // Запрос через Axios
         axios.get(apiURL)
             .then(response => {
