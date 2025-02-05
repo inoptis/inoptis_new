@@ -1,34 +1,28 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import cl from "./Form.module.css";
 import ITextArea from "../ITextArea/ITextArea";
 import IButton from "../IButton/IButton";
+import axios from "axios";
 
 const FormCall = () => {
-
     const [formData, setFormData] = useState({
-        title: '', // Название предприятия
-        name: '',  // ФИО контактного лица
-        phone: '', // Номер телефона
-        email: '', // Электронная почта
-        comment: '', // Комментарий
-        file: null  // Файл
+        title: '',
+        name: '',
+        phone: ''
     });
 
     const [errors, setErrors] = useState({
         title: false,
         name: false,
-        phone: false,
-        email: false,
-        comment: false,
-        file: false
+        phone: false
     });
+
+    const [message, setMessage] = useState(null);
 
     const validatePhone = (phone) => {
         const re = /^[0-9]{10,15}$/;
-        alert("Неправильно введен номер телефона!")
         return re.test(String(phone));
     };
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -42,11 +36,10 @@ const FormCall = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let valid = true;
 
-        // Проверка обязательных полей
         if (formData.title === '') {
             setErrors((prev) => ({ ...prev, title: true }));
             valid = false;
@@ -61,12 +54,26 @@ const FormCall = () => {
         }
 
         if (valid) {
-            alert('Форма успешно отправлена!');
-            console.log(formData); // Можно заменить на API-запрос
+            try {
+                const response = await axios.post('http://alexaksa.beget.tech/send-form-call', formData, {
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                });
+
+                if (response.data.success) {
+                    setMessage({ type: "success", text: response.data.message });
+                    setFormData({ title: '', name: '', phone: '' });
+                } else {
+                    setMessage({ type: "error", text: response.data.message });
+                }
+            } catch (error) {
+                setMessage({ type: "error", text: "Ошибка при отправке формы" });
+            }
         }
     };
+
+
     return (
-        <form noValidate={true} className={cl.formContent} onSubmit={handleSubmit}>
+        <form noValidate className={cl.formContent} onSubmit={handleSubmit}>
             <h3 className={cl.title}>Введите данные для заказа обратного звонка:</h3>
             <div className={cl.fields}>
                 <ITextArea
@@ -76,7 +83,7 @@ const FormCall = () => {
                     onChange={handleChange}
                     name="title"
                     error={errors.title}
-                    required={true}
+                    required
                 />
                 <ITextArea
                     placeholder="ФИО контактного лица"
@@ -85,7 +92,7 @@ const FormCall = () => {
                     onChange={handleChange}
                     name="name"
                     error={errors.name}
-                    required={true}
+                    required
                 />
                 <ITextArea
                     placeholder="Номер телефона"
@@ -94,10 +101,15 @@ const FormCall = () => {
                     onChange={handleChange}
                     name="phone"
                     error={errors.phone}
-                    required={true}
+                    required
                 />
             </div>
-            <IButton type="submit" className="submit-btn">
+            {message && (
+                <div className={message.type === "success" ? cl.successMessage : cl.errorMessage}>
+                    {message.text}
+                </div>
+            )}
+            <IButton type="submit">
                 Отправить заявку
             </IButton>
         </form>
