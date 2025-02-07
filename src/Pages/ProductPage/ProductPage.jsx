@@ -196,8 +196,7 @@ const ProductPage = () => {
                                 <div className={cl.productContainer}>
                                     <div className={cl.images}>
                                         <img className={cl.mainImage} src={usedImg} alt="product" />
-                                        <div ref={imageContainer}>
-                                            <div className={cl.imagesContainer}>
+                                            <div className={cl.imagesContainer} ref={imageContainer}>
                                                     {testimages.map((img, index) => (
                                                         <img
                                                             className={`${cl.microImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`}
@@ -208,7 +207,6 @@ const ProductPage = () => {
                                                         />
                                                     ))}
                                             </div>
-                                        </div>
                                     </div>
                                     <div className={cl.info}>
                                         <div className={cl.description}>
