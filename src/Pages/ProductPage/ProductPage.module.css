@@ -236,7 +236,6 @@
     flex-direction: column;
     gap: 10px;
     height: 333px;
-    width: 98px;
     overflow: hidden;
 }
 .blockImage{
