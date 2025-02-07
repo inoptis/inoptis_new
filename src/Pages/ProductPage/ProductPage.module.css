@@ -236,6 +236,7 @@
     flex-direction: column;
     gap: 10px;
     height: 333px;
+    width: 98px;
     overflow: hidden;
 }
 .microImage{
@@ -248,6 +249,7 @@
     margin-bottom: 10px;
     margin-right: 10px;
 }
+
 .microImage.selected{
     border: 2px var(--color-1000) solid ;
 }
@@ -427,6 +429,9 @@
             font: var(--text-circe-bold-18);
         }
     }
+    .imagesContainer{
+        height: 270px;
+    }
 }
 
 @media (max-width: 960px) {
@@ -509,6 +514,9 @@
             padding: 4px;
             font: var(--text-circe-bold-14);
         }
+    }
+    .imagesContainer{
+        height: 232px;
     }
 }
 @media (max-width: 560px) {
