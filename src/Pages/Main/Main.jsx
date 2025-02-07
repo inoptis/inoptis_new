@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import cl from './Main.module.css'
 import AboutBlock from "../../Components/Blocks/AboutBlock/AboutBlock";
 import CallToAction from "../../Components/Blocks/CallToAction/CallToAction";
@@ -9,32 +9,52 @@ import bgquote1 from '../../Assets/Pictures/pattern-quote1.svg'
 import bgquote2 from '../../Assets/Pictures/pattern-quote2.svg'
 import ContactBlock from "../../Components/Blocks/ContactBlock/ContactBlock";
 import PartnersBlock from "../../Components/Blocks/PartnersBlock/PartnersBlock";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 const Main = () => {
-    const products = [
-        'Давление',
-        'Температура',
-        'Шкафы автоматизации',
-        'Уровень',
-        'Индикаторы процессов и полевые устройства',
-        'Вспомогательное оборудование',
-        'Расход',
-        'Инструментальная арматура',
-        'Поверочные установки',
-    ]
+
+    const [dataFilter, setDataFilter] = useState(null)
+    const [loading, setLoading] = useState()
+    const [errorFilter, setErrorFilter] = useState()
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        // URL API ресурса
+        const apiURL = 'http://alexaksa.beget.tech/api.html';
+        // Запрос через Axios
+        axios.get(apiURL)
+            .then(response => {
+                setDataFilter(response.data); // Устанавливаем данные из API в состояние
+                setLoading(false)
+            })
+            .catch(error => {
+                console.log(error);
+                setLoading(false)
+                setErrorFilter(true);
+            })
+    }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
+
     return (
         <div className={'page'}>
             <div className={cl.banner}></div>
             <div className={cl.products}>
                 <h2>Наша продукция:</h2>
-                <div className={cl.productsContainer}>
-                    {products.map((product, index)=>(
-                        <button key={index}>
-                            <img className={cl.buttonLeft} src={index % 2 === 0 ? chet : nechet} alt={'bg'}/>
-                            {product}
-                        </button>
-                    ))}
-
-                </div>
+                {loading ? <div className={'alert'}>Загрузка...</div> : <>
+                    {!errorFilter && dataFilter !== null &&
+                        <div className={cl.productsContainer}>
+                            {dataFilter.map((product, index) => (
+                                <button
+                                    onClick={() => navigate(navigate(`/catalog/subcatalog?id=${product.children[0].id}`))}
+                                    key={index}>
+                                    <img className={cl.buttonLeft} src={index % 2 === 0 ? chet : nechet} alt={'bg'}/>
+                                    {product.pagetitle}
+                                </button>
+                            ))}
+                        </div>
+                    }
+                </>
+                }
             </div>
             <div className={cl.quote}>
                 <img className={cl.bgquote1} src={bgquote1} alt={'bg'}/>

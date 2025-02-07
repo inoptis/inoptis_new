@@ -83,6 +83,7 @@ const ProductPage = () => {
                 setDataFilter(response.data); // Устанавливаем данные из API в состояние
                 setIsOpen(response.data.map(() => true))
                 setLoading(false)
+                setUsedImg(baseUrl + response.data.product_image)
             })
             .catch(error => {
                 console.log(error);
@@ -198,9 +199,9 @@ const ProductPage = () => {
                                         <img className={cl.mainImage} src={usedImg} alt="product" />
                                             <div className={cl.imagesContainer} ref={imageContainer}>
                                                     {testimages.map((img, index) => (
-                                                        <div className={cl.blockImage} onClick={() => setUsedImg(baseUrl + data.product_image)}>
+                                                        <div className={`${cl.blockImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`} onClick={() => setUsedImg(baseUrl + data.product_image)}>
                                                             <img
-                                                                className={`${cl.microImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`}
+                                                                className={`${cl.microImage}`}
                                                                 src={baseUrl + data.product_image}
                                                                 key={index}
                                                                 alt={'product'}

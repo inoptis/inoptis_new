@@ -1,25 +1,26 @@
 .block{
     display: flex;
     flex-direction: column;
-    width: 1320px;
+    width: 100%;
     margin: 0 auto;
     h2{
         font: var(--text-circe-bold-40);
         color: var(--color-1000);
-        margin-bottom: 20px;
+        width: 1320px;
+        margin: 0 auto 20px auto;
     }
     @media (max-width: 1400px) {
-        width: 868px;
         h2{
             font: var(--text-circe-bold-36);
             margin-bottom: 24px;
+            width: 868px;
         }
     }
     @media (max-width: 960px) {
-        width: 520px;
         h2{
             font: var(--text-circe-bold-20);
             margin-bottom: 16px;
+            width: 868px;
         }
     }
     @media (max-width: 560px) {
@@ -30,9 +31,37 @@
         }
     }
 }
+
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 300px; /* Ширина области размытия */
+    pointer-events: none; /* Предотвращает взаимодействие с мышью */
+    z-index: 2;
+}
 .container{
-    display: flex;
-    flex-wrap: wrap;
+    position: relative;
+}
+.container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(231, 233, 231, 1), rgba(231, 233, 231, 0));
+}
+
+.container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(231, 233, 231, 1), rgba(231, 233, 231, 0));
+}
+
+.carusel{
+    display: inline-flex;
+    align-items:flex-start;
+    justify-content: flex-start;
+    width: 100vw;
+    overflow: hidden;
+    transition: transform 0.5s ease; /* Плавная анимация перемещения */
     gap:20px;
     @media (max-width: 1400px) {
         img{

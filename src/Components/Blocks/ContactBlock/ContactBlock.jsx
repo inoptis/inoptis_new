@@ -7,7 +7,9 @@ import icon4 from '../../../Assets/Pictures/ContactBlock/icon4.svg'
 import arrow from '../../../Assets/Pictures/arrow-right-contact.svg'
 import bg from '../../../Assets/Pictures/Epattern_left.svg'
 import map from '../../../Assets/Pictures/map_test.webp'
+import {useNavigate} from "react-router-dom";
 const ContactBlock = () => {
+    const navigate = useNavigate()
     return (
         <div className={cl.block}>
             <img src={bg} className={cl.background} alt={'bg'}/>
@@ -17,8 +19,8 @@ const ContactBlock = () => {
                     <div className={cl.item}><img src={icon1} alt={'time'}/> Пн–Пт с 9:00 до 18:00 </div>
                     <div className={cl.item}><img src={icon2} alt={'phone'}/> +7 (495) 646-05-06 </div>
                     <div className={cl.item}><img src={icon3} alt={'email'}/> info@inoptis.ru </div>
-                    <div className={cl.item}><img src={icon4} alt={'point'}/> Москва, Высоковольтный проезд, д. 1, стр. 49, офис 326 </div>
-                    <div className={cl.item}>Перейти к реквизитам <img src={arrow} alt={'arrow'}/></div>
+                    {/*<div className={cl.item}><img src={icon4} alt={'point'}/> Москва, Высоковольтный проезд, д. 1, стр. 49, офис 326 </div>*/}
+                    <div className={cl.item} onClick={() => navigate('/contacts')}>Перейти к реквизитам <img src={arrow} alt={'arrow'}/></div>
                 </div>
                 <div className={cl.mapContainer}>
                     <img src={map} alt={'map'}/>
