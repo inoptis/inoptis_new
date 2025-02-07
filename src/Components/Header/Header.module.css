@@ -151,11 +151,20 @@
             outline: none;
         }
     }
-    img{
+    button{
         position: absolute;
         right: 3px;
-        top: 1px;
+        top: 0;
+        padding: 0;
+        background: none;
+        border:0;
+        cursor: pointer;
+        transition: scale 0.3s linear;
+        &:hover{
+            scale: 1.1;
+        }
         @media (max-width: 960px) {
+            top:1px;
             width: 26px;
             height: 26px;
         }

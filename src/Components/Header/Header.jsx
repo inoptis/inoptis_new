@@ -19,9 +19,24 @@ const Header = () => {
     const navigate = useNavigate();
     const [width] = useWindowSize();
     const [modal, setModal] = useState(false)
+    const [query, setQuery] = useState()
 
     const closeModal = () => {
         setModal(false)
+    }
+
+    const queryChange = (e) => {
+        setQuery(e.target.value);
+    };
+
+    const queryKey = (e) => {
+        if (e.key === 'Enter') {
+            searchButton() // Вызов handleClick при нажатии Enter
+        }
+    };
+
+    const searchButton = () => {
+        navigate(`/search?query=${query}`)
     }
 
     const openModal = () => {
@@ -78,8 +93,10 @@ const Header = () => {
                             </button>
                         </div>
                         <div className={cl.search}>
-                            <input type={"text"} className={cl.searchField} placeholder={'Поиск...'}/>
-                            <img src={search} alt={'search'}/>
+                            <input type={"text"} value={query} onChange={queryChange} onKeyDown={queryKey} className={cl.searchField} placeholder={'Поиск...'}/>
+                            <button onClick={searchButton}>
+                                <img src={search} alt={'search'}/>
+                            </button>
                         </div>
                     </div>
                 </div>

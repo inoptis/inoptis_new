@@ -45,7 +45,7 @@ const Main = () => {
                         <div className={cl.productsContainer}>
                             {dataFilter.map((product, index) => (
                                 <button
-                                    onClick={() => navigate(navigate(`/catalog/subcatalog?id=${product.children[0].id}`))}
+                                    onClick={() => navigate(`/catalog/subcatalog?id=${product.children[0].id}`)}
                                     key={index}>
                                     <img className={cl.buttonLeft} src={index % 2 === 0 ? chet : nechet} alt={'bg'}/>
                                     {product.pagetitle}

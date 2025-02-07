@@ -20,7 +20,7 @@
         h2{
             font: var(--text-circe-bold-20);
             margin-bottom: 16px;
-            width: 868px;
+            width: 520px;
         }
     }
     @media (max-width: 560px) {
