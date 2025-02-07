@@ -246,8 +246,8 @@
     cursor: pointer;
     border-radius: 5px;
     padding: 5px;
-    width: 88px;
-    height: 88px;
+    width: 84px;
+    height: 84px;
     border: 2px var(--color-200) solid ;
     &:first-child{
         margin-top: 10px;
