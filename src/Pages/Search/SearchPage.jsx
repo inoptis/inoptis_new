@@ -38,7 +38,7 @@ const SearchPage = () => {
     }
 
     useEffect(() => {
-        if (!query) {
+        if (query === '') {
             setLoading(false);
             setErrorProducts("Поисковый запрос не указан");
             return;
