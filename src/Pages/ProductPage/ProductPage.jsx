@@ -19,7 +19,6 @@ import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom";
 import Modal from "../../Components/UI/Modal/Modal";
 import Form from "../../Components/UI/Form/Form";
-import productCard from "../../Components/ProductCard/ProductCard";
 
 const ProductPage = () => {
     const navigate = useNavigate()
