@@ -236,6 +236,7 @@
     flex-direction: column;
     gap: 10px;
     height: 333px;
+    width: 98px;
     overflow: hidden;
 }
 .blockImage{
@@ -437,6 +438,7 @@
     }
     .imagesContainer{
         height: 270px;
+        width: 70px;
     }
 }
 
@@ -479,7 +481,7 @@
     }
     .info{
         gap: 14px;
-        width: 231px;
+        width: 220;
     }
     .description{
         p{
@@ -523,6 +525,7 @@
     }
     .imagesContainer{
         height: 232px;
+        width: 67px;
     }
 }
 @media (max-width: 560px) {
