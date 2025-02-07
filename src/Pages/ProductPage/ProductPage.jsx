@@ -92,7 +92,7 @@ const ProductPage = () => {
     }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
 
     useEffect(() => {
-        if (filterOpen) {
+        if (!filterOpen) {
             document.body.classList.add('no-scroll'); // Добавляем класс для блокировки скролла
             return () => {
                 document.body.classList.remove('no-scroll'); // Удаляем класс при закрытии модального окна
@@ -120,7 +120,7 @@ const ProductPage = () => {
 
     const closeFilter = () => {
         setFilterOpen(!filterOpen)
-        if (!filterOpen) {
+        if (filterOpen) {
             setTimeout(() => {
                 document.body.classList.remove('no-scroll');
                 console.log('Закрываюсь')// Удаляем класс при закрытии модального окна с задержкой
@@ -156,7 +156,7 @@ const ProductPage = () => {
                                 timeout={300}
                                 unmountOnExit
                             >
-                                <div className={`${cl.background}`} onClick={closeModal} />
+                                <div className={`${cl.background}`} onClick={closeFilter} />
                             </CSSTransition>
                         )}
                     </TransitionGroup>
