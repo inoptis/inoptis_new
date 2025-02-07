@@ -19,6 +19,7 @@ import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom";
 import Modal from "../../Components/UI/Modal/Modal";
 import Form from "../../Components/UI/Form/Form";
+import productCard from "../../Components/ProductCard/ProductCard";
 
 const ProductPage = () => {
     const navigate = useNavigate()
@@ -83,7 +84,7 @@ const ProductPage = () => {
                 setDataFilter(response.data); // Устанавливаем данные из API в состояние
                 setIsOpen(response.data.map(() => true))
                 setLoading(false)
-                setUsedImg(baseUrl + response.data.product_image)
+                setUsedImg(baseUrl + product.product_image.fieldValue[0].image)
             })
             .catch(error => {
                 console.log(error);
@@ -198,11 +199,11 @@ const ProductPage = () => {
                                     <div className={cl.images}>
                                         <img className={cl.mainImage} src={usedImg} alt="product" />
                                             <div className={cl.imagesContainer} ref={imageContainer}>
-                                                    {testimages.map((img, index) => (
-                                                        <div className={`${cl.blockImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`} onClick={() => setUsedImg(baseUrl + data.product_image)}>
+                                                    {data.product_image.fieldValue.map((img, index) => (
+                                                        <div className={`${cl.blockImage} ${usedImg === baseUrl + img.image ? cl.selected : ''}`} onClick={() => setUsedImg(baseUrl + img.image)}>
                                                             <img
                                                                 className={`${cl.microImage}`}
-                                                                src={baseUrl + data.product_image}
+                                                                src={baseUrl + img.image}
                                                                 key={index}
                                                                 alt={'product'}
                                                             />
@@ -243,12 +244,11 @@ const ProductPage = () => {
                                         ? <div className={cl.images}>
                                             <img className={cl.mainImage} src={usedImg} alt="product" />
                                             <div className={cl.imagesContainer}>
-                                                {testimages.map((img, index) => (
-                                                    <div>
+                                                {data.product_image.fieldValue.map((img, index) => (
+                                                    <div className={`${cl.blockImage} ${usedImg === baseUrl + img.image ? cl.selected : ''}`} onClick={() => setUsedImg(baseUrl + img.image)}>
                                                         <img
-                                                            className={`${cl.microImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`}
-                                                            onClick={() => setUsedImg(baseUrl + data.product_image)}
-                                                            src={baseUrl + data.product_image}
+                                                            className={`${cl.microImage}`}
+                                                            src={baseUrl + img.image}
                                                             key={index}
                                                             alt={'product'}
                                                         />
@@ -259,9 +259,9 @@ const ProductPage = () => {
                                         </div> :
                                         <div className={cl.images}>
                                             <Slider {...settings}>
-                                                {testimages.map((img, index) => (
+                                                {data.product_image.fieldValue.map((img, index) => (
                                                     <div className={cl.sliderItem} key={index}>
-                                                    <img className={cl.mainImage} src={baseUrl + data.product_image} alt={'product'} />
+                                                        <img className={cl.mainImage} src={baseUrl + img.image} alt={'product'} />
                                                     </div>
                                                 ))}
                                             </Slider>

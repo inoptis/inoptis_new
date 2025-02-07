@@ -99,7 +99,7 @@ const SearchPage = () => {
                         {dataProducts.map((product) =>
                             (
                                 <div className={cl.product} key={product.id} ref={productRef} onClick={() => navigate(`/catalog/subcatalog/${product.alias}`)}>
-                                    <img src={baseUrl + product.product_image} alt={product.pagetitle}/>
+                                    <img src={baseUrl + product.product.product_image.fieldValue[0].image} alt={product.pagetitle}/>
                                     <div className={cl.content}>
                                         <span>{product.parent_title}</span>
                                         <h5>{product.pagetitle}</h5>

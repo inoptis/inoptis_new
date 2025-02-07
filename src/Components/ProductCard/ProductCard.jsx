@@ -25,7 +25,7 @@ const ProductCard = ({product, category}) => {
                 </Modal>
             }
             <div className={cl.card} onClick={() => navigate(`/catalog/subcatalog/${product.alias}`)}>
-                <img className={cl.img} alt={product.pagetitle} src={baseUrl + product.product_image}/>
+                <img className={cl.img} alt={product.pagetitle} src={baseUrl + product.product_image.fieldValue[0].image}/>
                 <div className={cl.content}>
                     <div className={cl.text}>
                         <span>{category}</span>
