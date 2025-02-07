@@ -43,7 +43,7 @@ const SearchPage = () => {
             setErrorProducts("Поисковый запрос не указан");
             return;
         }
-        const apiURL = `http://alexaksa.beget.tech/searchsapi.html?query=${query}`;
+        const apiURL = `http://alexaksa.beget.tech/searchapi.html?query=${query}`;
         axios.get(apiURL)
             .then(response => {
                 if (response.data.error) {
