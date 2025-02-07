@@ -59,7 +59,7 @@ const SearchPage = () => {
                 setLoading(false);
                 setErrorProducts("Произошла ошибка при запросе");
             });
-    }, [query]);
+    }, [query, setQuery]);
 
     return (
         <div className={`page`}>
