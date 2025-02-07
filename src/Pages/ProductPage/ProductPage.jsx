@@ -31,11 +31,13 @@ const ProductPage = () => {
     const [data, setData] = useState([]);
     const [isOpen, setIsOpen] = useState(null);
     const filtercontainer = useRef();
+    const imageContainer = useRef()
     const [width] = useWindowSize();
+    const [usedImg, setUsedImg] = useState('')
     const [dataFilter, setDataFilter] = useState(null)
     const [errorFilter, setErrorFilter] = useState()
-
     useScrollbar(filtercontainer);
+    useScrollbar(imageContainer);
 
     const breadcrumbs = [
         { title: 'Главная', path: '/' },
@@ -97,7 +99,7 @@ const ProductPage = () => {
 
     const [active, setActive] = useState(1);
 
-    const testimages = [img, img, img, img];
+    const testimages = [img, img, img, img, img, img];
 
     const moreFeatures = () => {
         setActive(2); // Устанавливаем активную вкладку
@@ -193,11 +195,19 @@ const ProductPage = () => {
                             {width > 960 ?
                                 <div className={cl.productContainer}>
                                     <div className={cl.images}>
-                                        <img className={cl.mainImage} src={baseUrl + data.product_image} alt="product" />
+                                        <img className={cl.mainImage} src={usedImg} alt="product" />
                                         <div className={cl.imagesContainer}>
-                                            {testimages.map((img, index) => (
-                                                <img className={cl.microImage} src={img} key={index} alt={'product'} />
-                                            ))}
+                                            <div ref={imageContainer}>
+                                                {testimages.map((img, index) => (
+                                                    <img
+                                                        className={`${cl.microImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`}
+                                                        onClick={() => setUsedImg(baseUrl + data.product_image)}
+                                                        src={baseUrl + data.product_image}
+                                                        key={index}
+                                                        alt={'product'}
+                                                    />
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                     <div className={cl.info}>
@@ -231,10 +241,16 @@ const ProductPage = () => {
                                 <div className={cl.productContainer}>
                                     {width > 560
                                         ? <div className={cl.images}>
-                                            <img className={cl.mainImage} src={baseUrl + data.product_image} alt="product" />
+                                            <img className={cl.mainImage} src={usedImg} alt="product" />
                                             <div className={cl.imagesContainer}>
                                                 {testimages.map((img, index) => (
-                                                    <img className={cl.microImage} src={baseUrl + data.product_image} key={index} alt={'product'} />
+                                                    <img
+                                                        className={`${cl.microImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`}
+                                                        onClick={() => setUsedImg(baseUrl + data.product_image)}
+                                                        src={baseUrl + data.product_image}
+                                                        key={index}
+                                                        alt={'product'}
+                                                    />
                                                 ))}
                                             </div>
                                         </div> :
