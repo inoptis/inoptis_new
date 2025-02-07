@@ -196,17 +196,17 @@ const ProductPage = () => {
                                 <div className={cl.productContainer}>
                                     <div className={cl.images}>
                                         <img className={cl.mainImage} src={usedImg} alt="product" />
-                                        <div className={cl.imagesContainer}>
-                                            <div ref={imageContainer}>
-                                                {testimages.map((img, index) => (
-                                                    <img
-                                                        className={`${cl.microImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`}
-                                                        onClick={() => setUsedImg(baseUrl + data.product_image)}
-                                                        src={baseUrl + data.product_image}
-                                                        key={index}
-                                                        alt={'product'}
-                                                    />
-                                                ))}
+                                        <div ref={imageContainer}>
+                                            <div className={cl.imagesContainer}>
+                                                    {testimages.map((img, index) => (
+                                                        <img
+                                                            className={`${cl.microImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`}
+                                                            onClick={() => setUsedImg(baseUrl + data.product_image)}
+                                                            src={baseUrl + data.product_image}
+                                                            key={index}
+                                                            alt={'product'}
+                                                        />
+                                                    ))}
                                             </div>
                                         </div>
                                     </div>
