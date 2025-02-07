@@ -227,7 +227,7 @@
 .mainImage{
     width: 335px;
     height: 333px;
-    padding: 71px 40px;
+    padding: 40px 40px;
     background-color: var(--color-200);
     border-radius: 20px;
 }
@@ -239,8 +239,8 @@
     overflow: hidden;
 }
 .microImage{
-    width: 91px;
-    height: 91px;
+    width: 88px;
+    height: 88px;
     padding: 5px;
     border-radius: 5px;
     background-color: var(--color-200);
