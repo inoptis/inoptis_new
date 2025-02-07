@@ -245,6 +245,8 @@
     border-radius: 5px;
     background-color: var(--color-200);
     cursor: pointer;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 .microImage.selected{
     border: 2px var(--color-1000) solid ;
