@@ -59,7 +59,7 @@ const SearchPage = () => {
                 setLoading(false);
                 setErrorProducts("Произошла ошибка при запросе");
             });
-    }, [query, setQuery]);
+    }, [query]);
 
     return (
         <div className={`page`}>
@@ -90,6 +90,13 @@ const SearchPage = () => {
                 {!loading && errorProducts && (
                     <>
                         <div className={'alert'}>{errorProducts}</div>
+                        <div className={cl.nutipa}/>
+                    </>
+                )}
+
+                {!loading && !errorProducts && dataProducts === [] && (
+                    <>
+                        <div className={'alert'}>Продукты не найдены</div>
                         <div className={cl.nutipa}/>
                     </>
                 )}
