@@ -240,8 +240,8 @@
 }
 .microImage{
     width: 91px;
-    height: 99px;
-    padding: 22px;
+    height: 91px;
+    padding: 5px;
     border-radius: 5px;
     background-color: var(--color-200);
     cursor: pointer;
