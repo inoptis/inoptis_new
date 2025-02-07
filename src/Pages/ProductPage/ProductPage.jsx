@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from 'react';
 import cl from './ProductPage.module.css';
 import IButton from "../../Components/UI/IButton/IButton";
 import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
-import img from '../../Assets/Pictures/TestProduct/picture.png';
 import arrow from '../../Assets/Pictures/arrow-breadcrumbs.svg';
 import doubleArrow from '../../Assets/Pictures/double-arrow.svg';
 import MoreDescription from "../../Components/Blocks/MoreInfoBlocks/MoreDescription";
