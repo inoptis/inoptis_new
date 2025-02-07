@@ -94,13 +94,6 @@ const SearchPage = () => {
                     </>
                 )}
 
-                {!loading && !errorProducts && dataProducts === [] && (
-                    <>
-                        <div className={'alert'}>Продукты не найдены</div>
-                        <div className={cl.nutipa}/>
-                    </>
-                )}
-
                 {!loading && !errorProducts && dataProducts && (
                     <div className={cl.productContainer}>
                         {dataProducts.map((product) =>
