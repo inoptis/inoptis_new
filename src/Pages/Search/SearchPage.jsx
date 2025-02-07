@@ -4,7 +4,6 @@ import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
 import search from "../../Assets/Pictures/search.svg";
 import axios from "axios";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import useHover from "../../Hooks/useHover";
 
 const SearchPage = () => {
     const breadcrumbs = [
@@ -39,12 +38,11 @@ const SearchPage = () => {
     }
 
     useEffect(() => {
-        if (!param) {
+        if (!query) {
             setLoading(false);
             setErrorProducts("Поисковый запрос не указан");
             return;
         }
-
         const apiURL = `http://alexaksa.beget.tech/searchsapi.html?query=${query}`;
         axios.get(apiURL)
             .then(response => {
