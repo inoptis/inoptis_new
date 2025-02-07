@@ -198,13 +198,14 @@ const ProductPage = () => {
                                         <img className={cl.mainImage} src={usedImg} alt="product" />
                                             <div className={cl.imagesContainer} ref={imageContainer}>
                                                     {testimages.map((img, index) => (
-                                                        <img
-                                                            className={`${cl.microImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`}
-                                                            onClick={() => setUsedImg(baseUrl + data.product_image)}
-                                                            src={baseUrl + data.product_image}
-                                                            key={index}
-                                                            alt={'product'}
-                                                        />
+                                                        <div onClick={() => setUsedImg(baseUrl + data.product_image)}>
+                                                            <img
+                                                                className={`${cl.microImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`}
+                                                                src={baseUrl + data.product_image}
+                                                                key={index}
+                                                                alt={'product'}
+                                                            />
+                                                        </div>
                                                     ))}
                                             </div>
                                     </div>
@@ -242,9 +243,10 @@ const ProductPage = () => {
                                             <img className={cl.mainImage} src={usedImg} alt="product" />
                                             <div className={cl.imagesContainer}>
                                                 {testimages.map((img, index) => (
-                                                    <div className={cl.microImage} onClick={() => setUsedImg(baseUrl + data.product_image)}>
+                                                    <div>
                                                         <img
-                                                            className={` ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`}
+                                                            className={`${cl.microImage} ${usedImg === baseUrl + data.product_image ? cl.selected : ''}`}
+                                                            onClick={() => setUsedImg(baseUrl + data.product_image)}
                                                             src={baseUrl + data.product_image}
                                                             key={index}
                                                             alt={'product'}
