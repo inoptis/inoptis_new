@@ -65,6 +65,7 @@ const ProductPage = () => {
             .then(response => {
                 setData(response.data); // Устанавливаем данные из API в состояние
                 setLoading(false)
+                setUsedImg(baseUrl + response.data.product_image.fieldValue[0].image)
             })
             .catch(error => {
                 console.log(error);
@@ -83,7 +84,6 @@ const ProductPage = () => {
                 setDataFilter(response.data); // Устанавливаем данные из API в состояние
                 setIsOpen(response.data.map(() => true))
                 setLoading(false)
-                setUsedImg(baseUrl + product.product_image.fieldValue[0].image)
             })
             .catch(error => {
                 console.log(error);
