@@ -9,6 +9,7 @@ const Modal = ({ children, close }) => {
     useEffect(() => {
         setIsActive(true);
         document.body.classList.add('no-scroll'); // Добавляем класс для блокировки скролла
+        console.log('Открываюсь')
 
         // Функция очистки useEffect, которая будет вызвана при размонтировании компонента
         return () => {
@@ -20,7 +21,8 @@ const Modal = ({ children, close }) => {
         setIsActive(false); // Сначала делаем окно неактивным
         setTimeout(() => {
             close();
-            document.body.classList.remove('no-scroll'); // Удаляем класс при закрытии модального окна с задержкой
+            document.body.classList.remove('no-scroll');
+            console.log('Закрываюсь')// Удаляем класс при закрытии модального окна с задержкой
         }, 300); // Затем вызываем функцию onClick с задержкой для анимации
     };
 

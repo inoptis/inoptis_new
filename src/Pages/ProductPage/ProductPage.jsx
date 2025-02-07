@@ -91,6 +91,15 @@ const ProductPage = () => {
             })
     }, []); // Пустой массив зависимостей - useEffect выполнится один раз при монтировании компонента
 
+    useEffect(() => {
+        if (filterOpen) {
+            document.body.classList.add('no-scroll'); // Добавляем класс для блокировки скролла
+            return () => {
+                document.body.classList.remove('no-scroll'); // Удаляем класс при закрытии модального окна
+            }
+        }
+    }, [filterOpen]);
+
     const toggleSection = (index) => {
         setIsOpen(prevState =>
             prevState.map((state, idx) => idx === index ? !state : state)
@@ -108,6 +117,16 @@ const ProductPage = () => {
         setActive(1); // Устанавливаем активную вкладку
         targetRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Прокручиваем к .buttons
     };
+
+    const closeFilter = () => {
+        setFilterOpen(!filterOpen)
+        if (!filterOpen) {
+            setTimeout(() => {
+                document.body.classList.remove('no-scroll');
+                console.log('Закрываюсь')// Удаляем класс при закрытии модального окна с задержкой
+            }, 300); // Затем вызываем функцию onClick с задержкой для анимации
+        }
+    }
 
     const settings = {
         dots: true,
@@ -137,7 +156,7 @@ const ProductPage = () => {
                                 timeout={300}
                                 unmountOnExit
                             >
-                                <div className={`${cl.background}`} onClick={() => setFilterOpen(false)} />
+                                <div className={`${cl.background}`} onClick={closeModal} />
                             </CSSTransition>
                         )}
                     </TransitionGroup>
@@ -152,7 +171,7 @@ const ProductPage = () => {
                             {
                                 width > 960 &&
                                 <div className={`${cl.filter} ${filterOpen ? cl.open : ''}`}>
-                                    <div className={cl.buttonFilter} onClick={() => setFilterOpen(!filterOpen)}>
+                                    <div className={cl.buttonFilter} onClick={closeFilter}>
                                         <img src={doubleArrow} alt="arrow" />
                                         <span>Категории</span>
                                     </div>
