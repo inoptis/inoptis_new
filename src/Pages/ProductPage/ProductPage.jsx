@@ -100,8 +100,6 @@ const ProductPage = () => {
 
     const [active, setActive] = useState(1);
 
-    const testimages = [img, img, img, img, img, img];
-
     const moreFeatures = () => {
         setActive(2); // Устанавливаем активную вкладку
         targetRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Прокручиваем к .buttons
