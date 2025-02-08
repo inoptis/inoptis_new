@@ -44,37 +44,37 @@
     display: flex;
 }
 .filter{
-    cursor: pointer;
+    min-height: 534px;
+    max-height: 534px;
     flex-direction: row;
-    left: 0;
-    height: 534px;
-    overflow: hidden;
-    gap: 30px;
-    position: fixed;
-    top: 50%;
-    align-items: center;
-    transform: translateY(-50%);
-    transition: all .3s linear;
+    display: flex;
+    position: absolute;
+    left: -98px;
+    top:56px;
     z-index: 101;
+    cursor: pointer;
+    max-width: 56px;
+    overflow: hidden;
+    transition: all 0.3s linear;
+    border-radius: 10px;
     &.open{
-        .filterContainer{
-
-        }
+        max-width: 600px;
+        max-height: 736px;
         .buttonFilter{
             max-height: 736px;
         }
     }
     .buttonFilter{
-        align-items: center;
         background-color: var(--color-600);
-        flex-direction: column;
+        display: flex;
+        align-items: center;
         justify-content: space-between;
-        padding: 16px 6px 50px 22px;
-        line-height: 1;
-        transition: all .3s linear;
+        flex-direction: column;
         width: 56px;
-        height: 145px;
-        border-radius: 0 10px 10px 0;
+        padding: 20px 0 60px 0;
+        min-height: 534px;
+        max-height: 534px;
+        transition: all 0.3s linear;
         img{
             width: 12px;
         }
@@ -85,13 +85,11 @@
         }
     }
     .filterMainContainer{
-        flex-direction: column;
-        max-height: 534px;
-        overflow: hidden;
         width: 408px;
-        transition: all 0.3s linear;
-        border-radius: 10px;
-        left: -100%;
+        display: flex;
+        max-height: 736px;
+        flex-direction: column;
+        overflow: hidden;
         @media (max-width: 1400px) {
             width: 362px;
         }
