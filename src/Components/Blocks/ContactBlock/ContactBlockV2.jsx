@@ -22,7 +22,7 @@ const ContactBlockV2 = () => {
                 </div>
                 <div className={cl.mapContainerv2}>
                     {/* <img src={map} alt="map"/> */}
-                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aeaafbe59055abd83788bdb42a08855ea593553afbd6ff95aa1c294941456292f&amp;width=600&amp;height=322&amp;lang=ru_RU&amp;scroll=true"></script>
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aeaafbe59055abd83788bdb42a08855ea593553afbd6ff95aa1c294941456292f&amp;source=constructor" width="600" height="322" frameborder="0"></iframe>
                 </div>
             </div>
         </div>
