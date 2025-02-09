@@ -42,6 +42,12 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@svgr/plugin-svgo": "^8.1.0",
+    "css-select": "^5.1.0",
+    "nth-check": "^2.1.1",
+    "postcss": "^8.5.1",
+    "resolve-url-loader": "^5.0.0",
+    "svgo": "^3.3.2"
   }
 }

@@ -30,7 +30,7 @@ const ContactBlockV2 = () => {
             },
             '560': { // 560 и меньше
                 src: "https://yandex.ru/map-widget/v1/?um=constructor%3A804791f2682d5a6a05301398fe2a851e5fd5111924bc56001bc58afeeee0f589&amp;source=constructor",
-                width: 503,
+                width: "100%",
                 height: 200
             }
         };
