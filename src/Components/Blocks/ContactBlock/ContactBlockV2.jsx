@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import cl from "./ContactBlock.module.css";
 import bg from "../../../Assets/Pictures/Epattern_left.svg";
 import icon1 from "../../../Assets/Pictures/ContactBlock/icon1.svg";
