@@ -11,10 +11,10 @@
     gap:10px;
     flex-direction: column;
     h5{
-        font:var(--text-circe-bold-24)
+        font:var(--text-circe-bold-18)
     }
     p, li{
-        font:var(--text-circe-regular-24);
+        font:var(--text-circe-regular-16);
         white-space: pre-line;
     }
 }
