@@ -10,9 +10,9 @@ const Partners = () => {
         { title: 'Партнеры', path: '/partners' },
     ];
 
-    const [loading, setLoading] = useState()
-    const [data, setData] = useState()
-    const [error, setError] = useState()
+    const [loading, setLoading] = useState(true)
+    const [data, setData] = useState(null)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         // URL API ресурса
