@@ -42,12 +42,12 @@
         width: 50%;
         margin: 15px 40px 15px 40px;
         color: var(--color-1000);
-        font:var(--text-circe-bold-24);
+        font:var(--text-circe-bold-18);
     }
     &:nth-child(even){
         background: var(--color-200);
         span{
-            font:var(--text-circe-regular-24);
+            font:var(--text-circe-regular-18);
         }
     }
     @media (max-width: 1400px) {

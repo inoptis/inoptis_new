@@ -51,11 +51,21 @@
     gap: 14px;
     span{
         color:var(--color-1000);
-        font: var(--text-circe-regular-14)
+        font: var(--text-circe-regular-14);
+        display: -webkit-box; /* Включаем флексбокс для старых браузеров */
+        -webkit-line-clamp: 1; /* Ограничиваем количество строк */
+        -webkit-box-orient: vertical; /* Указываем ориентацию флексбокса */
+        overflow: hidden; /* Скрываем текст, который выходит за пределы */
+        text-overflow: ellipsis; /* Добавляем многоточие */
     }
     h5{
         color:var(--color-1000);
         font: var(--text-circe-bold-18);
+        display: -webkit-box; /* Включаем флексбокс для старых браузеров */
+        -webkit-line-clamp: 3; /* Ограничиваем количество строк */
+        -webkit-box-orient: vertical; /* Указываем ориентацию флексбокса */
+        overflow: hidden; /* Скрываем текст, который выходит за пределы */
+        text-overflow: ellipsis; /* Добавляем многоточие */
     }
     @media (max-width: 960px) {
         gap:8px;
