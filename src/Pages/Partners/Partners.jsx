@@ -18,12 +18,10 @@ const Partners = () => {
         // URL API ресурса
         const apiURL = 'http://alexaksa.beget.tech/parthnersapi.html';
         // Запрос через Axios
-        console.log('Работаю')
         axios.get(apiURL)
             .then(response => {
                 setData(response.data); // Устанавливаем данные из API в состояние
                 setLoading(false)
-                console.log('Работаю axios')
             })
             .catch(error => {
                 console.log(error);
