@@ -16,7 +16,7 @@ const Partners = () => {
 
     useEffect(() => {
         // URL API ресурса
-        const apiURL = 'http://alexaksa.beget.tech/api.html';
+        const apiURL = 'http://alexaksa.beget.tech/parthnersapi.html';
         // Запрос через Axios
         axios.get(apiURL)
             .then(response => {
