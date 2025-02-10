@@ -19,7 +19,6 @@
     gap:48px;
     width: 1228px;
     margin: -64px auto 0 auto;
-    position: relative;
     @media (max-width: 1400px) {
         width: 825px;
         gap:24px;
@@ -82,7 +81,7 @@
     position: absolute;
 }
 .helper.open .filterMainContainer {
-    left: 0;
+    left: 83px;
 }
 .filterMainContainer {
     display: flex;
@@ -93,7 +92,7 @@
     transition: all 0.3s linear;
     border-radius: 10px;
     position: absolute;
-    left: -150%;
+    left: -100%;
     z-index: 106;
     @media (max-width: 1400px) {
         width: 362px;
@@ -363,7 +362,7 @@
         }
     }
     .filterMainContainer{
-        max-height: 488px;
+        max-height: 522px;
     }
     .title{
         gap: 12px;
