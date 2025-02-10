@@ -2,13 +2,8 @@ import React, { useState, useRef } from 'react';
 import cl from './ProductPage.module.css';
 import IButton from "../../Components/UI/IButton/IButton";
 import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
-import arrow from '../../Assets/Pictures/arrow-breadcrumbs.svg';
 import doubleArrow from '../../Assets/Pictures/double-arrow.svg';
-import MoreDescription from "../../Components/Blocks/MoreInfoBlocks/MoreDescription";
-import MoreFeatures from "../../Components/Blocks/MoreInfoBlocks/MoreFeatures";
-import MoreDocumentation from "../../Components/Blocks/MoreInfoBlocks/MoreDocumentation";
 import arrowdark from "../../Assets/Pictures/arrow-filter-dark.svg";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Modal from "../../Components/UI/Modal/Modal";
@@ -18,10 +13,8 @@ const ProductPageTest = () => {
     const [filterOpen, setFilterOpen] = useState(false);
     const [isOpen, setIsOpen] = useState([]);
     const filtercontainer = useRef();
-    const imageContainer = useRef();
-    const [usedImg, setUsedImg] = useState('placeholder.jpg');
+    const [usedImg, ] = useState('placeholder.jpg');
     const [modal, setModal] = useState(false);
-    const [active, setActive] = useState(1);
 
     const breadcrumbs = [
         { title: 'Главная', path: '/' },
