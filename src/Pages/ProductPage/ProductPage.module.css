@@ -63,6 +63,7 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    z-index: 105;
     img{
         width: 12px;
         rotate:180deg;
@@ -74,7 +75,12 @@
     padding: 18px 6px 50px 18px;
     justify-content: space-between;
 }
-
+.helper {
+    position: absolute;
+}
+.filterAbsolute{
+    position: absolute;
+}
 .helper.open .filterMainContainer {
     left: 0;
 }
@@ -88,6 +94,7 @@
     border-radius: 10px;
     position: absolute;
     left: -100%;
+    z-index: 106;
     @media (max-width: 1400px) {
         width: 362px;
     }
