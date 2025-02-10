@@ -87,13 +87,13 @@
 .filterMainContainer {
     display: flex;
     flex-direction: column;
-    max-height: 534px;
+    max-height: 730px;
     overflow: hidden;
     width: 408px;
     transition: all 0.3s linear;
     border-radius: 10px;
     position: absolute;
-    left: -100%;
+    left: -150%;
     z-index: 106;
     @media (max-width: 1400px) {
         width: 362px;
@@ -160,6 +160,15 @@
     flex-direction: column;
     overflow: hidden;
     transition: max-height 0.3s linear;
+}
+.filterContainer.open {
+    max-height: 400px;
+    @media (max-width: 1400px) {
+        max-height: 500px;
+    }
+}
+.filterContainer.close{
+    max-height: 0;
 }
 
 .background{
@@ -352,6 +361,9 @@
                 font: var(--text-circe-bold-16);
             }
         }
+    }
+    .filterMainContainer{
+        max-height: 488px;
     }
     .title{
         gap: 12px;
