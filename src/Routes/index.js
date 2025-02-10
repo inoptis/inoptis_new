@@ -6,6 +6,7 @@ import Contacts from "../Pages/Contacts/Contacts";
 import SubCatalog from "../Pages/SubCatalog/SubCatalog";
 import ProductPage from "../Pages/ProductPage/ProductPage";
 import SearchPage from "../Pages/Search/SearchPage";
+import ProductPageTest from "../Pages/ProductPage/ProductPageTest";
 
 
 export const InfoRoutes = [
@@ -17,4 +18,5 @@ export const InfoRoutes = [
     { path: '/search', element: <SearchPage />},
     { path: '/catalog/subcatalog', element: <SubCatalog />},
     { path: '/catalog/subcatalog/:id', element: <ProductPage />},
+    { path: '/test', element: <ProductPageTest />},
 ]
