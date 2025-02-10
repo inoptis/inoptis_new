@@ -91,7 +91,7 @@ const SubCatalog = () => {
             <div className={cl.mainBlock}>
                 {loading && <>
                     <div className={'alert'}>Загрузка...</div>
-                    <div className={cl.nutipa}/>
+                    <div className={'nutipa'}/>
                 </>}
                 {!loading && !errorFilter && active !== null &&
                     <>

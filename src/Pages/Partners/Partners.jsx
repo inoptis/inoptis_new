@@ -1,40 +1,55 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import cl from './Partners.module.css'
 import PartnersBlock from "../../Components/Blocks/PartnersBlock/PartnersBlock";
 import CallToAction from "../../Components/Blocks/CallToAction/CallToAction";
 import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
-import partner1 from '../../Assets/Pictures/Partners/logo1.svg'
-import partner2 from '../../Assets/Pictures/Partners/logo2.svg'
-import partner3 from '../../Assets/Pictures/Partners/logo3.svg'
-import partner4 from '../../Assets/Pictures/Partners/logo4.svg'
+import axios from "axios";
 const Partners = () => {
     const breadcrumbs = [
         { title: 'Главная', path: '/' },
         { title: 'Партнеры', path: '/partners' },
     ];
+
+    const [loading, setLoading] = useState()
+    const [data, setData] = useState()
+    const [error, setError] = useState()
+
+    useEffect(() => {
+        // URL API ресурса
+        const apiURL = 'http://alexaksa.beget.tech/api.html';
+        // Запрос через Axios
+        axios.get(apiURL)
+            .then(response => {
+                setData(response.data); // Устанавливаем данные из API в состояние
+                setLoading(false)
+            })
+            .catch(error => {
+                console.log(error);
+                setLoading(false)
+                setError(true);
+            })
+    }, []);
+
+    const baseUrl = "http://alexaksa.beget.tech/";
+
     return (
         <div className={'page'}>
             <div className={cl.mainBlock}>
                 <Breadcrumbs breadcrumbs={breadcrumbs}/>
                 <h1>Наши партнёры:</h1>
-                <div className={cl.container}>
-                    <div className={cl.item}>
-                        <img src={partner1} alt="ТЭК-Системс"/>
-                        <span>ТЭК-Системс</span>
+                {loading ? <>
+                    <div className={'alert'}>Загрузка...</div>
+                    <div className={'nutipa'}/>
+                </> :
+                    <div className={cl.container}>
+                        {!error && data.map((partner) =>
+                                <div className={cl.item}>
+                                    <img src={baseUrl + partner.Image} alt={partner.pagetitle}/>
+                                    <span>{partner.pagetitle}</span>
+                                </div>
+                            )}
                     </div>
-                    <div className={cl.item}>
-                        <img src={partner2} alt="ТЕСС-Инжиниринг"/>
-                        <span>ТЕСС-Инжиниринг</span>
-                    </div>
-                    <div className={cl.item}>
-                        <img src={partner3} alt="РБ Автоматика"/>
-                        <span>РБ Автоматика</span>
-                    </div>
-                    <div className={cl.item}>
-                        <img src={partner4} alt="ГК Ультра"/>
-                        <span>ГК Ультра</span>
-                    </div>
-                </div>
+                }
             </div>
             <CallToAction/>
             <PartnersBlock/>
