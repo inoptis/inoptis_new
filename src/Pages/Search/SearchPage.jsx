@@ -84,7 +84,7 @@ const SearchPage = () => {
                 <CSSTransition
                     in={loading}
                     timeout={100} // Длительность анимации
-                    classNames="fade"
+                    classNames="fadefast"
                     unmountOnExit
                 >
                     <Loader />
