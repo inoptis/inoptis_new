@@ -8,6 +8,7 @@ import arrowdark from '../../Assets/Pictures/arrow-filter-dark.svg'
 import axios from "axios";
 import {useSearchParams} from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
+import { CSSTransition } from "react-transition-group";
 const SubCatalog = () => {
 
     const [searchParams] = useSearchParams();
@@ -90,7 +91,6 @@ const SubCatalog = () => {
     return (
         <div className='page'>
             <div className={cl.mainBlock}>
-                {/* eslint-disable-next-line react/jsx-no-undef */}
                 <CSSTransition
                     in={loading}
                     timeout={100} // Длительность анимации
