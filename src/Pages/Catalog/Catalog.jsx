@@ -7,6 +7,7 @@ import {useWindowSize} from "../../Hooks/useWindowSize";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import Loader from "../../Components/Loader/Loader";
+import { CSSTransition } from "react-transition-group";
 const Catalog = () => {
     const [width] = useWindowSize()
     const navigate = useNavigate()

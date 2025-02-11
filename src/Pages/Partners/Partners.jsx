@@ -5,6 +5,7 @@ import CallToAction from "../../Components/Blocks/CallToAction/CallToAction";
 import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
 import axios from "axios";
 import Loader from "../../Components/Loader/Loader";
+import { CSSTransition } from "react-transition-group";
 const Partners = () => {
     const breadcrumbs = [
         { title: 'Главная', path: '/' },

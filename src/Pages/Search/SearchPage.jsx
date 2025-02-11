@@ -5,7 +5,7 @@ import search from "../../Assets/Pictures/search.svg";
 import axios from "axios";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
-
+import { CSSTransition } from "react-transition-group";
 const SearchPage = () => {
     const breadcrumbs = [
         { title: 'Главная', path: '/' },
