@@ -7,6 +7,7 @@ import arrow from '../../Assets/Pictures/arrow-filter.svg'
 import arrowdark from '../../Assets/Pictures/arrow-filter-dark.svg'
 import axios from "axios";
 import {useSearchParams} from "react-router-dom";
+import Loader from "../../Components/Loader/Loader";
 const SubCatalog = () => {
 
     const [searchParams] = useSearchParams();
@@ -90,8 +91,7 @@ const SubCatalog = () => {
         <div className='page'>
             <div className={cl.mainBlock}>
                 {loading && <>
-                    <div className={'alert'}>Загрузка...</div>
-                    <div className={'nutipa'}/>
+                    <Loader/>
                 </>}
                 {!loading && !errorFilter && active !== null &&
                     <>

@@ -18,6 +18,7 @@ import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom";
 import Modal from "../../Components/UI/Modal/Modal";
 import Form from "../../Components/UI/Form/Form";
+import Loader from "../../Components/Loader/Loader";
 
 const ProductPage = () => {
     const navigate = useNavigate()
@@ -198,8 +199,7 @@ const ProductPage = () => {
                     }
 
                     {loading && <>
-                        <div className={'alert'}>Загрузка...</div>
-                        <div className={cl.nutipa}/>
+                        <Loader/>
                     </>}
                     {loading === false && error === false && <>
                         <div className={cl.productInfo}>
@@ -212,7 +212,7 @@ const ProductPage = () => {
                                     <div className={cl.images}>
                                         <img className={cl.mainImage} src={usedImg} alt="product" />
                                             <div className={cl.imagesContainer} ref={imageContainer}>
-                                                    {data.product_image.fieldValue.map((img, index) => (
+                                                    {data.product_image.fieldValue?.map((img, index) => (
                                                         <div className={`${cl.blockImage} ${usedImg === baseUrl + img.image ? cl.selected : ''}`} onClick={() => setUsedImg(baseUrl + img.image)}>
                                                             <img
                                                                 className={`${cl.microImage}`}

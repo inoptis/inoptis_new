@@ -4,6 +4,7 @@ import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
 import search from "../../Assets/Pictures/search.svg";
 import axios from "axios";
 import {useNavigate, useSearchParams} from "react-router-dom";
+import Loader from "../../Components/Loader/Loader";
 
 const SearchPage = () => {
     const breadcrumbs = [
@@ -82,8 +83,7 @@ const SearchPage = () => {
 
                 {loading && (
                     <>
-                        <div className={'alert'}>Загрузка...</div>
-                        <div className={cl.nutipa}/>
+                        <Loader/>
                     </>
                 )}
 

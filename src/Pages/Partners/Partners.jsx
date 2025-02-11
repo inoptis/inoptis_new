@@ -4,6 +4,7 @@ import PartnersBlock from "../../Components/Blocks/PartnersBlock/PartnersBlock";
 import CallToAction from "../../Components/Blocks/CallToAction/CallToAction";
 import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
 import axios from "axios";
+import Loader from "../../Components/Loader/Loader";
 const Partners = () => {
     const breadcrumbs = [
         { title: 'Главная', path: '/' },
@@ -38,8 +39,7 @@ const Partners = () => {
                 <Breadcrumbs breadcrumbs={breadcrumbs}/>
                 <h1>Наши партнёры:</h1>
                 {loading ? <>
-                    <div className={'alert'}>Загрузка...</div>
-                    <div className={'nutipa'}/>
+                        <Loader/>
                 </> :
                     <div className={cl.container}>
                         {!error && data.map((partner) =>

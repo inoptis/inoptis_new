@@ -6,6 +6,7 @@ import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
 import {useWindowSize} from "../../Hooks/useWindowSize";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import Loader from "../../Components/Loader/Loader";
 const Catalog = () => {
     const [width] = useWindowSize()
     const navigate = useNavigate()
@@ -40,7 +41,7 @@ const Catalog = () => {
             <div className={cl.mainBlock}>
                 <Breadcrumbs breadcrumbs={breadcrumbs}/>
                 <h1>Каталог</h1>
-                {loading ? <div className={'alert'}>Загрузка...</div> : <>
+                {loading ? <Loader/> : <>
                     {width > 560 &&
                         <div className={cl.container}>
                             {data.map((category, index) => (

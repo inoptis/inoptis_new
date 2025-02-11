@@ -11,6 +11,7 @@ import ContactBlock from "../../Components/Blocks/ContactBlock/ContactBlock";
 import PartnersBlock from "../../Components/Blocks/PartnersBlock/PartnersBlock";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import Loader from "../../Components/Loader/Loader";
 const Main = () => {
 
     const [dataFilter, setDataFilter] = useState(null)
@@ -40,7 +41,7 @@ const Main = () => {
             <div className={cl.banner}></div>
             <div className={cl.products}>
                 <h2>Наша продукция:</h2>
-                {loading ? <div className={'alert'}>Загрузка...</div> : <>
+                {loading ? <Loader/> : <>
                     {!errorFilter && dataFilter !== null &&
                         <div className={cl.productsContainer}>
                             {dataFilter.map((product, index) => (
