@@ -189,7 +189,14 @@ const ProductPage = () => {
                         </div>
                     }
 
-                    {loading && <Loader />}
+                    <CSSTransition
+                        in={loading}
+                        timeout={100} // Длительность анимации
+                        classNames="fade"
+                        unmountOnExit
+                    >
+                        <Loader />
+                    </CSSTransition>
                     {loading === false && error === false && data && <div className={cl.productInfo}>
                         <div className={cl.title}>
                             <h1>{data.pagetitle}</h1>

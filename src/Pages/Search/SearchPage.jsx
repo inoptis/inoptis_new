@@ -81,11 +81,14 @@ const SearchPage = () => {
                     </button>
                 </div>
 
-                {loading && (
-                    <>
-                        <Loader/>
-                    </>
-                )}
+                <CSSTransition
+                    in={loading}
+                    timeout={100} // Длительность анимации
+                    classNames="fade"
+                    unmountOnExit
+                >
+                    <Loader />
+                </CSSTransition>
 
                 {!loading && errorProducts && (
                     <>

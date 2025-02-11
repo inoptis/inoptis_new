@@ -370,17 +370,6 @@
         flex-wrap: wrap;
         align-items: center;
         gap: 20px 9px;
-        div{
-            width: 128px;
-            height: 90px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            img{
-                width: auto;
-                height: 45px;
-            }
-        }
     }
 }
 .parthnersText{
@@ -428,5 +417,18 @@
     }
     @media (max-width: 560px) {
             width: 100%;
+    }
+}
+@media (max-width: 560px) {
+    .logo{
+        width: 128px;
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: auto;
+            height: 45px;
+        }
     }
 }

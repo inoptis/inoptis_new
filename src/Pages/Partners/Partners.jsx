@@ -38,8 +38,15 @@ const Partners = () => {
             <div className={cl.mainBlock}>
                 <Breadcrumbs breadcrumbs={breadcrumbs}/>
                 <h1>Наши партнёры:</h1>
+                <CSSTransition
+                    in={loading}
+                    timeout={100} // Длительность анимации
+                    classNames="fade"
+                    unmountOnExit
+                >
+                    <Loader />
+                </CSSTransition>
                 {loading ? <>
-                        <Loader/>
                 </> :
                     <div className={cl.container}>
                         {!error && data.map((partner) =>

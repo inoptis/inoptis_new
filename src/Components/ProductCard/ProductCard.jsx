@@ -13,7 +13,8 @@ const ProductCard = ({product, category}) => {
         setModal(false)
     }
 
-    const openModal = () => {
+    const openModal = (e) => {
+        e.stopPropagation(); // Останавливаем всплытие события
         setModal(true)
     }
 

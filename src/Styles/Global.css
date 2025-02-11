@@ -145,6 +145,27 @@ body {
     }
 }
 
+
+.fadefast-enter {
+    opacity: 0;
+}
+
+.fadefast-enter-active {
+    opacity: 1;
+    transition: opacity 100ms;
+}
+
+.fadefast-exit {
+    opacity: 1;
+}
+
+.fadefast-exit-active {
+    opacity: 0;
+    transition: opacity 100ms;
+}
+
+
+
 .fade-enter {
     opacity: 0;
 

@@ -41,7 +41,15 @@ const Catalog = () => {
             <div className={cl.mainBlock}>
                 <Breadcrumbs breadcrumbs={breadcrumbs}/>
                 <h1>Каталог</h1>
-                {loading ? <Loader/> : <>
+                <CSSTransition
+                    in={loading}
+                    timeout={100} // Длительность анимации
+                    classNames="fade"
+                    unmountOnExit
+                >
+                    <Loader />
+                </CSSTransition>
+                {loading ? <></> : <>
                     {width > 560 &&
                         <div className={cl.container}>
                             {data.map((category, index) => (

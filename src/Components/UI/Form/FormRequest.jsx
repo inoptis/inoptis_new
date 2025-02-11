@@ -107,7 +107,7 @@ const FormRequest = () => {
             <h3 className={cl.title}>Введите данные для оформления заявки:</h3>
             <div className={cl.fields}>
                 <ITextArea
-                    placeholder="Название предприятия"
+                    placeholder="Название предприятия *"
                     type="text"
                     value={formData.title}
                     onChange={handleChange}
@@ -116,7 +116,7 @@ const FormRequest = () => {
                     required
                 />
                 <ITextArea
-                    placeholder="ФИО контактного лица"
+                    placeholder="ФИО контактного лица *"
                     type="text"
                     value={formData.name}
                     onChange={handleChange}
@@ -125,7 +125,7 @@ const FormRequest = () => {
                     required
                 />
                 <ITextArea
-                    placeholder="Номер телефона"
+                    placeholder="Номер телефона *"
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
@@ -134,7 +134,7 @@ const FormRequest = () => {
                     required
                 />
                 <ITextArea
-                    placeholder="Адрес электронной почты"
+                    placeholder="Адрес электронной почты *"
                     type="email"
                     value={formData.email}
                     onChange={handleChange}

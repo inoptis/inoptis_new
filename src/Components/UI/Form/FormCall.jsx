@@ -80,7 +80,7 @@ const FormCall = () => {
             <h3 className={cl.title}>Введите данные для заказа обратного звонка:</h3>
             <div className={cl.fields}>
                 <ITextArea
-                    placeholder="Название предприятия"
+                    placeholder="Название предприятия *"
                     type="text"
                     value={formData.title}
                     onChange={handleChange}
@@ -89,7 +89,7 @@ const FormCall = () => {
                     required
                 />
                 <ITextArea
-                    placeholder="ФИО контактного лица"
+                    placeholder="ФИО контактного лица *"
                     type="text"
                     value={formData.name}
                     onChange={handleChange}
@@ -98,7 +98,7 @@ const FormCall = () => {
                     required
                 />
                 <ITextArea
-                    placeholder="Номер телефона"
+                    placeholder="Номер телефона *"
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}

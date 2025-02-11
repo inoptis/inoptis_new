@@ -90,9 +90,15 @@ const SubCatalog = () => {
     return (
         <div className='page'>
             <div className={cl.mainBlock}>
-                {loading && <>
-                    <Loader/>
-                </>}
+                {/* eslint-disable-next-line react/jsx-no-undef */}
+                <CSSTransition
+                    in={loading}
+                    timeout={100} // Длительность анимации
+                    classNames="fade"
+                    unmountOnExit
+                >
+                    <Loader />
+                </CSSTransition>
                 {!loading && !errorFilter && active !== null &&
                     <>
                         <Breadcrumbs breadcrumbs={breadcrumbs}/>

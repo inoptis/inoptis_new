@@ -119,10 +119,10 @@ const About = () => {
             </div>
             <div className={cl.parthners}>
                 <div className={cl.parthnersLogos}>
-                    <div><img src={logo1} alt="logo"/></div>
-                    <div><img src={logo3} alt="logo"/></div>
-                    <div><img src={logo2} alt="logo"/></div>
-                    <div><img src={logo4} alt="logo"/></div>
+                    <div className={cl.logo}><img src={logo1} alt="logo"/></div>
+                    <div className={cl.logo}><img src={logo3} alt="logo"/></div>
+                    <div className={cl.logo}><img src={logo2} alt="logo"/></div>
+                    <div className={cl.logo}><img src={logo4} alt="logo"/></div>
                 </div>
                 <div className={cl.parthnersText}>
                     <h2>
