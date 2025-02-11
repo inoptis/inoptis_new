@@ -28,6 +28,7 @@
         h2{
             font: var(--text-circe-bold-20);
             margin-bottom: 12px;
+            width: 100%;
         }
     }
 }
@@ -82,5 +83,27 @@
             width: 130px;
             height: 96px;
         }
+    }
+}
+
+@media (max-width: 560px) {
+    .container::before,
+    .container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100px; /* Ширина области размытия */
+        pointer-events: none; /* Предотвращает взаимодействие с мышью */
+        z-index: 2;
+    }
+    .container::before {
+         left: -20px;
+         background: linear-gradient(to right, rgba(231, 233, 231, 1), rgba(231, 233, 231, 0));
+     }
+
+    .container::after {
+        right: -20px;
+        background: linear-gradient(to left, rgba(231, 233, 231, 1), rgba(231, 233, 231, 0));
     }
 }

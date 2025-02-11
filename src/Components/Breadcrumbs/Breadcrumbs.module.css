@@ -7,8 +7,8 @@
 .separator,
 .link {
     text-decoration: unset;
-    color: var(--color-1000);
-    font: var(--text-circe-bold-20);
+    color: var(--color-900);
+    font: var(--text-circe-bold-16);
 }
 .elem {
     display: flex;

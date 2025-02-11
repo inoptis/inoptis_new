@@ -149,7 +149,9 @@ body {
     opacity: 0;
 
 }
-
+.App{
+    
+}
 .fade-enter-active {
     opacity: 1;
     transition: opacity 500ms ease-in-out;
