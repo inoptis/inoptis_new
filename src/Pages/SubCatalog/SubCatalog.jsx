@@ -90,9 +90,7 @@ const SubCatalog = () => {
     return (
         <div className='page'>
             <div className={cl.mainBlock}>
-                {loading && <>
-                    <Loader/>
-                </>}
+                 
                 {!loading && !errorFilter && active !== null &&
                     <>
                         <Breadcrumbs breadcrumbs={breadcrumbs}/>
