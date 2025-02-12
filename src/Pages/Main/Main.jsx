@@ -40,7 +40,7 @@ const Main = () => {
         <div className={'page'}>
             <div className={cl.banner}></div>
             <div className={cl.products}>
-                <h2>Наша :</h2>
+                <h2>Н :</h2>
                 {loading ? <Loader/> : <>
                     {!errorFilter && dataFilter !== null &&
                         <div className={cl.productsContainer}>
