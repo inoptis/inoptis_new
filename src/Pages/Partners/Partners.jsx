@@ -18,7 +18,7 @@ const Partners = () => {
 
     useEffect(() => {
         // URL API ресурса
-        const apiURL = 'http://alexaksa.beget.tech/parthnersapi.html';
+        const apiURL = 'https://inoptis.ru/parthnersapi.html';
         // Запрос через Axios
         axios.get(apiURL)
             .then(response => {
@@ -32,7 +32,7 @@ const Partners = () => {
             })
     }, []);
 
-    const baseUrl = "http://alexaksa.beget.tech/";
+    const baseUrl = "https://inoptis.ru/";
 
     return (
         <div className={'page'}>

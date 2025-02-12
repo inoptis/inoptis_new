@@ -22,7 +22,7 @@ const Main = () => {
 
     useEffect(() => {
         // URL API ресурса
-        const apiURL = 'http://alexaksa.beget.tech/api.html';
+        const apiURL = 'https://inoptis.ru/api.html';
         // Запрос через Axios
         axios.get(apiURL)
             .then(response => {
@@ -40,7 +40,7 @@ const Main = () => {
         <div className={'page'}>
             <div className={cl.banner}></div>
             <div className={cl.products}>
-                <h2>Наша :</h2>
+                <h2>Наша продукция:</h2>
                 {loading ? <Loader/> : <>
                     {!errorFilter && dataFilter !== null &&
                         <div className={cl.productsContainer}>

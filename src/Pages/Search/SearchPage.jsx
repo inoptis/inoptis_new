@@ -21,7 +21,7 @@ const SearchPage = () => {
     const [queryInput, setQueryInput] = useState()
     const navigate = useNavigate()
     const productRef = useRef()
-    const baseUrl = "http://alexaksa.beget.tech/";
+    const baseUrl = "https://inoptis.ru/";
 
 
     const handleChange = (e) => {
@@ -44,7 +44,7 @@ const SearchPage = () => {
             setErrorProducts("Поисковый запрос не указан");
             return;
         }
-        const apiURL = `http://alexaksa.beget.tech/searchapi.html?query=${query}`;
+        const apiURL = `https://inoptis.ru/searchapi.html?query=${query}`;
         axios.get(apiURL)
             .then(response => {
                 if (response.data.error) {

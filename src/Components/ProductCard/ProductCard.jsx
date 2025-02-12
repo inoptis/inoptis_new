@@ -6,7 +6,7 @@ import Modal from "../UI/Modal/Modal";
 import Form from "../UI/Form/Form";
 const ProductCard = ({product, category}) => {
     const navigate = useNavigate()
-    const baseUrl = "http://alexaksa.beget.tech/";
+    const baseUrl = "https://inoptis.ru/";
     const [modal, setModal] = useState(false)
 
     const closeModal = () => {

@@ -45,7 +45,7 @@ const ProductPage = () => {
         { title: `${data?.parent_title}`, path: '/catalog/subcatalog' },
     ];
 
-    const baseUrl = "http://alexaksa.beget.tech/";
+    const baseUrl = "https://inoptis.ru/";
 
     const [modal, setModal] = useState(false);
 
@@ -58,7 +58,7 @@ const ProductPage = () => {
     };
 
     useEffect(() => {
-        const apiURL = `http://alexaksa.beget.tech/productapi.html?alias=${params.id}`;
+        const apiURL = `https://inoptis.ru/productapi.html?alias=${params.id}`;
         axios.get(apiURL)
             .then(response => {
                 setData(response.data); // Устанавливаем данные из API в состояние
@@ -74,7 +74,7 @@ const ProductPage = () => {
     }, [params]);
 
     useEffect(() => {
-        const apiURL = 'http://alexaksa.beget.tech/api.html';
+        const apiURL = 'https://inoptis.ru/api.html';
         axios.get(apiURL)
             .then(response => {
                 setDataFilter(response.data);
