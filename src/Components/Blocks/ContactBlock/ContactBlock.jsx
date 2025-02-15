@@ -69,6 +69,7 @@ const ContactBlock = () => {
                             width={mapData.width}
                             height={mapData.height}
                             frameborder="0"
+                            style={{borderRadius: 20}}
                         ></iframe>
                     </div>
                 )}
