@@ -13,7 +13,7 @@ function App() {
         description="НТЦ «ИНОПТИС» — детище команды профессионалов, любящих решать сложные задачи."
         keywords="ИНОПТИС, оптика, лазерная техника, инновации"
         url="https://inoptis.ru"
-        image="https://inoptis.ru/logo512.png"
+        image="/logo512.png"
       />
       <BrowserRouter>
           <Header/>
