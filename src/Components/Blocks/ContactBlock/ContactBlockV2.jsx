@@ -52,8 +52,8 @@ const ContactBlockV2 = () => {
                 <div className={cl.textv2}>
                     <img src={bg} className={cl.backgroundv2} alt={'bg'}/>
                     <div className={cl.item}><img src={icon1} alt={'time'}/> Пн–Пт с 9:00 до 18:00</div>
-                    <div className={cl.item}><img src={icon2} alt={'phone'}/> +7 (495) 646-05-06</div>
-                    <div className={cl.item}><img src={icon3} alt={'email'}/> info@inoptis.ru</div>
+                    <a href={'tel:+74956460506'} className={cl.item}><img src={icon2} alt={'phone'}/> +7 (495) 646-05-06</a>
+                    <a href={'mailto:info@inoptis.ru'} className={cl.item}><img src={icon3} alt={'email'}/> info@inoptis.ru</a>
                     {/*<div className={cl.item}><img src={icon4} alt={'point'}/> Москва, Высоковольтный проезд, д. 1, стр.*/}
                     {/*    49, офис 326*/}
                     {/*</div>*/}

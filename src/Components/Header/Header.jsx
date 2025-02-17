@@ -66,7 +66,7 @@ const Header = () => {
                     <div className={cl.contact}>
                     <img src={phone} alt={'phone'}/>
                         <div className={cl.phone}>
-                            <span className={cl.number}>+7 (495) 646-05-06</span>
+                            <a href={'tel:+74956460506'} className={cl.number} >+7 (495) 646-05-06</a>
                             <span className={cl.schedule}>пн–пт с 9:00 до 18:00</span>
                         </div>
                         <IButton onClick={openModal} className={cl.call}>
