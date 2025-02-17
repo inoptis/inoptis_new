@@ -57,7 +57,7 @@ const FormCall = () => {
         if (valid) {
             setIsSubmitting(true); // Set submitting state to true
             try {
-                const response = await axios.post('https://inoptis.ru/send-form-call.html', formData, {
+                const response = await axios.post('/send-form-call.html', formData, {
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 });
 

@@ -40,7 +40,7 @@ const HeaderMobile = () => {
 
     useEffect(() => {
         // URL API ресурса
-        const apiURL = 'https://inoptis.ru/api.html';
+        const apiURL = '/api.html';
         // Запрос через Axios
         axios.get(apiURL)
             .then(response => {

@@ -39,7 +39,7 @@ const SubCatalog = () => {
     const [dataProducts, setDataProducts] = useState([]);
 
     useEffect(() => {
-        const apiURL = 'https://inoptis.ru/api.html';
+        const apiURL = '/api.html';
 
         axios.get(apiURL)
             .then(response => {
@@ -72,7 +72,7 @@ const SubCatalog = () => {
 
     useEffect(() => {
         if (active !== null) {
-            const apiURL = `https://inoptis.ru/categoryproductsapi.html?category_id=${active[1].id}`;
+            const apiURL = `/categoryproductsapi.html?category_id=${active[1].id}`;
             // Запрос через Axios
             axios.get(apiURL)
                 .then(response => {
