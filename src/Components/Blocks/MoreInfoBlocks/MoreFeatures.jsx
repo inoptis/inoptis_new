@@ -12,25 +12,34 @@ const MoreFeatures = ({ content }) => {
     }
 
     // Создаем result на основе modifiedContent
-    const result = modifiedContent.reduce((acc, pair, index, arr) => {
-        if (index % 2 === 0) {
-            const nextPair = arr[index + 1];
-            if (nextPair) {
-                acc.push({ key: pair.key, value: pair.value });
-                acc.push({ key: nextPair.key, value: nextPair.value });
-            }
+    const result = [];
+    for (let i = 0; i < modifiedContent.length; i += 2) {
+        const first = modifiedContent[i];
+        const second = modifiedContent[i + 1];
+        if (first && second) {
+            result.push({
+                keys: [first.key, second.key], // Названия
+                values: [first.value, second.value], // Значения
+            });
         }
-        return acc;
-    }, []);
+    }
 
     return (
         <>
             {width > 560 && (
                 <div className={cl.features}>
                     {result.map((feature, index) => (
-                        <div key={`feature-${index}`} className={cl.featureItem}>
-                            <span>{feature.key}</span>
-                            <span>{feature.value}</span>
+                        <div key={`feature-${index}`} className={cl.featureRow}>
+                            <div className={cl.featureTitles}>
+                                {feature.keys.map((key, i) => (
+                                    <span key={`title-${i}`}>{key}</span>
+                                ))}
+                            </div>
+                            <div className={cl.featureValues}>
+                                {feature.values.map((value, i) => (
+                                    <span key={`value-${i}`}>{value}</span>
+                                ))}
+                            </div>
                         </div>
                     ))}
                 </div>
