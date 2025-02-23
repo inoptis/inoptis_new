@@ -29,17 +29,13 @@ const MoreFeatures = ({ content }) => {
             {width > 560 && (
                 <div className={cl.features}>
                     {result.map((feature, index) => (
-                        <div key={`feature-${index}`} className={cl.featureRow}>
-                            <div className={cl.featureTitles}>
+                        <div key={`feature-${index}`} className={cl.featureItem}>
                                 {feature.keys.map((key, i) => (
                                     <span key={`title-${i}`}>{key}</span>
                                 ))}
-                            </div>
-                            <div className={cl.featureValues}>
                                 {feature.values.map((value, i) => (
                                     <span key={`value-${i}`}>{value}</span>
                                 ))}
-                            </div>
                         </div>
                     ))}
                 </div>
