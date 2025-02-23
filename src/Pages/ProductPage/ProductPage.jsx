@@ -301,7 +301,7 @@ const ProductPage = () => {
                                 <button onClick={() => setActive(3)} className={active === 3 ? cl.active : ''}>Документация</button>
                             </div>
                             {active === 1 && <MoreDescription content={data.product_description} />}
-                            {active === 2 && <MoreFeatures content={data.product_features} />}
+                            {active === 2 && <MoreFeatures content={data.product_features?.fieldValue} />}
                             {active === 3 && <MoreDocumentation content={data.product_file} />}
                         </div>
                     </div>}
