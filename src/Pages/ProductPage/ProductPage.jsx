@@ -233,8 +233,8 @@ const ProductPage = () => {
                                         <div className={cl.featureContainer}>
                                             {data.product_features?.fieldValue.slice(0, 5).map((feature, index) => (
                                                 <div className={cl.feature} key={index}>
-                                                    <div>{feature[0]}</div>
-                                                    <div>{feature[1]}</div>
+                                                    <div>{feature.key}</div>
+                                                    <div>{feature.value}</div>
                                                 </div>
                                             ))}
                                         </div>
