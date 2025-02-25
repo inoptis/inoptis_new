@@ -1,6 +1,18 @@
-//@ts-check
-
+// @ts-check
 import React, { useEffect, useRef, useState } from 'react';
+import axios from "axios";
+
+/**
+ * @typedef {Object} Product
+ * @property {string} pagetitle
+ * @property {string} product_content
+ * @property {string} [parent_title]
+ * @property {{ fieldValue?: { image: string }[] }} [product_image]
+ * @property {string[][]} [product_features]
+ * @property {string} [product_description]
+ * @property {string} [product_file]
+ */
+
 import cl from './ProductPage.module.css';
 import IButton from "../../Components/UI/IButton/IButton";
 import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
@@ -16,11 +28,11 @@ import { useWindowSize } from "../../Hooks/useWindowSize";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Modal from "../../Components/UI/Modal/Modal";
 import Form from "../../Components/UI/Form/Form";
 import Loader from "../../Components/Loader/Loader";
+
 
 const ProductPage = () => {
     const navigate = useNavigate();
@@ -30,7 +42,7 @@ const ProductPage = () => {
     const [error, setError] = useState(false);
     const [errorMore, setErrorMore] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState(null); // изменено на null
+    const [data, setData] = useState(/** @type {Product | null} */ (null));
     const [isOpen, setIsOpen] = useState(null);
     const filtercontainer = useRef();
     const imageContainer = useRef();
@@ -233,10 +245,10 @@ const ProductPage = () => {
                                             </div>
                                         </div>
                                         <div className={cl.featureContainer}>
-                                            {data.product_features?.fieldValue?.slice(0, 5).map((feature, index) => (
+                                            {data.product_features?.slice(0, 5).map((feature, index) => (
                                                 <div className={cl.feature} key={index}>
-                                                    <div>{feature.key}</div>
-                                                    <div>{feature.value}</div>
+                                                    <div>{feature[0]}</div>
+                                                    <div>{feature[1]}</div>
                                                 </div>
                                             ))}
                                         </div>
@@ -284,7 +296,7 @@ const ProductPage = () => {
                                         </div>
                                     </div>
                                     <div className={cl.featureContainer}>
-                                        {data.product_features?.fieldValue?.slice(0, 5).map((feature, index) => (
+                                        {data.product_features?.slice(0, 5).map((feature, index) => (
                                             <div className={cl.feature} key={index}>
                                                 <div className={cl.name}>{feature[0]}</div>
                                                 <div>{feature[1]}</div>
@@ -303,7 +315,7 @@ const ProductPage = () => {
                                 <button onClick={() => setActive(3)} className={active === 3 ? cl.active : ''}>Документация</button>
                             </div>
                             {active === 1 && <MoreDescription content={data.product_description} />}
-                            {active === 2 && <MoreFeatures content={data.product_features?.fieldValue}  />}
+                            {active === 2 && <MoreFeatures content={data.product_features} />}
                             {active === 3 && <MoreDocumentation content={data.product_file} />}
                         </div>
                     </div>}
