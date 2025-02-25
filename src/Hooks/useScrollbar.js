@@ -14,7 +14,7 @@ const useScrollbar = (root, config = {}, hasScroll = true) => {
                 scrollbars.destroy();
             }
         };
-    }, []); // Добавлены зависимости
+    }, [root, config, hasScroll]); // Добавлены зависимости
 };
 
 export { useScrollbar };
