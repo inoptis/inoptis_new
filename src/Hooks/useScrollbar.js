@@ -1,12 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { OverlayScrollbars } from "overlayscrollbars";
 
-const useScrollbar = (root, config = {}, hasScroll = true) => {
+const useScrollbar = (root, config = {}) => {
+    const initialRootRef = useRef(root);
+    const initialConfigRef = useRef(config);
+
     useEffect(() => {
         let scrollbars;
 
-        if (root.current && hasScroll) {
-            scrollbars = OverlayScrollbars(root.current, config);
+        if (initialRootRef.current.current) {
+            scrollbars = OverlayScrollbars(initialRootRef.current.current, initialConfigRef.current);
         }
 
         return () => {
@@ -14,7 +17,7 @@ const useScrollbar = (root, config = {}, hasScroll = true) => {
                 scrollbars.destroy();
             }
         };
-    }, [root, config, hasScroll]); // Добавлены зависимости
+    }, []); // Пустой массив зависимостей: хук сработает только при монтировании
 };
 
 export { useScrollbar };
