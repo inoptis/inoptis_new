@@ -154,42 +154,42 @@ const ProductPage = () => {
                         )}
                     </TransitionGroup>
                 }
+
+                { !errorFilter && !loading && dataFilter !== null &&
+                    <div>
+                        {width > 960 &&
+                            <div className={`${cl.helper} ${filterOpen ? cl.open : ''}`}>
+                                <div className={cl.buttonFilter} onClick={closeFilter}>
+                                    <img className={filterOpen ? '' : cl.rotate} src={doubleArrow} alt="arrow"/>
+                                    <span>Категории</span>
+                                </div>
+                                <div className={cl.filterAbsolute}>
+                                    <div ref={filtercontainer} className={cl.filterMainContainer}>
+                                        {dataFilter.map((category, index) => (
+                                            <div className={cl.filterItem} key={index}>
+                                                <div className={`${cl.mainItem}`} onClick={() => toggleSection(index)}>
+                                                    <span>{category.pagetitle}</span>
+                                                    <img className={isOpen[index] ? '' : cl.rotate} src={arrowdark} alt='arrow'/>
+                                                </div>
+                                                <div className={`${cl.filterContainer} ${isOpen[index] ? cl.open : cl.close}`}>
+                                                    {category.children.map((item, index) => (
+                                                        <div className={`${cl.item}`} key={index} onClick={() => navigate(`/catalog/subcatalog?id=${item.id}`)}>
+                                                            {item.pagetitle}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
                 <div className={cl.mainBlock}>
                     <div className={cl.breadcrumbs}>
                         <Breadcrumbs breadcrumbs={breadcrumbs} />
                     </div>
-
-                    { !errorFilter && !loading && dataFilter !== null &&
-                        <div>
-                            {width > 960 &&
-                                <div className={`${cl.helper} ${filterOpen ? cl.open : ''}`}>
-                                    <div className={cl.buttonFilter} onClick={closeFilter}>
-                                        <img className={filterOpen ? '' : cl.rotate} src={doubleArrow} alt="arrow"/>
-                                        <span>Категории</span>
-                                    </div>
-                                    <div className={cl.filterAbsolute}>
-                                        <div ref={filtercontainer} className={cl.filterMainContainer}>
-                                            {dataFilter.map((category, index) => (
-                                                <div className={cl.filterItem} key={index}>
-                                                    <div className={`${cl.mainItem}`} onClick={() => toggleSection(index)}>
-                                                        <span>{category.pagetitle}</span>
-                                                        <img className={isOpen[index] ? '' : cl.rotate} src={arrowdark} alt='arrow'/>
-                                                    </div>
-                                                    <div className={`${cl.filterContainer} ${isOpen[index] ? cl.open : cl.close}`}>
-                                                        {category.children.map((item, index) => (
-                                                            <div className={`${cl.item}`} key={index} onClick={() => navigate(`/catalog/subcatalog?id=${item.id}`)}>
-                                                                {item.pagetitle}
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    }
 
                     <CSSTransition
                         in={loading}
