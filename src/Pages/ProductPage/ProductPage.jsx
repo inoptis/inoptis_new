@@ -262,7 +262,7 @@ const ProductPage = () => {
                                 {width > 560
                                     ? <div className={cl.images}>
                                         <img className={cl.mainImage} src={usedImg} alt="product" />
-                                        <div className={cl.imagesContainer} ref={}>
+                                        <div className={cl.imagesContainer} ref={imageContainerMicro}>
                                             {data.product_image?.fieldValue?.map((img, index) => (
                                                 <div className={`${cl.blockImage} ${usedImg === baseUrl + img.image ? cl.selected : ''}`} onClick={() => setUsedImg(baseUrl + img.image)}>
                                                     <img className={`${cl.microImage}`} src={baseUrl + img.image} key={index} alt={'product'} />
