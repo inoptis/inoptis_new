@@ -46,12 +46,14 @@ const ProductPage = () => {
     const [isOpen, setIsOpen] = useState(null);
     const filtercontainer = useRef();
     const imageContainer = useRef();
+    const imageContainerMicro = useRef();
     const [width] = useWindowSize();
     const [usedImg, setUsedImg] = useState('');
     const [dataFilter, setDataFilter] = useState(null);
     const [errorFilter, setErrorFilter] = useState();
     useScrollbar(filtercontainer);
     useScrollbar(imageContainer);
+    useScrollbar(imageContainerMicro);
 
     const breadcrumbs = [
         { title: 'Главная', path: '/' },
@@ -220,7 +222,7 @@ const ProductPage = () => {
                             <div className={cl.productContainer}>
                                 <div className={cl.images}>
                                     <img className={cl.mainImage} src={usedImg} alt="product" />
-                                    <div className={cl.imagesContainer} ref={imageContainer}>
+                                    <div className={cl.imagesContainer} ref={imageContainerMicro}>
                                         {data.product_image?.fieldValue?.map((img, index) => (
                                             <div className={`${cl.blockImage} ${usedImg === baseUrl + img.image ? cl.selected : ''}`} onClick={() => setUsedImg(baseUrl + img.image)}>
                                                 <img className={`${cl.microImage}`} src={baseUrl + img.image} key={index} alt={'product'} />
@@ -260,7 +262,7 @@ const ProductPage = () => {
                                 {width > 560
                                     ? <div className={cl.images}>
                                         <img className={cl.mainImage} src={usedImg} alt="product" />
-                                        <div className={cl.imagesContainer}>
+                                        <div className={cl.imagesContainer} ref={}>
                                             {data.product_image?.fieldValue?.map((img, index) => (
                                                 <div className={`${cl.blockImage} ${usedImg === baseUrl + img.image ? cl.selected : ''}`} onClick={() => setUsedImg(baseUrl + img.image)}>
                                                     <img className={`${cl.microImage}`} src={baseUrl + img.image} key={index} alt={'product'} />
