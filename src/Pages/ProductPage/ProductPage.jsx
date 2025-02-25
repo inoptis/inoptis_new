@@ -1,3 +1,5 @@
+//@ts-check
+
 import React, { useEffect, useRef, useState } from 'react';
 import cl from './ProductPage.module.css';
 import IButton from "../../Components/UI/IButton/IButton";

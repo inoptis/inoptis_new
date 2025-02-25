@@ -5,6 +5,11 @@ import { useWindowSize } from "../../../Hooks/useWindowSize";
 const MoreFeatures = ({ content }) => {
     const [width] = useWindowSize();
 
+    // Проверяем, пуст ли массив content
+    if (!content || content.length === 0) {
+        return <div className={cl.noData}>Нет данных для отображения</div>;
+    }
+
     // Копируем и модифицируем content
     const modifiedContent = [...content];
     if (modifiedContent.length % 2 !== 0) {
