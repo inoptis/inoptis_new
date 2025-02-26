@@ -45,38 +45,6 @@ const SubCatalog = () => {
             .then(response => {
                 setDataFilter(response.data);
                 setLoading(false);
-                setIsOpen(response.data.map(() => false))
-
-                if (param === null) {
-                    setActive([response.data[0], response.data[0].children[0]]);
-                } else {
-                    // Ищем нужную категорию и подкатегорию
-                    const foundCategory = response.data.find(category =>
-                        category.children.some(subcategory => subcategory.id === param)
-                    );
-
-                    if (foundCategory) {
-                        const foundSubcategory = foundCategory.children.find(subcategory => subcategory.id === param);
-                        setActive([foundCategory, foundSubcategory]);
-                    }
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                setErrorMoreFilter(error.message);
-                setLoading(false);
-                setErrorFilter(true);
-            });
-    }, [param]);
-
-
-    useEffect(() => {
-        const apiURL = '/api.html';
-
-        axios.get(apiURL)
-            .then(response => {
-                setDataFilter(response.data);
-                setLoading(false);
 
                 const initialCategory = param
                     ? response.data.find(category => category.children.some(subcategory => subcategory.id === param))
@@ -96,6 +64,25 @@ const SubCatalog = () => {
                 setErrorFilter(true);
             });
     }, [param]);
+
+
+    useEffect(() => {
+        if (active !== null) {
+            const apiURL = `/categoryproductsapi.html?category_id=${active[1].id}`;
+            // Запрос через Axios
+            axios.get(apiURL)
+                .then(response => {
+                    setDataProducts(response.data); // Устанавливаем данные из API в состояние
+                    setLoading(false)
+                })
+                .catch(error => {
+                    console.log(error);
+                    setErrorMoreProducts(error.message); // или error.toString()
+                    setLoading(false)
+                    setErrorProducts(true);
+                })
+        }
+    }, [active]);
 
     return (
         <div className='page'>
