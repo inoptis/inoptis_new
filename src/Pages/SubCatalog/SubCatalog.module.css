@@ -124,7 +124,7 @@
     flex-direction: column;
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.3s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
     will-change: max-height;
 }
 
