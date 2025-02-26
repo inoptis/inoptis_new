@@ -71,22 +71,31 @@ const SubCatalog = () => {
 
 
     useEffect(() => {
-        if (active !== null) {
-            const apiURL = `/categoryproductsapi.html?category_id=${active[1].id}`;
-            // Запрос через Axios
-            axios.get(apiURL)
-                .then(response => {
-                    setDataProducts(response.data); // Устанавливаем данные из API в состояние
-                    setLoading(false)
-                })
-                .catch(error => {
-                    console.log(error);
-                    setErrorMoreProducts(error.message); // или error.toString()
-                    setLoading(false)
-                    setErrorProducts(true);
-                })
-        }
-    }, [active]);
+        const apiURL = '/api.html';
+
+        axios.get(apiURL)
+            .then(response => {
+                setDataFilter(response.data);
+                setLoading(false);
+
+                const initialCategory = param
+                    ? response.data.find(category => category.children.some(subcategory => subcategory.id === param))
+                    : response.data[0];
+
+                const initialSubcategory = param
+                    ? initialCategory.children.find(subcategory => subcategory.id === param)
+                    : initialCategory.children[0];
+
+                setActive([initialCategory, initialSubcategory]);
+                setIsOpen(response.data.map(cat => cat.id === initialCategory.id)); // Разворачиваем выбранную категорию
+            })
+            .catch(error => {
+                console.log(error);
+                setErrorMoreFilter(error.message);
+                setLoading(false);
+                setErrorFilter(true);
+            });
+    }, [param]);
 
     return (
         <div className='page'>

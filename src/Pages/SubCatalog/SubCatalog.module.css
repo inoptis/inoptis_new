@@ -119,18 +119,17 @@
     }
 }
 
-.filterContainer{
+.filterContainer {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: max-height 0.3s linear;
+    height: 0;
+    transition: height 0.3s ease-in-out;
+    will-change: height;
 }
 
 .filterContainer.open {
-    max-height: 400px;
-    @media (max-width: 1400px) {
-        max-height: 500px;
-    }
+    height: auto;
 }
 .filterContainer.close{
     max-height: 0;
