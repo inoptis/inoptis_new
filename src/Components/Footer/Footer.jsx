@@ -9,7 +9,9 @@ const Footer = () => {
     const [width] = useWindowSize()
     return (
         <footer className={cl.block}>
-            <img className={cl.bg} src={logo} alt={'logo'}/>
+            <div className={cl.containerBg}>
+                <img className={cl.bg} src={logo} alt={'logo'}/>
+            </div>
             <div className={cl.content}>
                 <div className={cl.col1}>
                     <div className={cl.col11}>

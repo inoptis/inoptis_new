@@ -2,33 +2,37 @@
     margin-top: 64px;
     background-color: var(--color-900);
     padding: 0 45px 45px 50px;
-    height: 314px;
+    min-height: 314px;
     position: relative;
-    overflow: hidden;
     display: flex;
     align-items: flex-end;
     width: 100%;
     flex: 1;
     @media (max-width: 960px) {
         margin-top: 32px;
-        height: 180px;
+        min-height: 200px;
         padding: 0 45px 24px 50px;
     }
     @media (max-width: 560px) {
         margin-top: 32px;
-        height: 190px;
+        min-height: 190px;
         padding: 0 20px 24px 20px;
     }
 }
-.bg{
+.containerBg{
+    overflow: hidden;
+    height: 100%;
     position: absolute;
-    top:-61px;
+    top:0;
     left: -230px;
     z-index: 1;
-    object-fit: cover;
     min-width: 797px;
+}
+.bg{
+    position: absolute;
+    object-fit: cover;
+    top:-50px;
     height: 439px;
-
 }
 .content{
     display: flex;
