@@ -33,7 +33,7 @@
             position: relative;
             display: flex;
             gap:24px;
-            padding: 15px 15px 15px 0;
+            padding: 0 15px 0 0;
             overflow: hidden;
             align-items: center;
             font: var(--text-circe-bold-24);
@@ -71,7 +71,7 @@
         .productsContainer{
             gap:10px;
             flex-direction: column;
-            height: 450px;
+            height: 500px;
             button {
                 width: 255px;
                 height: 92px;
