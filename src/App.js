@@ -4,7 +4,8 @@ import Footer from "./Components/Footer/Footer";
 import SEOHelmet from './Components/SEO/SEOHelmet';
 import MyRoutes from "./Routes/Routes";
 import { BrowserRouter } from "react-router-dom";
-import { CsrfProvider } from "./context/CSRFContext";
+import {CsrfProvider} from "./Context/CSRFContext";
+
 
 function App() {
     return (
