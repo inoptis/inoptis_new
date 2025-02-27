@@ -3,8 +3,10 @@ import cl from "./Form.module.css";
 import ITextArea from "../ITextArea/ITextArea";
 import IButton from "../IButton/IButton";
 import axios from "axios";
+import { useCsrf } from "../../context/CsrfContext"; // Импортируем CSRF-контекст
 
 const FormCall = () => {
+    const csrfToken = useCsrf(); // Получаем токен из контекста
     const [formData, setFormData] = useState({
         title: '',
         name: '',
@@ -18,7 +20,7 @@ const FormCall = () => {
     });
 
     const [message, setMessage] = useState(null);
-    const [isSubmitting, setIsSubmitting] = useState(false); // State to manage submission status
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const validatePhone = (phone) => {
         const re = /^[0-9]{10,15}$/;
@@ -55,10 +57,14 @@ const FormCall = () => {
         }
 
         if (valid) {
-            setIsSubmitting(true); // Set submitting state to true
+            setIsSubmitting(true);
             try {
                 const response = await axios.post('/send-form-call.html', formData, {
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRF-Token': csrfToken // Передаём CSRF-токен в заголовке
+                    },
+                    withCredentials: true
                 });
 
                 if (response.data.success) {
@@ -70,7 +76,7 @@ const FormCall = () => {
             } catch (error) {
                 setMessage({ type: "error", text: "Ошибка при отправке формы" });
             } finally {
-                setIsSubmitting(false); // Reset submitting state
+                setIsSubmitting(false);
             }
         }
     };
@@ -107,7 +113,7 @@ const FormCall = () => {
                     required
                 />
             </div>
-            <IButton type="submit" disabled={isSubmitting}>
+            <IButton type="submit" disabled={isSubmitting || !csrfToken}>
                 {isSubmitting ? "Отправка..." : "Отправить заявку"}
             </IButton>
             {message && (
