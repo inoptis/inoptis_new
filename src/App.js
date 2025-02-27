@@ -12,7 +12,7 @@ function App() {
 
     useEffect(() => {
         axios
-            .get("https://inoptis.ru/csrf-api.html", { withCredentials: true })
+            .get("https://inoptis.ru/csrftoken.html", { withCredentials: true })
             .then((response) => {
                 setCsrfToken(response.data)
             })
