@@ -3,7 +3,8 @@ import cl from "./Form.module.css";
 import ITextArea from "../ITextArea/ITextArea";
 import IButton from "../IButton/IButton";
 import axios from "axios";
-import { useCsrf } from "../../context/CsrfContext"; // Импортируем CSRF-контекст
+import {useCsrf} from "../../../Context/CSRFContext";
+
 
 const FormCall = () => {
     const csrfToken = useCsrf(); // Получаем токен из контекста

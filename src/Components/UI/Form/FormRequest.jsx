@@ -4,7 +4,7 @@ import fileIcon from "../../../Assets/Pictures/file.svg";
 import ITextArea from "../ITextArea/ITextArea";
 import IButton from "../IButton/IButton";
 import axios from "axios";
-import { useCsrf } from "../../context/CsrfContext"; // Импортируем CSRF-контекст
+import {useCsrf} from "../../../Context/CSRFContext";
 
 const FormRequest = () => {
     const csrfToken = useCsrf(); // Получаем токен из контекста
