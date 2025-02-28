@@ -78,7 +78,7 @@ const FormRequest = () => {
                 setFormData({ title: "", name: "", phone: "", email: "", comment: "", file: null });
                 setFileName("");
             } else {
-                setMessage(`Ошибка: ${response.data.error}`);
+                setMessage("Ошибка при отправке формы. Попробуйте позже.");
             }
         } catch (error) {
             setMessage("Ошибка при отправке формы. Попробуйте позже.");
@@ -91,11 +91,11 @@ const FormRequest = () => {
         <form noValidate className={cl.formContent} onSubmit={handleSubmit}>
             <h3 className={cl.title}>Введите данные для оформления заявки:</h3>
             <div className={cl.fields}>
-                <ITextArea placeholder="Название предприятия *" type="text" value={formData.title} onChange={handleChange} name="title" error={!!errors.title} required />
-                <ITextArea placeholder="ФИО контактного лица *" type="text" value={formData.name} onChange={handleChange} name="name" error={!!errors.name} required />
-                <ITextArea placeholder="Номер телефона *" type="tel" value={formData.phone} onChange={handleChange} name="phone" error={!!errors.phone} required />
-                <ITextArea placeholder="Адрес электронной почты *" type="email" value={formData.email} onChange={handleChange} name="email" error={!!errors.email} required />
-                <ITextArea placeholder="Комментарий" type="textarea" value={formData.comment} onChange={handleChange} name="comment" required={false} />
+                <ITextArea placeholder="Название предприятия *" type="text" value={formData.title} onChange={handleChange} name="title" error={!!errors.title} required maxLength={80} />
+                <ITextArea placeholder="ФИО контактного лица *" type="text" value={formData.name} onChange={handleChange} name="name" error={!!errors.name} required maxLength={50} />
+                <ITextArea placeholder="Номер телефона *" type="tel" value={formData.phone} onChange={handleChange} name="phone" error={!!errors.phone} required maxLength={15}/>
+                <ITextArea placeholder="Адрес электронной почты *" type="email" value={formData.email} onChange={handleChange} name="email" error={!!errors.email} required maxLength={30}/>
+                <ITextArea placeholder="Комментарий" type="textarea" value={formData.comment} onChange={handleChange} name="comment" required={false} maxLength={200} />
             </div>
 
             <div className={cl.fileUpload}>

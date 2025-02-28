@@ -17,6 +17,7 @@ export const CsrfProvider = ({ children }) => {
             .catch((error) => console.error("Ошибка получения CSRF-токена:", error));
     }, []);
 
+    
     return (
         <CsrfContext.Provider value={csrfToken}>
             {children}

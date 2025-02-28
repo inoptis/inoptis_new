@@ -72,7 +72,7 @@ const FormCall = () => {
                     setMessage({ type: "success", text: response.data.message });
                     setFormData({ title: '', name: '', phone: '' });
                 } else {
-                    setMessage({ type: "error", text: response.data.message });
+                    setMessage({ type: "error", text: "Ошибка при отправке формы" });
                 }
             } catch (error) {
                 setMessage({ type: "error", text: "Ошибка при отправке формы" });
@@ -94,6 +94,7 @@ const FormCall = () => {
                     name="title"
                     error={errors.title}
                     required
+                    maxLength={80}
                 />
                 <ITextArea
                     placeholder="ФИО контактного лица *"
@@ -103,6 +104,7 @@ const FormCall = () => {
                     name="name"
                     error={errors.name}
                     required
+                    maxLength={50}
                 />
                 <ITextArea
                     placeholder="Номер телефона *"
@@ -112,6 +114,7 @@ const FormCall = () => {
                     name="phone"
                     error={errors.phone}
                     required
+                    maxLength={15}
                 />
             </div>
             <IButton type="submit" disabled={isSubmitting || !csrfToken}>
