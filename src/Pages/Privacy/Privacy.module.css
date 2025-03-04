@@ -1,0 +1,102 @@
+.block{
+    width: 1400px;
+    margin: 0 auto;
+    h1,h2{
+        color:var(--color-1000)
+    }
+    h1{
+        font:var(--text-circe-bold-40);
+        margin-bottom: 20px;
+    }
+    h2{
+        font:var(--text-circe-bold-32);
+        margin-bottom: 10px;
+    }
+    p,li,a{
+        color: var(--color-900);
+    }
+    li{
+        font:var(--text-circe-regular-18);
+    }
+    p{
+        font:var(--text-circe-regular-18);
+        margin-bottom: 10px;
+    }
+    ul{
+        margin-bottom: 10px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid var(--color-1000);
+        padding: 8px;
+        vertical-align: top;
+        text-align: left;
+    }
+    th{
+        font:var(--text-circe-bold-18);
+        color: var(--color-900);
+    }
+    td{
+        font:var(--text-circe-regular-18);
+        color: var(--color-900);
+    }
+    @media (max-width: 1400px) {
+        width: 880px;
+        h1{
+            font: var(--text-circe-bold-36)
+        }
+        h2{
+            font:var(--text-circe-bold-24);
+        }
+        li{
+            font:var(--text-circe-regular-16);
+        }
+        p{
+            font:var(--text-circe-regular-16);
+        }
+        th{
+            font:var(--text-circe-bold-16);
+        }
+        td{
+            font:var(--text-circe-regular-16);
+        }
+    }
+    @media (max-width: 960px) {
+        h1{
+            font: var(--text-circe-bold-24);
+        }
+        h2{
+            font:var(--text-circe-bold-18);
+            margin-bottom: 10px;
+        }
+
+        width: 520px;
+    }
+    @media (max-width: 560px) {
+        width: calc(100% - 30px);
+        h1{
+            font: var(--text-circe-bold-20);
+            margin-bottom: 14px;
+        }
+        h2{
+            font:var(--text-circe-bold-18);
+            margin-bottom: 8px;
+        }
+        li{
+            font:var(--text-circe-regular-14);
+        }
+        p{
+            font:var(--text-circe-regular-14);
+        }
+        th{
+            font:var(--text-circe-bold-14);
+        }
+        td{
+            font:var(--text-circe-regular-14);
+        }
+    }
+}

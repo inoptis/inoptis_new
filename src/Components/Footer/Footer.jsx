@@ -27,7 +27,7 @@ const Footer = () => {
                 </div>
                 <div className={cl.col2}>
                     <img src={width > 560 ? footerLogo : mobileLogo} alt={'company'}/>
-                    <span>Политика конфиденциальности</span>
+                    <Link to={'/privacy'}>Политика конфиденциальности</Link>
                 </div>
             </div>
         </footer>
