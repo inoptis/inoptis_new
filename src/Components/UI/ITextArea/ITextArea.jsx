@@ -42,9 +42,6 @@ const ITextArea = ({
                         <img src={cross} alt="cross" />
                     </button>
                 )}
-                <span className={cl.charCount}>
-          {value.length}/{maxLength}
-        </span>
             </div>
         );
     }
@@ -70,9 +67,6 @@ const ITextArea = ({
                 </button>
             )}
             {error && <img src={warning} alt="cross" className={cl.warning} />}
-            <span className={cl.charCount}>
-        {value.length}/{maxLength}
-      </span>
         </div>
     );
 };

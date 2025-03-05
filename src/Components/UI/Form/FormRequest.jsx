@@ -119,8 +119,6 @@ const FormRequest = () => {
                                 />
                             )}
                         </Field>
-                        <ErrorMessage name="title" component="div" className={cl.error} />
-
                         <Field name="name">
                             {({ field, meta }) => (
                                 <ITextArea
@@ -133,7 +131,6 @@ const FormRequest = () => {
                                 />
                             )}
                         </Field>
-                        <ErrorMessage name="name" component="div" className={cl.error} />
 
                         <Field name="phone">
                             {({ field, meta }) => (
@@ -147,7 +144,6 @@ const FormRequest = () => {
                                 />
                             )}
                         </Field>
-                        <ErrorMessage name="phone" component="div" className={cl.error} />
 
                         <Field name="email">
                             {({ field, meta }) => (
@@ -161,7 +157,6 @@ const FormRequest = () => {
                                 />
                             )}
                         </Field>
-                        <ErrorMessage name="email" component="div" className={cl.error} />
 
                         <Field name="comment">
                             {({ field, meta }) => (
@@ -174,7 +169,6 @@ const FormRequest = () => {
                                 />
                             )}
                         </Field>
-                        <ErrorMessage name="comment" component="div" className={cl.error} />
                     </div>
 
                     <div className={cl.fileUpload}>

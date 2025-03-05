@@ -97,7 +97,6 @@ const FormCall = () => {
                                 />
                             )}
                         </Field>
-                        <ErrorMessage name="title" component="div" className={cl.error} />
 
                         <Field name="name">
                             {({ field, meta }) => (
@@ -110,7 +109,6 @@ const FormCall = () => {
                                 />
                             )}
                         </Field>
-                        <ErrorMessage name="name" component="div" className={cl.error} />
 
                         <Field name="phone">
                             {({ field, meta }) => (
@@ -123,7 +121,6 @@ const FormCall = () => {
                                 />
                             )}
                         </Field>
-                        <ErrorMessage name="phone" component="div" className={cl.error} />
 
                         {/* Скрытое honeypot поле для защиты от ботов */}
                         <Field name="honeypot" type="text" style={{ display: 'none' }} />
