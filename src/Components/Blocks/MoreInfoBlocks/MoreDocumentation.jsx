@@ -3,7 +3,7 @@ import cl from './MoreInfoBlocks.module.css'
 import download from '../../../Assets/Pictures/download-icon.svg'
 import file from '../../../Assets/Pictures/file-icon.svg'
 const MoreDocumentation = ({content}) => {
-    const baseurl = 'http://alexaksa.beget.tech/'
+    const baseurl = '/'
     return (
         <div className={cl.documentationBlock}>
             <div className={cl.titleDocumentation}>Файлы</div>
