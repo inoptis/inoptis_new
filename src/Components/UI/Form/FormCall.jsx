@@ -1,131 +1,141 @@
-import React, { useState } from 'react';
-import cl from "./Form.module.css";
-import ITextArea from "../ITextArea/ITextArea";
-import IButton from "../IButton/IButton";
-import axios from "axios";
-import {useCsrf} from "../../../Context/CSRFContext";
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import DOMPurify from 'dompurify';
+import axios from 'axios';
+import { useCsrf } from '../../../Context/CSRFContext';
+import cl from './Form.module.css';
+import ITextArea from '../ITextArea/ITextArea';
+import IButton from '../IButton/IButton';
 
+// Регулярное выражение для проверки номера телефона (10-15 цифр)
+const phoneRegExp = /^[0-9]{10,15}$/;
+
+// Yup-схема валидации с защитой от HTML-тегов через DOMPurify и honeypot-проверкой
+const validationSchema = Yup.object({
+    title: Yup.string()
+        .required('Обязательное поле')
+        .max(80, 'Максимум 80 символов')
+        .test('no-html', 'HTML-теги запрещены', value => value === DOMPurify.sanitize(value)),
+    name: Yup.string()
+        .required('Обязательное поле')
+        .max(50, 'Максимум 50 символов')
+        .test('no-html', 'HTML-теги запрещены', value => value === DOMPurify.sanitize(value)),
+    phone: Yup.string()
+        .matches(phoneRegExp, 'Введите корректный номер (10-15 цифр)')
+        .required('Обязательное поле'),
+    // Honeypot поле — должно оставаться пустым
+    honeypot: Yup.string().test('is-empty', 'Бот обнаружен', value => !value)
+});
 
 const FormCall = () => {
-    const csrfToken = useCsrf(); // Получаем токен из контекста
-    const [formData, setFormData] = useState({
+    const csrfToken = useCsrf();
+
+    // Начальные значения формы, включая honeypot
+    const initialValues = {
         title: '',
         name: '',
-        phone: ''
-    });
-
-    const [errors, setErrors] = useState({
-        title: false,
-        name: false,
-        phone: false
-    });
-
-    const [message, setMessage] = useState(null);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
-    const validatePhone = (phone) => {
-        const re = /^[0-9]{10,15}$/;
-        return re.test(String(phone));
+        phone: '',
+        honeypot: ''
     };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-        setErrors({
-            ...errors,
-            [name]: false
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        let valid = true;
-
-        if (formData.title === '') {
-            setErrors((prev) => ({ ...prev, title: true }));
-            valid = false;
-        }
-        if (formData.name === '') {
-            setErrors((prev) => ({ ...prev, name: true }));
-            valid = false;
-        }
-        if (formData.phone === '' || !validatePhone(formData.phone)) {
-            setErrors((prev) => ({ ...prev, phone: true }));
-            valid = false;
+    const handleSubmit = async (values, { setSubmitting, resetForm, setStatus }) => {
+        // Если honeypot заполнен — считаем, что форму заполнил бот
+        if (values.honeypot) {
+            setStatus({ type: 'error', text: 'Бот обнаружен. Форма не отправлена.' });
+            setSubmitting(false);
+            return;
         }
 
-        if (valid) {
-            setIsSubmitting(true);
-            try {
-                const response = await axios.post('/send-form-call.html', formData, {
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'X-CSRF-Token': csrfToken // Передаём CSRF-токен в заголовке
-                    },
-                    withCredentials: true
-                });
+        // Очистка данных от потенциальных XSS-атак
+        const sanitizedData = {
+            title: DOMPurify.sanitize(values.title),
+            name: DOMPurify.sanitize(values.name),
+            phone: values.phone // Номер телефона не требует очистки
+        };
 
-                if (response.data.success) {
-                    setMessage({ type: "success", text: response.data.message });
-                    setFormData({ title: '', name: '', phone: '' });
-                } else {
-                    setMessage({ type: "error", text: "Ошибка при отправке формы" });
-                }
-            } catch (error) {
-                setMessage({ type: "error", text: "Ошибка при отправке формы" });
-            } finally {
-                setIsSubmitting(false);
+        try {
+            const response = await axios.post('/send-form-call.html', sanitizedData, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRF-Token': csrfToken
+                },
+                withCredentials: true
+            });
+
+            if (response.data.success) {
+                setStatus({ type: 'success', text: response.data.message });
+                resetForm();
+            } else {
+                setStatus({ type: 'error', text: 'Ошибка при отправке формы' });
             }
+        } catch (error) {
+            setStatus({ type: 'error', text: 'Ошибка при отправке формы' });
+        } finally {
+            setSubmitting(false);
         }
     };
 
     return (
-        <form noValidate className={cl.formContent} onSubmit={handleSubmit}>
-            <h3 className={cl.title}>Введите данные для заказа обратного звонка:</h3>
-            <div className={cl.fields}>
-                <ITextArea
-                    placeholder="Название предприятия *"
-                    type="text"
-                    value={formData.title}
-                    onChange={handleChange}
-                    name="title"
-                    error={errors.title}
-                    required
-                    maxLength={80}
-                />
-                <ITextArea
-                    placeholder="ФИО контактного лица *"
-                    type="text"
-                    value={formData.name}
-                    onChange={handleChange}
-                    name="name"
-                    error={errors.name}
-                    required
-                    maxLength={50}
-                />
-                <ITextArea
-                    placeholder="Номер телефона *"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    name="phone"
-                    error={errors.phone}
-                    required
-                    maxLength={15}
-                />
-            </div>
-            <IButton type="submit" disabled={isSubmitting || !csrfToken}>
-                {isSubmitting ? "Отправка..." : "Отправить заявку"}
-            </IButton>
-            {message && (
-                <div className={cl.message}>
-                    {message.text}
-                </div>
+        <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+        >
+            {({ isSubmitting, status }) => (
+                <Form noValidate className={cl.formContent}>
+                    <h3 className={cl.title}>Введите данные для заказа обратного звонка:</h3>
+                    <div className={cl.fields}>
+                        <Field name="title">
+                            {({ field, meta }) => (
+                                <ITextArea
+                                    {...field}
+                                    placeholder="Название предприятия *"
+                                    type="text"
+                                    error={meta.touched && meta.error}
+                                    maxLength={80}
+                                />
+                            )}
+                        </Field>
+                        <ErrorMessage name="title" component="div" className={cl.error} />
+
+                        <Field name="name">
+                            {({ field, meta }) => (
+                                <ITextArea
+                                    {...field}
+                                    placeholder="ФИО контактного лица *"
+                                    type="text"
+                                    error={meta.touched && meta.error}
+                                    maxLength={50}
+                                />
+                            )}
+                        </Field>
+                        <ErrorMessage name="name" component="div" className={cl.error} />
+
+                        <Field name="phone">
+                            {({ field, meta }) => (
+                                <ITextArea
+                                    {...field}
+                                    placeholder="Номер телефона *"
+                                    type="tel"
+                                    error={meta.touched && meta.error}
+                                    maxLength={15}
+                                />
+                            )}
+                        </Field>
+                        <ErrorMessage name="phone" component="div" className={cl.error} />
+
+                        {/* Скрытое honeypot поле для защиты от ботов */}
+                        <Field name="honeypot" type="text" style={{ display: 'none' }} />
+                    </div>
+
+                    <IButton type="submit" disabled={isSubmitting || !csrfToken}>
+                        {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+                    </IButton>
+                    {status && <div className={cl.message}>{status.text}</div>}
+                </Form>
             )}
-        </form>
+        </Formik>
     );
 };
 
