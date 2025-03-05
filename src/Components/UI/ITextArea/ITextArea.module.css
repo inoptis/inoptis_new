@@ -42,7 +42,6 @@
 .box {
     position: relative;
     width: 100%;
-    span
 }
 .error.text.in, .error.text {
     outline: 1px solid var(--color-logo);
