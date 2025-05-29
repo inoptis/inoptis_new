@@ -15,15 +15,7 @@ const HeaderMobile = () => {
     const [dataFilter, setDataFilter] = useState(null)
     const [loading, setLoading] = useState()
     const [errorFilter, setErrorFilter] = useState()
-    const [modal, setModal] = useState(false)
 
-    const closeModal = () => {
-        setModal(false)
-    }
-
-    const openModal = () => {
-        setModal(true)
-    }
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -63,7 +55,7 @@ const HeaderMobile = () => {
             {/*}*/}
         <header className={cl.header}>
             <div className={cl.top}>
-                <IButton onClick={openModal} className={cl.mobile}>
+                <IButton className={cl.mobile}>
                     Заказать звонок
                 </IButton>
             </div>

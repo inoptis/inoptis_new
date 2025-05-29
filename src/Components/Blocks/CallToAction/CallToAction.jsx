@@ -5,15 +5,6 @@ import logo from '../../../Assets/Pictures/bg-logo.svg'
 // import Modal from "../../UI/Modal/Modal";
 // import Form from "../../UI/Form/Form";
 const CallToAction = () => {
-    const [modal, setModal] = useState(false)
-
-    const closeModal = () => {
-        setModal(false)
-    }
-
-    const openModal = () => {
-        setModal(true)
-    }
     return (
         <>
             {/*{modal &&*/}
@@ -32,7 +23,7 @@ const CallToAction = () => {
                             Оставьте свои контакты, и мы Вам перезвоним.
                         </span>
                     </div>
-                    <IButton onClick={openModal} className={cl.button}>
+                    <IButton  className={cl.button}>
                         Заказать звонок
                     </IButton>
                 </div>

@@ -63,15 +63,6 @@ const ProductPage = () => {
 
     const baseUrl = "/";
 
-    const [modal, setModal] = useState(false);
-
-    const closeModal = () => {
-        setModal(false);
-    };
-
-    const openModal = () => {
-        setModal(true);
-    };
 
     useEffect(() => {
         const apiURL = `/productapi.html?alias=${params.id}`;
@@ -216,7 +207,7 @@ const ProductPage = () => {
                     {loading === false && error === false && data && <div className={cl.productInfo}>
                         <div className={cl.title}>
                             <h1>{data.pagetitle}</h1>
-                            <IButton onClick={openModal} color={'border'} className={cl.button}>Узнать стоимость</IButton>
+                            <IButton color={'border'} className={cl.button}>Узнать стоимость</IButton>
                         </div>
                         {width > 960 ?
                             <div className={cl.productContainer}>

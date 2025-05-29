@@ -18,12 +18,7 @@ const Header = () => {
     const isCatalog = useHover(catalog);
     const navigate = useNavigate();
     const [width] = useWindowSize();
-    const [modal, setModal] = useState(false)
     const [query, setQuery] = useState()
-
-    const closeModal = () => {
-        setModal(false)
-    }
 
     const queryChange = (e) => {
         setQuery(e.target.value);
@@ -37,10 +32,6 @@ const Header = () => {
 
     const searchButton = () => {
         navigate(`/search?query=${query}`)
-    }
-
-    const openModal = () => {
-        setModal(true)
     }
 
     const goToMain = () => {
@@ -69,7 +60,7 @@ const Header = () => {
                             <a href={'tel:+74956460506'} className={cl.number} >+7 (495) 646-05-06</a>
                             <span className={cl.schedule}>пн–пт с 9:00 до 18:00</span>
                         </div>
-                        <IButton onClick={openModal} className={cl.call}>
+                        <IButton className={cl.call}>
                             Заказать звонок
                         </IButton>
                     </div>

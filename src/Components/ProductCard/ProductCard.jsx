@@ -7,16 +7,11 @@ import {useNavigate} from "react-router-dom";
 const ProductCard = ({product, category}) => {
     const navigate = useNavigate()
     const baseUrl = "/";
-    const [modal, setModal] = useState(false)
 
-    const closeModal = () => {
-        setModal(false)
-    }
+    // const closeModal = () => {
+    //     setModal(false)
+    // }
 
-    const openModal = (e) => {
-        e.stopPropagation(); // Останавливаем всплытие события
-        setModal(true)
-    }
 
     return (
         <>
@@ -32,7 +27,7 @@ const ProductCard = ({product, category}) => {
                         <span>{category}</span>
                         <h5>{product.pagetitle}</h5>
                     </div>
-                    <IButton onClick={openModal} color={'border'} className={cl.button}>Узнать стоимость</IButton>
+                    <IButton color={'border'} className={cl.button}>Узнать стоимость</IButton>
                 </div>
             </div>
         </>
