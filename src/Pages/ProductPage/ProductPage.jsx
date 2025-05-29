@@ -14,7 +14,7 @@ import axios from "axios";
  */
 
 import cl from './ProductPage.module.css';
-import IButton from "../../Components/UI/IButton/IButton";
+// import IButton from "../../Components/UI/IButton/IButton";
 import Breadcrumbs from "../../Components/Breadcrumbs/Breadcrumbs";
 import arrow from '../../Assets/Pictures/arrow-breadcrumbs.svg';
 import doubleArrow from '../../Assets/Pictures/double-arrow.svg';
