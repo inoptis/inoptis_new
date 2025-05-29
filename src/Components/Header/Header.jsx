@@ -11,8 +11,8 @@ import Menu from "./Menu";
 import {useNavigate} from "react-router-dom";
 import {useWindowSize} from "../../Hooks/useWindowSize";
 import HeaderMobile from "./HeaderMobile";
-import Modal from "../UI/Modal/Modal";
-import Form from "../UI/Form/Form";
+// import Modal from "../UI/Modal/Modal";
+// import Form from "../UI/Form/Form";
 const Header = () => {
     const catalog = useRef();
     const isCatalog = useHover(catalog);

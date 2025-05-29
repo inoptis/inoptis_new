@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import IButton from "../../UI/IButton/IButton";
 import cl from './CallToAction.module.css';
 import logo from '../../../Assets/Pictures/bg-logo.svg'
-import Modal from "../../UI/Modal/Modal";
-import Form from "../../UI/Form/Form";
+// import Modal from "../../UI/Modal/Modal";
+// import Form from "../../UI/Form/Form";
 const CallToAction = () => {
     const [modal, setModal] = useState(false)
 

@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import cl from './ProductCard.module.css'
 import IButton from "../UI/IButton/IButton";
 import {useNavigate} from "react-router-dom";
-import Modal from "../UI/Modal/Modal";
-import Form from "../UI/Form/Form";
+// import Modal from "../UI/Modal/Modal";
+// import Form from "../UI/Form/Form";
 const ProductCard = ({product, category}) => {
     const navigate = useNavigate()
     const baseUrl = "/";

@@ -29,8 +29,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate, useParams } from "react-router-dom";
-import Modal from "../../Components/UI/Modal/Modal";
-import Form from "../../Components/UI/Form/Form";
+// import Modal from "../../Components/UI/Modal/Modal";
+// import Form from "../../Components/UI/Form/Form";
 import Loader from "../../Components/Loader/Loader";
 
 
@@ -148,11 +148,11 @@ const ProductPage = () => {
 
     return (
         <>
-            {modal &&
-                <Modal close={closeModal}>
-                    <Form/>
-                </Modal>
-            }
+            {/*{modal &&*/}
+            {/*    <Modal close={closeModal}>*/}
+            {/*        <Form/>*/}
+            {/*    </Modal>*/}
+            {/*}*/}
             <div className={'page'}>
                 {width > 960 &&
                     <TransitionGroup>

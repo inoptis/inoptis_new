@@ -5,8 +5,8 @@ import humburger from "../../Assets/Pictures/Humburger.svg";
 import logomobile from "../../Assets/Pictures/logomobile.svg";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
-import Modal from "../UI/Modal/Modal";
-import Form from "../UI/Form/Form";
+// import Modal from "../UI/Modal/Modal";
+// import Form from "../UI/Form/Form";
 
 const HeaderMobile = () => {
     const navigate = useNavigate();
