@@ -1,6 +1,6 @@
 import React from 'react';
 import cl from './ProductCard.module.css'
-import IButton from "../UI/IButton/IButton";
+// import IButton from "../UI/IButton/IButton";
 import {useNavigate} from "react-router-dom";
 // import Modal from "../UI/Modal/Modal";
 // import Form from "../UI/Form/Form";
@@ -27,7 +27,7 @@ const ProductCard = ({product, category}) => {
                         <span>{category}</span>
                         <h5>{product.pagetitle}</h5>
                     </div>
-                    <IButton color={'border'} className={cl.button}>Узнать стоимость</IButton>
+                    {/*<IButton color={'border'} className={cl.button}>Узнать стоимость</IButton>*/}
                 </div>
             </div>
         </>

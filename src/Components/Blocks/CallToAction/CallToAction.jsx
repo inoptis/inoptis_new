@@ -1,5 +1,5 @@
 import React from 'react';
-import IButton from "../../UI/IButton/IButton";
+// import IButton from "../../UI/IButton/IButton";
 import cl from './CallToAction.module.css';
 import logo from '../../../Assets/Pictures/bg-logo.svg'
 // import Modal from "../../UI/Modal/Modal";
@@ -23,9 +23,9 @@ const CallToAction = () => {
                             Оставьте свои контакты, и мы Вам перезвоним.
                         </span>
                     </div>
-                    <IButton  className={cl.button}>
-                        Заказать звонок
-                    </IButton>
+                    {/*<IButton  className={cl.button}>*/}
+                    {/*    Заказать звонок*/}
+                    {/*</IButton>*/}
                 </div>
             </div>
         </>

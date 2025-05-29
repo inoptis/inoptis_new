@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import cl from "./Header.module.css";
-import IButton from "../UI/IButton/IButton";
+// import IButton from "../UI/IButton/IButton";
 import humburger from "../../Assets/Pictures/Humburger.svg";
 import logomobile from "../../Assets/Pictures/logomobile.svg";
 import {Link, useNavigate} from "react-router-dom";
@@ -55,9 +55,9 @@ const HeaderMobile = () => {
             {/*}*/}
         <header className={cl.header}>
             <div className={cl.top}>
-                <IButton className={cl.mobile}>
-                    Заказать звонок
-                </IButton>
+                {/*<IButton className={cl.mobile}>*/}
+                {/*    Заказать звонок*/}
+                {/*</IButton>*/}
             </div>
             <div className={cl.bottom}>
                 <div className={cl.mobilehumburger}>

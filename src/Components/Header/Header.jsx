@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import IButton from "../UI/IButton/IButton";
+// import IButton from "../UI/IButton/IButton";
 import cl from './Header.module.css'
 import logo from '../../Assets/Pictures/logo_description.svg'
 import phone from '../../Assets/Pictures/phone.svg'
@@ -60,9 +60,9 @@ const Header = () => {
                             <a href={'tel:+74956460506'} className={cl.number} >+7 (495) 646-05-06</a>
                             <span className={cl.schedule}>пн–пт с 9:00 до 18:00</span>
                         </div>
-                        <IButton className={cl.call}>
-                            Заказать звонок
-                        </IButton>
+                        {/*<IButton className={cl.call}>*/}
+                        {/*    Заказать звонок*/}
+                        {/*</IButton>*/}
                     </div>
                 </div>
                 <div className={cl.bottom}>
