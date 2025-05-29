@@ -20,11 +20,11 @@ const ProductCard = ({product, category}) => {
 
     return (
         <>
-            {modal &&
-                <Modal close={closeModal}>
-                    <Form/>
-                </Modal>
-            }
+            {/*{modal &&*/}
+            {/*    <Modal close={closeModal}>*/}
+            {/*        <Form/>*/}
+            {/*    </Modal>*/}
+            {/*}*/}
             <div className={cl.card} onClick={() => navigate(`/catalog/subcatalog/${product.alias}`)}>
                 <img className={cl.img} alt={product.pagetitle} src={baseUrl + product.product_image?.fieldValue[0]?.image}/>
                 <div className={cl.content}>

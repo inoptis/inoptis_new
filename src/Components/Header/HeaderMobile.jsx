@@ -56,11 +56,11 @@ const HeaderMobile = () => {
 
     return (
         <>
-            {modal &&
-                <Modal close={closeModal}>
-                    <Form/>
-                </Modal>
-            }
+            {/*{modal &&*/}
+            {/*    <Modal close={closeModal}>*/}
+            {/*        <Form/>*/}
+            {/*    </Modal>*/}
+            {/*}*/}
         <header className={cl.header}>
             <div className={cl.top}>
                 <IButton onClick={openModal} className={cl.mobile}>

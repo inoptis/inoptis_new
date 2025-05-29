@@ -16,11 +16,11 @@ const CallToAction = () => {
     }
     return (
         <>
-            {modal &&
-                <Modal close={closeModal}>
-                    <Form/>
-                </Modal>
-            }
+            {/*{modal &&*/}
+            {/*    <Modal close={closeModal}>*/}
+            {/*        <Form/>*/}
+            {/*    </Modal>*/}
+            {/*}*/}
             <div className={cl.block}>
                 <img className={cl.bg} src={logo} alt={'logo'}/>
                 <div className={cl.content}>

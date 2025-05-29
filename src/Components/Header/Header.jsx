@@ -52,11 +52,11 @@ const Header = () => {
 
     return (
         <>
-            {modal &&
-                <Modal close={closeModal}>
-                    <Form/>
-                </Modal>
-            }
+            {/*{modal &&*/}
+            {/*    <Modal close={closeModal}>*/}
+            {/*        <Form/>*/}
+            {/*    </Modal>      */}
+            {/*}*/}
             {width > 560 &&
             <header className={cl.header}>
                 <div className={cl.top}>
