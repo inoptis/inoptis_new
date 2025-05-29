@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import IButton from "../../UI/IButton/IButton";
 import cl from './CallToAction.module.css';
 import logo from '../../../Assets/Pictures/bg-logo.svg'

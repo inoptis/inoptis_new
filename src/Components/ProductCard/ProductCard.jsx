@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import cl from './ProductCard.module.css'
 import IButton from "../UI/IButton/IButton";
 import {useNavigate} from "react-router-dom";
